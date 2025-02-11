@@ -1,27 +1,4 @@
-pattern1 = 'void pattern1 (int x, int y) {std::cout<<"pattern1";}'
 
-pattern2 = 'void pattern2(int x, int y){std::cout<<"pattern2";'
-
-pattern3 = 'void pattern3(int x, int y){'
-
-x = pattern1.split( '(' )
-
-pattern4 = 'void pattern5(int x, int y)'
-
-str1 = ["void (*fpData)(void);",
-"int  (*fpData)(int);",
-"int dupa[5] = {",
-"struct dupa{",
-"int  (*fpData)(char *) { to_nie_dziala(); ",
-"int* (*fpData)(char *);",
-"int  (*fpData)(int, char *);",
-"int* (*fpData)(int, int *, char *);",
-"int* (*fpData)(int , char, int (*paIndex)[3]);",
-"int* (*fpData)(int , int (*paIndex)[3] , int (* fpMsg) (const char *));",
-"int* (*fpData)(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *));",
-"int* (*fpData[2])(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *)) { }",
-"int* (*(*fpData)(const char *))(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *)) { x++; }",
-]
 
 SUCCESS = 0
 INCOMPLETE = 1
@@ -35,6 +12,8 @@ class cascased_split:
         self.fun_list = ['','','','']
         self.unallowed_words_in_stage = [ ['=',';'],[], [] ]
         self.last_result = []
+        self.function_begin = 0
+        self.function_end = 0
 
     def stage_0_validate(self):
         signature = self.fun_list[0]
@@ -51,9 +30,11 @@ class cascased_split:
         to_be_added = self.fun_list[self.stage]
         new_val = to_be_added + new_val
         self.fun_list[self.stage] = new_val
+
     
-    def validate_stage(self, current_stage):
+    def validate_stage(self, line_num):
         if self.stage == 0:
+            self.function_begin = line_num
             return self.stage_0_validate()
         else: 
             return True
@@ -65,10 +46,13 @@ class cascased_split:
             self.reset_variables()
         return ret_val
     
+    def get_function_begin(self):
+        return (self.function_begin, self.function_end)
+
     def get_function_signature(self):
         return self.last_result[0]
 
-    def c_splitter(self, line):
+    def c_splitter(self, line, line_num):
 
         to_be_added: str
         next_token = "test"
@@ -91,9 +75,11 @@ class cascased_split:
                 return FAILURE 
 
             if(state_transition == True):
-                if(self.validate_stage(self.fun_list[self.stage]) == True):
+                if(self.validate_stage(line_num) == True):
                     self.stage = self.stage + 1
+
                     if(self.stage == len(self.splitt_str)):
+                        self.function_end = line_num
                         self.last_result = self.fun_list
                         self.reset_variables()
                         return SUCCESS
@@ -107,6 +93,31 @@ class cascased_split:
 
                 
 def test():
+
+    pattern1 = 'void pattern1 (int x, int y) {std::cout<<"pattern1";}'
+
+    pattern2 = 'void pattern2(int x, int y){std::cout<<"pattern2";'
+
+    pattern3 = 'void pattern3(int x, int y){'
+
+    x = pattern1.split( '(' )
+
+    pattern4 = 'void pattern5(int x, int y)'
+
+    str1 = ["void (*fpData)(void);",
+    "int  (*fpData)(int);",
+    "int dupa[5] = {",
+    "struct dupa{",
+    "int  (*fpData)(char *) { to_nie_dziala(); ",
+    "int* (*fpData)(char *);",
+    "int  (*fpData)(int, char *);",
+    "int* (*fpData)(int, int *, char *);",
+    "int* (*fpData)(int , char, int (*paIndex)[3]);",
+    "int* (*fpData)(int , int (*paIndex)[3] , int (* fpMsg) (const char *));",
+    "int* (*fpData)(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *));",
+    "int* (*fpData[2])(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *)) { }",
+    "int* (*(*fpData)(const char *))(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *)) { x++; }",
+    ]
 
     spt = cascased_split()
     spt.c_splitter(pattern1)

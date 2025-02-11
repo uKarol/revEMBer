@@ -40,11 +40,12 @@ class Bracket_Extractor:
         else:
             return BraceStatus.NO_BRACE 
     
-    def next_process(self, line, found_functions : list):
-        if(self.spt.c_splitter(line) == SUCCESS):
+    def next_process(self, line, found_functions : list, line_num):
+        if(self.spt.c_splitter(line, line_num) == SUCCESS):
             found_functions.append(self.spt.get_function_signature())
+            found_functions.append(self.spt.get_function_begin())
 
-    def process_line(self, line, found_functions):
+    def process_line(self, line, found_functions, line_num):
 
         if self.current_state == BracketState.IN_BRACKETS:
 
@@ -52,7 +53,7 @@ class Bracket_Extractor:
                 self.depth = self.depth - 1
                 if self.depth == 0:
                     self.current_state = BracketState.OUT_BRACKETS
-                    self.next_process(line, found_functions)
+                    self.next_process(line, found_functions, line_num)
             elif self.brace_detector(line) == BraceStatus.BRACE_OPEN:
                 self.depth = self.depth + 1
             else:
@@ -61,11 +62,11 @@ class Bracket_Extractor:
         else:
 
             if self.brace_detector(line) == BraceStatus.BRACE_OPEN:
-                self.next_process(line, found_functions)
+                self.next_process(line, found_functions, line_num)
                 self.current_state = BracketState.IN_BRACKETS
                 self.depth = self.depth + 1
             else:
-                self.next_process(line, found_functions)        
+                self.next_process(line, found_functions, line_num)        
 
 
 
@@ -96,7 +97,7 @@ class Comment_Extractor:
         else:
             return CommentStatus.NOT_COMMENT
 
-    def line_processing(self, line:str, found_functions): #in comment
+    def line_processing(self, line:str, found_functions, line_num): #in comment
         if(self.current_state == CommentState.IN_COMMENT):
             if(self.multiline_comment_detection(line) == CommentStatus.COMMENT_END):
                 self.current_state = CommentState.IN_CODE
@@ -106,7 +107,7 @@ class Comment_Extractor:
                 self.current_state = CommentState.IN_COMMENT
             else:
                 #print(line)
-                self.brace_extractor.process_line(line, found_functions)
+                self.brace_extractor.process_line(line, found_functions, line_num)
 
 
 class cascaded_function_finder:
@@ -136,10 +137,12 @@ class cascaded_function_finder:
 
     def search_file(self, cfile):
         extractor = Comment_Extractor()
+        line_num = 0
         with open(cfile, 'r') as file:
             for line in file:
+                line_num = line_num + 1
                 if(self.remove_preprocessor_and_comments_empty_lines(line) == False):
-                    extractor.line_processing(line, self.found_functions)
+                    extractor.line_processing(line, self.found_functions, line_num)
 
     def get_found_functions(self):
         return self.found_functions
@@ -148,4 +151,5 @@ finder = cascaded_function_finder()
 
 
 finder.search_file("stm32g4xx_hal_cortex.c")
-print(finder.get_found_functions())
+for item in finder.get_found_functions():
+    print(item)
