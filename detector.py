@@ -1,56 +1,12 @@
 from enum import Enum
-
 from splitter import *
 
-comment_begin = '/*'
-comment_end = '*/'
-one_line_comment = '//'
-
-curly_bracket_begin = '{'
-curly_bracket_end = '}'
-
-parenthesis_open =  '('
-parenthesis_close = ')'
-
-statement_ending = ';'
-
-
-# class PatternDetector(Enum):
-
-#     ONE_LINE_FUNCTION = 0 # NAME ARGS BODY IN SINGLE LINE - symbols ( ) and { }
-#     NAME_AND_ARGS_IN_THE_SAME_LINE = 1  # symbols () and {
-#     NAME_AND_ARGS_IN_THE_SAME_LINE = 2 # symbols ()
-    
-
-
-class StatementState(Enum):
-    BEGIN = 0,
-    GETTING_NAME = 1,
-    GETTING_ARGS = 2,
-    BODY_START = 3,
-
-    
 
 class CommentStatus(Enum):
     ONE_LINE_COMMENT = 0
     COMMENT_BEGIN = 1
     COMMENT_END = 2
     NOT_COMMENT = 3
-
-
-def multiline_comment_detection(line:str):
-    if( comment_begin in line and comment_end in line ):
-        if( line.rstrip().startswith(comment_begin) ):
-            return CommentStatus.ONE_LINE_COMMENT
-        else:
-            return CommentStatus.NOT_COMMENT
-    elif(comment_begin in line):
-        return CommentStatus.COMMENT_BEGIN
-    elif(comment_end in line):
-        return CommentStatus.COMMENT_END
-    else:
-        return CommentStatus.NOT_COMMENT
-    
 
 class BracketState(Enum):
     IN_BRACKETS = 0
@@ -72,6 +28,9 @@ class Bracket_Extractor:
         self.spt = cascased_split()
 
     def brace_detector(self, line):
+
+        curly_bracket_begin = '{'
+        curly_bracket_end = '}'
         if curly_bracket_begin in line and curly_bracket_end in line: 
             return BraceStatus.BRACE_OPEN_CLOSE
         elif curly_bracket_begin in line:
@@ -81,12 +40,11 @@ class Bracket_Extractor:
         else:
             return BraceStatus.NO_BRACE 
     
-    def next_process(self, line):
+    def next_process(self, line, found_functions : list):
         if(self.spt.c_splitter(line) == SUCCESS):
-            print(self.spt.get_function_signature())
-            print("")
+            found_functions.append(self.spt.get_function_signature())
 
-    def process_line(self, line):
+    def process_line(self, line, found_functions):
 
         if self.current_state == BracketState.IN_BRACKETS:
 
@@ -94,7 +52,7 @@ class Bracket_Extractor:
                 self.depth = self.depth - 1
                 if self.depth == 0:
                     self.current_state = BracketState.OUT_BRACKETS
-                    self.next_process(line)
+                    self.next_process(line, found_functions)
             elif self.brace_detector(line) == BraceStatus.BRACE_OPEN:
                 self.depth = self.depth + 1
             else:
@@ -103,11 +61,11 @@ class Bracket_Extractor:
         else:
 
             if self.brace_detector(line) == BraceStatus.BRACE_OPEN:
-                self.next_process(line)
+                self.next_process(line, found_functions)
                 self.current_state = BracketState.IN_BRACKETS
                 self.depth = self.depth + 1
             else:
-                self.next_process(line)        
+                self.next_process(line, found_functions)        
 
 
 
@@ -118,50 +76,76 @@ class CommentState(Enum):
 class Comment_Extractor:
 
     current_state: CommentState
-
-
     def __init__(self):
         self.current_state = CommentState.IN_CODE
         self.brace_extractor = Bracket_Extractor()
 
-    def comment_processing(self, line:str): #in comment
+    def multiline_comment_detection(self, line:str):
+        comment_begin = '/*'
+        comment_end = '*/'
+
+        if( comment_begin in line and comment_end in line ):
+            if( line.rstrip().startswith(comment_begin) ):
+                return CommentStatus.ONE_LINE_COMMENT
+            else:
+                return CommentStatus.NOT_COMMENT
+        elif(comment_begin in line):
+            return CommentStatus.COMMENT_BEGIN
+        elif(comment_end in line):
+            return CommentStatus.COMMENT_END
+        else:
+            return CommentStatus.NOT_COMMENT
+
+    def line_processing(self, line:str, found_functions): #in comment
         if(self.current_state == CommentState.IN_COMMENT):
-            if(multiline_comment_detection(line) == CommentStatus.COMMENT_END):
+            if(self.multiline_comment_detection(line) == CommentStatus.COMMENT_END):
                 self.current_state = CommentState.IN_CODE
 
         else:  # in code
-            if(multiline_comment_detection(line) == CommentStatus.COMMENT_BEGIN):
+            if(self.multiline_comment_detection(line) == CommentStatus.COMMENT_BEGIN):
                 self.current_state = CommentState.IN_COMMENT
             else:
                 #print(line)
-                self.brace_extractor.process_line(line)
+                self.brace_extractor.process_line(line, found_functions)
 
 
+class cascaded_function_finder:
 
-def remove_preprocessor_and_comments_empty_lines(line:str):
-    stripped_line = line.strip()
-    if(stripped_line.startswith(one_line_comment)):
-        return True
-    elif(stripped_line.startswith(comment_begin) and  stripped_line.endswith(comment_end)):
-        #print(" COMMENTED OUT LINE " + stripped_line)
-        return True
-    elif(stripped_line.startswith('#')):
-        return True
-    elif(stripped_line == ''):
-        return True
-    else:
-        return False
+    def __init__(self):
+        self.found_functions = []
+
+    def remove_preprocessor_and_comments_empty_lines(self, line:str):
+
+        comment_begin = '/*'
+        comment_end = '*/'
+        one_line_comment = '//'
+        preprocessor_directive_begin = '#'
+
+        stripped_line = line.strip()
+        if(stripped_line.startswith(one_line_comment)):
+            return True
+        elif(stripped_line.startswith(comment_begin) and  stripped_line.endswith(comment_end)):
+            return True
+        elif(stripped_line.startswith(preprocessor_directive_begin)):
+            return True
+        elif(stripped_line == ''):
+            return True
+        else:
+            return False
 
 
-def tests(cfile):
-    extractor = Comment_Extractor()
-    with open(cfile, 'r') as file:
-        for line in file:
-            if(remove_preprocessor_and_comments_empty_lines(line) == False):
-                extractor.comment_processing(line)
+    def search_file(self, cfile):
+        extractor = Comment_Extractor()
+        with open(cfile, 'r') as file:
+            for line in file:
+                if(self.remove_preprocessor_and_comments_empty_lines(line) == False):
+                    extractor.line_processing(line, self.found_functions)
+
+    def get_found_functions(self):
+        return self.found_functions
+
+finder = cascaded_function_finder()
 
 
-#tests("stm32g4xx_nucleo.c")
-#tests("stm32g4xx_hal_dma.c")
-tests("stm32g4xx_hal_cortex.c")
-#tests("main.cpp")
+finder.search_file("stm32g4xx_hal_cortex.c")
+print(finder.get_found_functions())
