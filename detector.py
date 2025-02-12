@@ -26,6 +26,7 @@ class Bracket_Extractor:
         self.current_state = BracketState.OUT_BRACKETS
         self.depth = 0
         self.spt = cascased_split()
+        self.temp_rets = []
 
     def brace_detector(self, line):
 
@@ -41,13 +42,23 @@ class Bracket_Extractor:
             return BraceStatus.NO_BRACE 
     
     def next_process(self, line, found_functions : list, line_num):
-        if(self.spt.c_splitter(line, line_num) == SUCCESS):
+        splitter_status = self.spt.c_splitter(line, line_num)
+        if(splitter_status == SUCCESS):
             found_functions.append(self.spt.get_function_signature())
             found_functions.append(self.spt.get_function_begin())
+            found_functions.append(self.temp_rets)
+            self.temp_rets = []
+        elif(splitter_status == FAILURE):
+            self.temp_rets = []
 
     def process_line(self, line, found_functions, line_num):
 
         if self.current_state == BracketState.IN_BRACKETS:
+            
+            if('return' in line):
+                #print(line)
+                self.next_process(line, found_functions, line_num)
+                #self.temp_rets.append(f"return in {line_num}")
 
             if self.brace_detector(line) == BraceStatus.BRACE_CLOSE:
                 self.depth = self.depth - 1

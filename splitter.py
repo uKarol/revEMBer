@@ -14,8 +14,28 @@ class cascased_split:
         self.last_result = []
         self.function_begin = 0
         self.function_end = 0
+        self.return_statements = []
+        self.last_returns = []
 
-    def stage_0_validate(self):
+        self.token_validation = [self.token_stage0_validate, self.token_stage1_validate]
+        self.stage_validation = [self.stage_0_validate, self.stage_1_validate]
+
+    def token_stage0_validate(self, token, line_num):
+        ret_val = True
+        if( any(wrd in token for wrd in self.unallowed_words_in_stage[self.stage]) ):
+            ret_val = False
+        return ret_val
+
+    def token_stage1_validate(self, token, line_num):
+        if('return' in token):
+            self.return_statements.append(line_num)
+        return True
+
+    def stage_1_validate(self, line_num):
+        return True
+
+    def stage_0_validate(self, line_num):
+        self.function_begin = line_num
         signature = self.fun_list[0]
         if( len(signature) > 0) and ('(' in signature) and ( ')' in signature ):
             return True
@@ -25,6 +45,7 @@ class cascased_split:
     def reset_variables(self):
         self.fun_list = ['','','','']
         self.stage = 0
+        self.return_statements = []
 
     def add_val(self, new_val):
         to_be_added = self.fun_list[self.stage]
@@ -39,15 +60,9 @@ class cascased_split:
         else: 
             return True
 
-    def validate_token(self, token):
-        ret_val = True
-        if( any(wrd in token for wrd in self.unallowed_words_in_stage[self.stage]) ):
-            ret_val = False
-            self.reset_variables()
-        return ret_val
     
     def get_function_begin(self):
-        return (self.function_begin, self.function_end)
+        return (self.function_begin, self.last_returns, self.function_end)
 
     def get_function_signature(self):
         return self.last_result[0]
@@ -68,19 +83,20 @@ class cascased_split:
                 to_be_added = line
                 state_transition = False
 
-            if self.validate_token(to_be_added) == True:
+            if self.token_validation[self.stage](to_be_added, line_num) == True:
                 self.add_val(to_be_added)
             else:
                 self.reset_variables()
                 return FAILURE 
 
             if(state_transition == True):
-                if(self.validate_stage(line_num) == True):
+                if(self.stage_validation[self.stage](line_num) == True):
                     self.stage = self.stage + 1
 
                     if(self.stage == len(self.splitt_str)):
                         self.function_end = line_num
                         self.last_result = self.fun_list
+                        self.last_returns = self.return_statements
                         self.reset_variables()
                         return SUCCESS
                     else:
