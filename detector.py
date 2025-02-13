@@ -26,7 +26,6 @@ class Bracket_Extractor:
         self.current_state = BracketState.OUT_BRACKETS
         self.depth = 0
         self.spt = cascased_split()
-        self.temp_rets = []
 
     def brace_detector(self, line):
 
@@ -46,19 +45,13 @@ class Bracket_Extractor:
         if(splitter_status == SUCCESS):
             found_functions.append(self.spt.get_function_signature())
             found_functions.append(self.spt.get_function_begin())
-            found_functions.append(self.temp_rets)
-            self.temp_rets = []
-        elif(splitter_status == FAILURE):
-            self.temp_rets = []
 
     def process_line(self, line, found_functions, line_num):
 
         if self.current_state == BracketState.IN_BRACKETS:
             
             if('return' in line):
-                #print(line)
                 self.next_process(line, found_functions, line_num)
-                #self.temp_rets.append(f"return in {line_num}")
 
             if self.brace_detector(line) == BraceStatus.BRACE_CLOSE:
                 self.depth = self.depth - 1
@@ -117,7 +110,6 @@ class Comment_Extractor:
             if(self.multiline_comment_detection(line) == CommentStatus.COMMENT_BEGIN):
                 self.current_state = CommentState.IN_COMMENT
             else:
-                #print(line)
                 self.brace_extractor.process_line(line, found_functions, line_num)
 
 
@@ -161,6 +153,6 @@ class cascaded_function_finder:
 finder = cascaded_function_finder()
 
 
-finder.search_file("stm32g4xx_hal_cortex.c")
+finder.search_file("stm32g4xx_hal_dma.c")
 for item in finder.get_found_functions():
     print(item)
