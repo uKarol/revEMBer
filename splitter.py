@@ -1,4 +1,4 @@
-
+from revember_data_classes import FunctObject
 
 SUCCESS = 0
 INCOMPLETE = 1
@@ -62,7 +62,7 @@ class cascased_split:
 
     
     def get_function_begin(self):
-        return (self.function_begin, self.last_returns, self.function_end)
+        return FunctObject(self.last_result[0], self.function_begin, self.last_returns, self.function_end)
 
     def get_function_signature(self):
         return self.last_result[0]
@@ -106,54 +106,3 @@ class cascased_split:
                     return FAILURE
             else:
                 return INCOMPLETE    
-
-                
-def test():
-
-    pattern1 = 'void pattern1 (int x, int y) {std::cout<<"pattern1";}'
-
-    pattern2 = 'void pattern2(int x, int y){std::cout<<"pattern2";'
-
-    pattern3 = 'void pattern3(int x, int y){'
-
-    x = pattern1.split( '(' )
-
-    pattern4 = 'void pattern5(int x, int y)'
-
-    str1 = ["void (*fpData)(void);",
-    "int  (*fpData)(int);",
-    "int dupa[5] = {",
-    "struct dupa{",
-    "int  (*fpData)(char *) { to_nie_dziala(); ",
-    "int* (*fpData)(char *);",
-    "int  (*fpData)(int, char *);",
-    "int* (*fpData)(int, int *, char *);",
-    "int* (*fpData)(int , char, int (*paIndex)[3]);",
-    "int* (*fpData)(int , int (*paIndex)[3] , int (* fpMsg) (const char *));",
-    "int* (*fpData)(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *));",
-    "int* (*fpData[2])(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *)) { }",
-    "int* (*(*fpData)(const char *))(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *)) { x++; }",
-    ]
-
-    spt = cascased_split()
-    spt.c_splitter(pattern1)
-    print(spt.get_function_signature())
-    spt.reset_variables()
-
-    spt.c_splitter('void ')
-    spt.c_splitter('dupa')
-    spt.c_splitter('(')
-    spt.c_splitter('int x')
-    spt.c_splitter('int y)')
-    spt.c_splitter('')
-    spt.c_splitter('{ xd;')
-    spt.c_splitter('}')
-    print(spt.get_function_signature())
-    print("cascaded splitter end")
-    print("")
-
-
-    for s in str1:
-        if spt.c_splitter(s) == SUCCESS:
-            print(spt.get_function_signature())
-            print("")

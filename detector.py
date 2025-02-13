@@ -43,8 +43,7 @@ class Bracket_Extractor:
     def next_process(self, line, found_functions : list, line_num):
         splitter_status = self.spt.c_splitter(line, line_num)
         if(splitter_status == SUCCESS):
-            found_functions.append(self.spt.get_function_signature())
-            found_functions.append(self.spt.get_function_begin())
+            found_functions.update({self.spt.get_function_signature() : self.spt.get_function_begin()})
 
     def process_line(self, line, found_functions, line_num):
 
@@ -116,7 +115,7 @@ class Comment_Extractor:
 class cascaded_function_finder:
 
     def __init__(self):
-        self.found_functions = []
+        self.found_functions = {}
 
     def remove_preprocessor_and_comments_empty_lines(self, line:str):
 
@@ -143,16 +142,11 @@ class cascaded_function_finder:
         line_num = 0
         with open(cfile, 'r') as file:
             for line in file:
-                line_num = line_num + 1
                 if(self.remove_preprocessor_and_comments_empty_lines(line) == False):
                     extractor.line_processing(line, self.found_functions, line_num)
-
+                line_num = line_num + 1
+                
     def get_found_functions(self):
         return self.found_functions
 
-finder = cascaded_function_finder()
 
-
-finder.search_file("stm32g4xx_hal_dma.c")
-for item in finder.get_found_functions():
-    print(item)

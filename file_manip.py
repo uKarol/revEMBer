@@ -1,17 +1,10 @@
-from dataclasses import*
-
-@dataclass
-class FunctObject:
-    name : str
-    begin : int
-    returns : list
-    end : int
+from revember_data_classes import FunctObject
 
 class CFileManip:
 
     def __init__(self):
         self.include = '#include "revEMBer.h"\n'
-        self.comment = "/* THIS FILE HAS ADDED DEBUG INFORMATIONS \n revEMBer projct in github: github.com/uKrol/revEMBer \njefvcoe oefpm d actmdhsae*/\n"
+        self.comment = "/* \nTHIS FILE HAS ADDED DEBUG INFORMATIONS \n revEMBer projct in github: https://github.com/uKarol/revEMBer \njefvcoe oefpm d actmdhsae\n*/\n"
 
     def add_include_info(self, lines):
         lines[0] = self.comment + self.include + lines[0]
@@ -25,7 +18,7 @@ class CFileManip:
                 ret_val = line + sequence_to_add
             else:
                 substrs = line.split('{', maxsplit= 1)
-                ret_val = substrs[0] + '{' + sequence_to_add + substrs[1]
+                ret_val = substrs[0] + '{\n' + sequence_to_add + substrs[1]
         
         return ret_val
     
@@ -39,7 +32,7 @@ class CFileManip:
                 ret_val = sequence_to_add + line
             else:
                 substrs = line.split('}', maxsplit= 1)
-                ret_val = substrs[0] + sequence_to_add + substrs[1] + '}'
+                ret_val = substrs[0] + '\n' + sequence_to_add + substrs[1] + '}'
         
         return ret_val
 
