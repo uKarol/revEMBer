@@ -20,7 +20,11 @@ class experimental_controller:
 
 
     def process_selected_functions(self):
-        print(self.view.get_selected_functions())
+        items = self.view.get_selected_functions()
+        for item in items:
+            #print(items[item])
+            fman = CFileManip()
+            fman.add_dbg_functions(item, items[item])
 
     def process_selected_files(self):
         selected_files = self.view.get_selected_files()

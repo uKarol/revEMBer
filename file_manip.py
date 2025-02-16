@@ -54,15 +54,20 @@ class CFileManip:
             function_end_ln = functions_to_change.end
             
             lines[function_begin_ln] = self.add_sequence_in_begin(lines[function_begin_ln], ' /* function begin */ \n')
-            if len(function_rets) > 0:
-                for ret in function_rets:
+
+            if type(function_rets) == int: 
+                lines[function_rets] = self.add_sequence_in_return(lines[function_rets], ' /* function return */ \n')
+            elif len(function_rets) > 0:
+                for ret in function_rets.split():
+                    ret = int(ret)
                     lines[ret] = self.add_sequence_in_return(lines[ret], ' /* function return */ \n')
             
             else: 
+                print(function_rets.split())
                 lines[function_end_ln] = self.add_sequence_in_end(lines[function_end_ln], ' /* function end */ \n')
 
 
-    def add_dbg_functions(self, filepath, functions_to_change: dict):
+    def add_dbg_functions(self, filepath, functions_to_change: list):
 
         with open(filepath, 'r+') as file:
             
@@ -71,7 +76,7 @@ class CFileManip:
             self.add_include_info(lines)
 
             for function_obj in functions_to_change:
-                self.add_dbg_fun(functions_to_change[function_obj], lines)
+                self.add_dbg_fun(function_obj, lines)
 
             file.seek(0)
             
