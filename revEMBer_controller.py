@@ -1,8 +1,12 @@
+# Filename: revEMBer_controller.py
+# Author: Karol Ujda (uKarol)
+# Description: Controller of revEMBer
+
 from file_manip import *
 from detector import *
 from testing_gui import *
 
-class experimental_controller:
+class revEMBer_controller:
 
     def __init__(self, model, view):
         self.model = model
@@ -21,10 +25,10 @@ class experimental_controller:
 
     def process_selected_functions(self):
         items = self.view.get_selected_functions()
+        user_function = self.view.get_user_functions()
         for item in items:
-            #print(items[item])
             fman = CFileManip()
-            fman.add_dbg_functions(item, items[item])
+            fman.add_dbg_functions(item, items[item], user_function)
 
     def process_selected_files(self):
         selected_files = self.view.get_selected_files()
@@ -44,8 +48,8 @@ class experimental_controller:
         self.view.start()
 
 
-my_view = mainviev()
+my_view = revEMBer_view()
 
-revember_ctl = experimental_controller(None, my_view)
+revember_ctl = revEMBer_controller(None, my_view)
 
 revember_ctl.start_app()

@@ -1,3 +1,7 @@
+# Filename: cfile_detector.py
+# Author: Karol Ujda (uKarol)
+# Description: searching functions definitions in selected c file
+
 from enum import Enum
 from splitter import *
 

@@ -3,16 +3,17 @@ from revember_data_classes import FunctObject
 class CFileManip:
 
     def __init__(self):
-        self.include = '#include "revEMBer.h"\n'
+
         self.comment = "/* \nTHIS FILE HAS ADDED DEBUG INFORMATIONS \n revEMBer projct in github: https://github.com/uKarol/revEMBer \njefvcoe oefpm d actmdhsae\n*/\n"
         
-        self.to_be_added = { "begin" : ' /* function begin */ ',
-                             "ret" : ' /* function return */ ',
-                             "end" : '/* function end */ ',
+        self.to_be_added = {"inc" :  '#include "revEMBer.h"',
+                            "begin" : ' /* function begin */ ',
+                            "ret" : ' /* function return */ ',
+                            "end" : '/* function end */ ',
         }   
 
     def add_include_info(self, lines):
-        lines[0] = self.comment + self.include + lines[0]
+        lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
 
     def add_sequence_in_begin(self, line:str, sequence_to_add: str):
         
@@ -72,8 +73,10 @@ class CFileManip:
                 lines[function_end_ln] = self.add_sequence_in_end(lines[function_end_ln], self.to_be_added["end"] + ' \n')
 
 
-    def add_dbg_functions(self, filepath, functions_to_change: list):
+    def add_dbg_functions(self, filepath, functions_to_change: list, user_functions: dict):
 
+        self.to_be_added = user_functions
+        
         with open(filepath, 'r+') as file:
             
             lines = file.readlines()
@@ -87,21 +90,3 @@ class CFileManip:
             
             file.writelines(lines)
 
-# fman = CFileManip()
-
-# fun0 = FunctObject("intializer", 37, [41], 42)
-# fun1 = FunctObject("pattern7", 90, [], 91)
-# fun2 = FunctObject("pattern8", 97, [], 99)
-# fun3 = FunctObject("pattern9", 106, [], 108)
-
-# fdict = {"initializer" : fun0,
-#          "pattern7" : fun1,
-#          "pattern8" : fun2,
-#          "pattern9" : fun3,
-#          }
-
-# fman.add_dbg_functions("main.cpp", fdict)
-
-
-
- 
