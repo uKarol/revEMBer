@@ -70,9 +70,9 @@ class user_functions:
     def __init__(self, root):
         
         user_inc_stringvar = tk.StringVar(root, '#include "revEMBer.h"')
-        user_begin_stringvar = tk.StringVar(root, "/* function begin */")
-        user_return_stringvar = tk.StringVar(root, "/* function return */")
-        user_end_stringvar = tk.StringVar(root, "/* function end */")
+        user_begin_stringvar = tk.StringVar(root, "REVEMBER_FUNCTION_ENTRY()")
+        user_return_stringvar = tk.StringVar(root, "REVEMBER_FUNCTION_EXIT()")
+        user_end_stringvar = tk.StringVar(root, "REVEMBER_FUNCTION_EXIT()")
 
         user_inc_label = tk.Label(master=root, text="user include")
         user_begin_label = tk.Label(master=root, text="user function on begin")
