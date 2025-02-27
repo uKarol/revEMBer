@@ -1,10 +1,10 @@
 # Filename: revEMBer_controller.py
 # Author: Karol Ujda (uKarol)
 # Description: Controller of revEMBer
-
-from file_manip import *
-from detector import *
-from testing_gui import *
+from revember_view import *
+from revember_file_manip.file_manip import CFileManip
+from detector import cascaded_function_finder
+from revember_view.testing_gui import *
 
 class revEMBer_controller:
 

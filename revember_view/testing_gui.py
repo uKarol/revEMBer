@@ -5,7 +5,7 @@
 import tkinter as tk
 import tkinter.filedialog as fd
 import os
-from tree_view import *
+from revember_view.tree_view import FileFunctionWIndows
 from typing import Protocol
 
 class FileChooseList:

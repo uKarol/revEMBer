@@ -1,5 +1,5 @@
 from tkinter import Tk, Button, ttk
-from revember_data_classes import *
+from revember_view.view_data_classes import *
 
 class FileFunctionWIndows:
 
@@ -29,7 +29,7 @@ class FileFunctionWIndows:
             ret_val.update({child: []})
             funcs = self.tree.get_children(child)
             for fun in funcs:
-                ret_val[child].append(FunctObject(self.tree.item(fun)["text"], *self.tree.item(fun)["values"]))    
+                ret_val[child].append(View_FunctObject(self.tree.item(fun)["text"], *self.tree.item(fun)["values"]))    
         return ret_val  
 
 
