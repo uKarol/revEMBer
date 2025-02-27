@@ -1,3 +1,7 @@
+# Filename: cfile_detector.py
+# Author: Karol Ujda (uKarol)
+# Description: searching functions definitions in selected c file
+
 from enum import Enum
 from splitter import *
 
@@ -7,6 +11,7 @@ class CommentStatus(Enum):
     COMMENT_BEGIN = 1
     COMMENT_END = 2
     NOT_COMMENT = 3
+    COMMENT_AND_CODE = 4
 
 class BracketState(Enum):
     IN_BRACKETS = 0
@@ -43,12 +48,12 @@ class Bracket_Extractor:
     def next_process(self, line, found_functions : list, line_num):
         splitter_status = self.spt.c_splitter(line, line_num)
         if(splitter_status == SUCCESS):
-            found_functions.update({self.spt.get_function_signature() : self.spt.get_function_begin()})
+            signature = self.spt.get_function_signature()
+            found_functions.update({signature : self.spt.get_function_begin()})
+            print(signature)
 
     def process_line(self, line, found_functions, line_num):
-
         if self.current_state == BracketState.IN_BRACKETS:
-            
             if('return' in line):
                 self.next_process(line, found_functions, line_num)
 
@@ -94,7 +99,10 @@ class Comment_Extractor:
             else:
                 return CommentStatus.NOT_COMMENT
         elif(comment_begin in line):
-            return CommentStatus.COMMENT_BEGIN
+            if( line.rstrip().startswith(comment_begin) ):
+                return CommentStatus.COMMENT_BEGIN
+            else:
+                return CommentStatus.COMMENT_AND_CODE
         elif(comment_end in line):
             return CommentStatus.COMMENT_END
         else:
@@ -108,6 +116,9 @@ class Comment_Extractor:
         else:  # in code
             if(self.multiline_comment_detection(line) == CommentStatus.COMMENT_BEGIN):
                 self.current_state = CommentState.IN_COMMENT
+            elif(self.multiline_comment_detection(line) == CommentStatus.COMMENT_AND_CODE):
+                self.current_state = CommentState.IN_COMMENT
+                self.brace_extractor.process_line(line, found_functions, line_num)
             else:
                 self.brace_extractor.process_line(line, found_functions, line_num)
 

@@ -1,3 +1,7 @@
+# Filename: splitter.py
+# Author: Karol Ujda (uKarol)
+# Description: Searching function begin, end and return statements
+
 from revember_data_classes import FunctObject
 
 SUCCESS = 0
