@@ -1,0 +1,76 @@
+{
+      "name": "HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma)",
+      "begin": 152,
+      "returns": [],
+      "end": 254
+}{
+      "name": "HAL_StatusTypeDef HAL_DMA_DeInit(DMA_HandleTypeDef *hdma)",
+      "begin": 263,
+      "returns": [],
+      "end": 343
+}{
+      "name": "HAL_StatusTypeDef HAL_DMA_Start(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength)",
+      "begin": 378,
+      "returns": [],
+      "end": 409
+}{
+      "name": "HAL_StatusTypeDef HAL_DMA_Start_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress,uint32_t DataLength)",
+      "begin": 422,
+      "returns": [],
+      "end": 482
+}{
+      "name": "HAL_StatusTypeDef HAL_DMA_Abort(DMA_HandleTypeDef *hdma)",
+      "begin": 491,
+      "returns": [],
+      "end": 535
+}{
+      "name": "HAL_StatusTypeDef HAL_DMA_Abort_IT(DMA_HandleTypeDef *hdma)",
+      "begin": 544,
+      "returns": [],
+      "end": 600
+}{
+      "name": "HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, HAL_DMA_LevelCompleteTypeDef CompleteLevel,uint32_t Timeout)",
+      "begin": 612,
+      "returns": [],
+      "end": 732
+}{
+      "name": "void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)",
+      "begin": 741,
+      "returns": [],
+      "end": 822
+}{
+      "name": "HAL_StatusTypeDef HAL_DMA_RegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_CallbackIDTypeDef CallbackID, void (* pCallback)(DMA_HandleTypeDef *_hdma))",
+      "begin": 835,
+      "returns": [],
+      "end": 875
+}{
+      "name": "HAL_StatusTypeDef HAL_DMA_UnRegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_CallbackIDTypeDef CallbackID)",
+      "begin": 886,
+      "returns": [],
+      "end": 933
+}{
+      "name": "HAL_DMA_StateTypeDef HAL_DMA_GetState(DMA_HandleTypeDef *hdma)",
+      "begin": 964,
+      "returns": [],
+      "end": 967
+}{
+      "name": "uint32_t HAL_DMA_GetError(DMA_HandleTypeDef *hdma)",
+      "begin": 976,
+      "returns": [],
+      "end": 978
+}{
+      "name": "static void DMA_SetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength)",
+      "begin": 1002,
+      "returns": [],
+      "end": 1036
+}{
+      "name": "static void DMA_CalcDMAMUXChannelBaseAndMask(DMA_HandleTypeDef *hdma)",
+      "begin": 1045,
+      "returns": [],
+      "end": 1072
+}{
+      "name": "static void DMA_CalcDMAMUXRequestGenBaseAndMask(DMA_HandleTypeDef *hdma)",
+      "begin": 1082,
+      "returns": [],
+      "end": 1091
+}

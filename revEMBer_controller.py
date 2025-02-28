@@ -3,7 +3,7 @@
 # Description: Controller of revEMBer
 from revember_view import *
 from revember_file_manip.file_manip import CFileManip
-from detector import cascaded_function_finder
+from revember_function_parser.cascaded_extractor import FunctionDetector
 from revember_view.testing_gui import *
 
 class revEMBer_controller:
@@ -37,7 +37,7 @@ class revEMBer_controller:
 
     def search_file(self, path):
         self.current_file = path
-        self.func_finder = cascaded_function_finder()
+        self.func_finder = FunctionDetector()
         self.func_finder.search_file(path)
         found_functions = self.func_finder.get_found_functions()
         self.view.add_file(path)
