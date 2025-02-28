@@ -1,15 +1,3 @@
-/* 
-THIS FILE HAS ADDED DEBUG INFORMATIONS 
- revEMBer projct in github: https://github.com/uKarol/revEMBer 
-jefvcoe oefpm d actmdhsae
-*/
-#include "revEMBer.h"
-/* 
-THIS FILE HAS ADDED DEBUG INFORMATIONS 
- revEMBer projct in github: https://github.com/uKarol/revEMBer 
-jefvcoe oefpm d actmdhsae
-*/
-#include "revEMBer.h"
 #include <iostream>
 
 typedef struct {
@@ -37,30 +25,25 @@ int t[5] {
     0,
 };
 
+int get_trash(){return 0;}
+
 /* dziadostwo */
 void put_trash(){
- /* function begin */ 
- 
-std::cout<<"dupa";
- 
-
- /* function end */ 
+std::cout<<"dupa";  
 }
+
 static 
 volatile 
 int 
 intializer  
 (   /* kto tak zjebal */
     int x 
-) 
+) /*
+co to*/
 {
- /* function begin */ 
- 
     x = 1000;
     x++;
    // std::cout<< x;
- 
- /* function return */ 
     return x;
 }
 /*
@@ -69,16 +52,12 @@ intializer
     glowna
 */
 int main(){
- /* function begin */ 
- 
     xd_duo;
     int x = 0;
     x = intializer(0);
     float z{5};
     int y{6};
-    std::cout << "Hello World" << x << " " << y <<std::endl;
- 
- /* function end */ 
+    std::cout << "Hello World" << x << " " << y <<std::endl; 
 }
 /*
     nie wiem co to
@@ -87,66 +66,47 @@ int main(){
 
 /* DZIWNE FUNKCJE */
 
-void pattern1 (int x, int y) {
- /* function begin */ 
- 
-std::cout<<"pattern1";
- 
-
- /* function end */ 
-}
+void pattern1 (int x, int y) {std::cout<<"pattern1";}
 void pattern2(int x, int y){
- /* function begin */ 
+  
  
 std::cout<<"pattern2";
  
- /* function end */ 
+  
 }
 
 void pattern3(int x, int y){
- /* function begin */ 
+  
  
     std::cout<<"pattern3";
  
- /* function end */ 
+  
 }
 
 void pattern4(int x, int y){
- /* function begin */ 
+  
  
     std::cout<<"pattern4";
  
- /* function end */ 
+  
 }
 
 void pattern5(int x, int y)
 {
- /* function begin */ 
- 
     std::cout<<"pattern5";
- 
- /* function end */ 
 }
 
 void pattern6(int x, int y
 )
 {
- /* function begin */ 
- 
     std::cout<<"pattern6";
- 
- /* function end */ 
 }
 
 void pattern7(int x, 
     int y
 )
-{
- /* function begin */ 
- 
-  std::cout<<"pattern7";
- 
- /* function end */ 
+{  std::cout<<"pattern7";
+  
 }
 
 void pattern8(
@@ -154,11 +114,7 @@ void pattern8(
     int y
 )
 {
- /* function begin */ 
- 
-    std::cout<<"pattern8";
- 
- /* function end */ 
+  std::cout<<"pattern8";
 }
 
 static void (pattern9)
@@ -167,11 +123,8 @@ static void (pattern9)
     int y
 )
 {
- /* function begin */ 
- 
     std::cout<<"pattern9";
- 
- /* function end */ 
+  
 }
 
 int dupa (int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *)); 
