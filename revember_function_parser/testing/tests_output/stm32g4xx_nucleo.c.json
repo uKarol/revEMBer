@@ -1,0 +1,162 @@
+{
+      "name": "6*/int32_t BSP_GetVersion(void)",
+      "begin": 138,
+      "returns": [
+            139
+      ],
+      "end": 140
+}{
+      "name": "const uint8_t* BSP_GetBoardName(void)",
+      "begin": 147,
+      "returns": [
+            148
+      ],
+      "end": 149
+}{
+      "name": "const uint8_t* BSP_GetBoardID(void)",
+      "begin": 156,
+      "returns": [
+            157
+      ],
+      "end": 158
+}{
+      "name": "int32_t BSP_LED_Init(Led_TypeDef Led)",
+      "begin": 168,
+      "returns": [
+            183
+      ],
+      "end": 184
+}{
+      "name": "int32_t BSP_LED_DeInit(Led_TypeDef Led)",
+      "begin": 195,
+      "returns": [
+            202
+      ],
+      "end": 203
+}{
+      "name": "int32_t BSP_LED_On(Led_TypeDef Led)",
+      "begin": 213,
+      "returns": [
+            216
+      ],
+      "end": 217
+}{
+      "name": "int32_t BSP_LED_Off(Led_TypeDef Led)",
+      "begin": 227,
+      "returns": [
+            230
+      ],
+      "end": 231
+}{
+      "name": "int32_t BSP_LED_Toggle(Led_TypeDef Led)",
+      "begin": 241,
+      "returns": [
+            244
+      ],
+      "end": 245
+}{
+      "name": "int32_t BSP_LED_GetState(Led_TypeDef Led)",
+      "begin": 255,
+      "returns": [
+            256
+      ],
+      "end": 257
+}{
+      "name": "int32_t BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef ButtonMode)",
+      "begin": 273,
+      "returns": [
+            307
+      ],
+      "end": 308
+}{
+      "name": "int32_t BSP_PB_DeInit(Button_TypeDef Button)",
+      "begin": 319,
+      "returns": [
+            323
+      ],
+      "end": 324
+}{
+      "name": "int32_t BSP_PB_GetState(Button_TypeDef Button)",
+      "begin": 334,
+      "returns": [
+            335
+      ],
+      "end": 336
+}{
+      "name": "void BSP_PB_IRQHandler(Button_TypeDef Button)",
+      "begin": 344,
+      "returns": [],
+      "end": 346
+}{
+      "name": "__weak void BSP_PB_Callback(Button_TypeDef Button)",
+      "begin": 354,
+      "returns": [],
+      "end": 360
+}{
+      "name": "int32_t BSP_COM_Init(COM_TypeDef COM, COM_InitTypeDef *COM_Init)",
+      "begin": 373,
+      "returns": [
+            390,
+            397,
+            401
+      ],
+      "end": 402
+}{
+      "name": "int32_t BSP_COM_DeInit(COM_TypeDef COM)",
+      "begin": 411,
+      "returns": [
+            429,
+            433
+      ],
+      "end": 434
+}{
+      "name": "__weak HAL_StatusTypeDef MX_LPUART1_Init(UART_HandleTypeDef *huart, MX_UART_InitTypeDef *COM_Init)",
+      "begin": 444,
+      "returns": [
+            455
+      ],
+      "end": 456
+}{
+      "name": "int32_t BSP_COM_RegisterDefaultMspCallbacks(COM_TypeDef COM)",
+      "begin": 466,
+      "returns": [
+            493
+      ],
+      "end": 494
+}{
+      "name": "int32_t BSP_COM_RegisterMspCallbacks(COM_TypeDef COM , BSP_COM_Cb_t *Callback)",
+      "begin": 504,
+      "returns": [
+            530
+      ],
+      "end": 531
+}{
+      "name": "int32_t BSP_COM_SelectLogPort(COM_TypeDef COM)",
+      "begin": 542,
+      "returns": [
+            547
+      ],
+      "end": 548
+}{
+      "name": "size_t __write(int file, unsigned char const *ptr, size_t len)",
+      "begin": 559,
+      "returns": [
+            568
+      ],
+      "end": 569
+}{
+      "name": "}static void BUTTON_USER_EXTI_Callback(void)",
+      "begin": 596,
+      "returns": [],
+      "end": 598
+}{
+      "name": "static void COM1_MspInit(UART_HandleTypeDef *huart)",
+      "begin": 608,
+      "returns": [],
+      "end": 634
+}{
+      "name": "static void COM1_MspDeInit(UART_HandleTypeDef *huart)",
+      "begin": 642,
+      "returns": [],
+      "end": 657
+}

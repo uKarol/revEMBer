@@ -27,6 +27,9 @@ int t[5] {
 
 int get_trash(){return 0;}
 
+int get_trash1(){
+    return 1;}
+
 /* dziadostwo */
 void put_trash(){
 std::cout<<"dupa";  

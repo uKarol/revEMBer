@@ -1,0 +1,109 @@
+{
+      "name": "void HAL_NVIC_SetPriorityGrouping(uint32_t PriorityGroup)",
+      "begin": 163,
+      "returns": [],
+      "end": 169
+}{
+      "name": "void HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t SubPriority)",
+      "begin": 185,
+      "returns": [],
+      "end": 195
+}{
+      "name": "void HAL_NVIC_EnableIRQ(IRQn_Type IRQn)",
+      "begin": 207,
+      "returns": [],
+      "end": 213
+}{
+      "name": "void HAL_NVIC_DisableIRQ(IRQn_Type IRQn)",
+      "begin": 223,
+      "returns": [],
+      "end": 229
+}{
+      "name": "void HAL_NVIC_SystemReset(void)",
+      "begin": 236,
+      "returns": [],
+      "end": 239
+}{
+      "name": "uint32_t HAL_SYSTICK_Config(uint32_t TicksNumb)",
+      "begin": 249,
+      "returns": [
+            250
+      ],
+      "end": 251
+}{
+      "name": "uint32_t HAL_NVIC_GetPriorityGrouping(void)",
+      "begin": 277,
+      "returns": [
+            279
+      ],
+      "end": 280
+}{
+      "name": "void HAL_NVIC_GetPriority(IRQn_Type IRQn, uint32_t PriorityGroup, uint32_t *pPreemptPriority, uint32_t *pSubPriority)",
+      "begin": 304,
+      "returns": [],
+      "end": 309
+}{
+      "name": "void HAL_NVIC_SetPendingIRQ(IRQn_Type IRQn)",
+      "begin": 319,
+      "returns": [],
+      "end": 325
+}{
+      "name": "uint32_t HAL_NVIC_GetPendingIRQ(IRQn_Type IRQn)",
+      "begin": 337,
+      "returns": [
+            342
+      ],
+      "end": 343
+}{
+      "name": "void HAL_NVIC_ClearPendingIRQ(IRQn_Type IRQn)",
+      "begin": 353,
+      "returns": [],
+      "end": 359
+}{
+      "name": "uint32_t HAL_NVIC_GetActive(IRQn_Type IRQn)",
+      "begin": 370,
+      "returns": [
+            372
+      ],
+      "end": 373
+}{
+      "name": "void HAL_SYSTICK_CLKSourceConfig(uint32_t CLKSource)",
+      "begin": 384,
+      "returns": [],
+      "end": 395
+}{
+      "name": "void HAL_SYSTICK_IRQHandler(void)",
+      "begin": 402,
+      "returns": [],
+      "end": 404
+}{
+      "name": "__weak void HAL_SYSTICK_Callback(void)",
+      "begin": 411,
+      "returns": [],
+      "end": 415
+}{
+      "name": "void HAL_MPU_Enable(uint32_t MPU_Control)",
+      "begin": 430,
+      "returns": [],
+      "end": 437
+}{
+      "name": "void HAL_MPU_Disable(void)",
+      "begin": 445,
+      "returns": [],
+      "end": 451
+}{
+      "name": "void HAL_MPU_EnableRegion(uint32_t RegionNumber)",
+      "begin": 458,
+      "returns": [],
+      "end": 467
+}{
+      "name": "void HAL_MPU_DisableRegion(uint32_t RegionNumber)",
+      "begin": 474,
+      "returns": [],
+      "end": 483
+}{
+      "name": "void HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef *MPU_Init)",
+      "begin": 492,
+      "returns": [],
+      "end": 521
+}

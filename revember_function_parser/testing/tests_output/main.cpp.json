@@ -1,0 +1,77 @@
+{
+      "name": "int get_trash()",
+      "begin": 27,
+      "returns": [
+            27
+      ],
+      "end": 27
+}{
+      "name": "int get_trash1()",
+      "begin": 29,
+      "returns": [
+            30
+      ],
+      "end": 30
+}{
+      "name": "void put_trash()",
+      "begin": 33,
+      "returns": [],
+      "end": 35
+}{
+      "name": "staticvolatileintintializer(   int x) ",
+      "begin": 45,
+      "returns": [
+            49
+      ],
+      "end": 50
+}{
+      "name": "int main()",
+      "begin": 56,
+      "returns": [],
+      "end": 63
+}{
+      "name": "void pattern1 (int x, int y) ",
+      "begin": 71,
+      "returns": [],
+      "end": 71
+}{
+      "name": "void pattern2(int x, int y)",
+      "begin": 72,
+      "returns": [],
+      "end": 78
+}{
+      "name": "void pattern3(int x, int y)",
+      "begin": 80,
+      "returns": [],
+      "end": 86
+}{
+      "name": "void pattern4(int x, int y)",
+      "begin": 88,
+      "returns": [],
+      "end": 94
+}{
+      "name": "void pattern5(int x, int y)",
+      "begin": 97,
+      "returns": [],
+      "end": 99
+}{
+      "name": "void pattern6(int x, int y)",
+      "begin": 103,
+      "returns": [],
+      "end": 105
+}{
+      "name": "void pattern7(int x,int y)",
+      "begin": 110,
+      "returns": [],
+      "end": 112
+}{
+      "name": "void pattern8(int x,int y)",
+      "begin": 118,
+      "returns": [],
+      "end": 120
+}{
+      "name": "static void (pattern9)(int x,int y)",
+      "begin": 127,
+      "returns": [],
+      "end": 130
+}
