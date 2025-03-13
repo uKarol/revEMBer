@@ -1,6 +1,8 @@
+import sys
+sys.path.append('..')
 import re
 from revember_function_parser.comment_extractor import CommentExtractor 
-from revember_function_parser.block_extractor import BlockExtractor
+from revember_function_parser.block_extractor import BlockExtractor, BlockCodeDiscriminator
 from revember_function_parser.function_extractor import *
 
 
@@ -41,17 +43,23 @@ class CascadedExtractor:
 class FunctionDetector:
 
     def __init__(self):
-        block_extr = BlockExtractor(self._function_extracting)
+        self.code_disc = BlockCodeDiscriminator() 
+        self.fun_extractor = FunctionExtractor()
+        block_extr = BlockExtractor(self._function_extracting, self.fun_extractor.block_begin, self.fun_extractor.block_begin, self.code_disc.process_line_in_block)
         comment_extr = CommentExtractor(block_extr.process_line)
         self.extractor = CascadedExtractor(comment_extr.process_line)
         self.found_functions = {}
-        self.fun_extractor = FunctionExtractor()
+
         
     def _function_extracting(self, line, line_num):
         splitter_status = self.fun_extractor.process_line(line, line_num)
         if(splitter_status == SUCCESS):
             signature = self.fun_extractor.get_function_signature()
-            self.found_functions.update({signature : self.fun_extractor.get_function_begin()})     
+            function_data = self.fun_extractor.get_function_begin()
+            function_data.returns = self.code_disc.get_found_rets()
+            self.found_functions.update({signature : function_data}) 
+        else:
+            self.code_disc.get_found_rets()
 
     def get_found_functions(self):
         return self.found_functions

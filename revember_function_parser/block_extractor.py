@@ -1,5 +1,6 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
+import re
 
 SIGNLE_LINE_BLOCK = 0
 BLOCK_BEGIN = 1
@@ -40,9 +41,13 @@ class BlockExtractor:
 
     _state = None
 
-    def __init__(self, next_stage_processing):
+    def __init__(self, out_block_processing, block_begin_cb, block_end_cb, in_block_processing):
         self.transition_to(OUTSIDE_BLOCK())
-        self.next_stage_processing = next_stage_processing
+        #self.next_stage_processing = next_stage_processing
+        self.out_block_processing = out_block_processing
+        self.block_begin_cb = block_begin_cb 
+        self.block_end_cb = block_end_cb
+        self.in_block_processing = in_block_processing
 
     def transition_to(self, state : BlockExtractorState):
         self._state = state
@@ -56,10 +61,22 @@ class BlockExtractor:
 class OUTSIDE_BLOCK(BlockExtractorState):
 
     def process_line(self, line, line_num) -> None:
-        self._context.next_stage_processing(line, line_num)
         if(self.block_detector(line) == BLOCK_BEGIN):
+            
+            sp_line = line.split("{")
+            self._context.out_block_processing(sp_line[0]+"{", line_num)
+            self._context.block_begin_cb()
+            self._context.in_block_processing(sp_line[1], line_num)
             self.context.transition_to(IN_BLOCK())
-
+        elif(self.block_detector(line) == SIGNLE_LINE_BLOCK):
+            strs = re.split(r'[{}]', line)
+            self._context.out_block_processing(strs[0]+"{", line_num)
+            self._context.block_begin_cb()
+            self._context.in_block_processing(strs[1], line_num)
+            self._context.block_end_cb()
+            self._context.out_block_processing("}" + strs[2], line_num)
+        else:
+            self._context.out_block_processing(line, line_num)
 
 class IN_BLOCK(BlockExtractorState):
 
@@ -67,16 +84,38 @@ class IN_BLOCK(BlockExtractorState):
         self._depth = 1
 
     def process_line(self, line, line_num) -> None:
-        if("return" in line): 
-            self._context.next_stage_processing(line, line_num)
+
         block_status = self.block_detector(line)
-        if(block_status == BLOCK_BEGIN):
-            self._depth = self._depth + 1
-        elif(block_status == BLOCK_END):
+        if(block_status == BLOCK_END):
             self._depth = self._depth - 1
             if(self._depth == 0):
-                self._context.next_stage_processing(line, line_num)
+                sp_line = line.split("}")
+                self._context.in_block_processing(sp_line[0], line_num)
+                self._context.block_end_cb()
+                self._context.out_block_processing('}' + sp_line[1] , line_num)
                 self.context.transition_to(OUTSIDE_BLOCK())
+        else:
+            self._context.in_block_processing(line, line_num)
+            if(block_status == BLOCK_BEGIN):
+                self._depth = self._depth + 1
+
+
+class BlockCodeDiscriminator():
+    
+    def __init__(self):
+        self.rets = []
+
+    def get_found_rets(self):
+        ret_val = self.rets
+        self.rets = []
+        return ret_val
+
+    def process_line_in_block(self, line, line_num):
+
+        if(line.startswith("return ") or line.startswith("return(") or line.startswith("return;") or " return;" in line or
+           " return " in line or " return(" in line ) and line.endswith(";"):
+            self.rets.append(line_num)
+
 
 
 if __name__ == "__main__":

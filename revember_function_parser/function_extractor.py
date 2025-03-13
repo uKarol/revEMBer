@@ -70,6 +70,12 @@ class FunctionExtractor:
 
     def get_function_signature(self):
         return self.last_result[0]
+    
+    def block_begin(self):
+        pass
+
+    def block_end(self):
+        pass
 
     def process_line(self, line, line_num):
         to_be_added: str
