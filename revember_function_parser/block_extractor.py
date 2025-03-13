@@ -43,7 +43,6 @@ class BlockExtractor:
 
     def __init__(self, out_block_processing, block_begin_cb, block_end_cb, in_block_processing):
         self.transition_to(OUTSIDE_BLOCK())
-        #self.next_stage_processing = next_stage_processing
         self.out_block_processing = out_block_processing
         self.block_begin_cb = block_begin_cb 
         self.block_end_cb = block_end_cb
@@ -64,17 +63,17 @@ class OUTSIDE_BLOCK(BlockExtractorState):
         if(self.block_detector(line) == BLOCK_BEGIN):
             
             sp_line = line.split("{")
-            self._context.out_block_processing(sp_line[0]+"{", line_num)
-            self._context.block_begin_cb()
+            self._context.out_block_processing(sp_line[0], line_num)
+            self._context.block_begin_cb(line_num)
             self._context.in_block_processing(sp_line[1], line_num)
             self.context.transition_to(IN_BLOCK())
         elif(self.block_detector(line) == SIGNLE_LINE_BLOCK):
             strs = re.split(r'[{}]', line)
-            self._context.out_block_processing(strs[0]+"{", line_num)
-            self._context.block_begin_cb()
+            self._context.out_block_processing(strs[0], line_num)
+            self._context.block_begin_cb(line_num)
             self._context.in_block_processing(strs[1], line_num)
-            self._context.block_end_cb()
-            self._context.out_block_processing("}" + strs[2], line_num)
+            self._context.block_end_cb(line_num)
+            self._context.out_block_processing(strs[2], line_num)
         else:
             self._context.out_block_processing(line, line_num)
 
@@ -91,8 +90,8 @@ class IN_BLOCK(BlockExtractorState):
             if(self._depth == 0):
                 sp_line = line.split("}")
                 self._context.in_block_processing(sp_line[0], line_num)
-                self._context.block_end_cb()
-                self._context.out_block_processing('}' + sp_line[1] , line_num)
+                self._context.block_end_cb(line_num)
+                self._context.out_block_processing(sp_line[1] , line_num)
                 self.context.transition_to(OUTSIDE_BLOCK())
         else:
             self._context.in_block_processing(line, line_num)

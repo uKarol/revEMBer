@@ -145,7 +145,7 @@
       ],
       "end": 569
 }{
-      "name": "}static void BUTTON_USER_EXTI_Callback(void)",
+      "name": "static void BUTTON_USER_EXTI_Callback(void)",
       "begin": 596,
       "returns": [],
       "end": 598

@@ -45,14 +45,14 @@ class FunctionDetector:
     def __init__(self):
         self.code_disc = BlockCodeDiscriminator() 
         self.fun_extractor = FunctionExtractor()
-        block_extr = BlockExtractor(self._function_extracting, self.fun_extractor.block_begin, self.fun_extractor.block_begin, self.code_disc.process_line_in_block)
+        block_extr = BlockExtractor(self.fun_extractor.process_line, self.fun_extractor.block_begin, self._function_extracting, self.code_disc.process_line_in_block)
         comment_extr = CommentExtractor(block_extr.process_line)
         self.extractor = CascadedExtractor(comment_extr.process_line)
         self.found_functions = {}
 
         
-    def _function_extracting(self, line, line_num):
-        splitter_status = self.fun_extractor.process_line(line, line_num)
+    def _function_extracting(self, line_num):
+        splitter_status = self.fun_extractor.block_end(line_num)
         if(splitter_status == SUCCESS):
             signature = self.fun_extractor.get_function_signature()
             function_data = self.fun_extractor.get_function_begin()
