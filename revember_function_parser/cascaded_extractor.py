@@ -4,7 +4,7 @@ import re
 from revember_function_parser.comment_extractor import CommentExtractor 
 from revember_function_parser.block_extractor import BlockExtractor, BlockCodeDiscriminator
 from revember_function_parser.function_extractor import *
-
+from revember_function_parser.experimantal_preprocessing import *
 
 class CascadedExtractor:
 
@@ -21,16 +21,11 @@ class CascadedExtractor:
         if(len(splitted) > 0):
             self.next_stage_processing(splitted, line_num)
 
-    def proprocessor_processing(self, line, line_num):
-        pass
 
     def process_line(self, line, line_num):
         line_to_process = line.strip()
         
-        if (line_to_process.startswith('#')):
-            self.proprocessor_processing(line, line_num)
-
-        elif("//" in line_to_process):
+        if("//" in line_to_process):
             self.remove_single_line_comments(line_to_process, line_num)
 
         elif ("/*" in line_to_process) and ("*/" in line_to_process):
@@ -43,11 +38,14 @@ class CascadedExtractor:
 class FunctionDetector:
 
     def __init__(self):
+        
         self.code_disc = BlockCodeDiscriminator() 
         self.fun_extractor = FunctionExtractor()
         block_extr = BlockExtractor(self.fun_extractor.process_line, self.fun_extractor.block_begin, self._function_extracting, self.code_disc.process_line_in_block)
-        comment_extr = CommentExtractor(block_extr.process_line)
-        self.extractor = CascadedExtractor(comment_extr.process_line)
+        self.prep = DefineDecoder(block_extr.process_line) 
+        self.conditional_extractor = ConditionalCompilationDecoder(self.prep.process_line)
+        self.comment_extr = CommentExtractor(self.conditional_extractor.process_line)
+        self.extractor = CascadedExtractor(self.comment_extr.process_line) 
         self.found_functions = {}
 
         
