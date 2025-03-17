@@ -1,0 +1,119 @@
+{
+      "name": "static void low_level_init(struct netif *netif)",
+      "begin": 158,
+      "returns": [],
+      "end": 240
+}{
+      "name": "static err_t low_level_output(struct netif *netif, struct pbuf *p)",
+      "begin": 259,
+      "returns": [
+            270,
+            294
+      ],
+      "end": 295
+}{
+      "name": "static struct pbuf * low_level_input(struct netif *netif)",
+      "begin": 306,
+      "returns": [
+            314
+      ],
+      "end": 315
+}{
+      "name": "void ethernetif_input(struct netif *netif)",
+      "begin": 327,
+      "returns": [],
+      "end": 341
+}{
+      "name": "static err_t low_level_output_arp_off(struct netif *netif, struct pbuf *q, const ip4_addr_t *ipaddr)",
+      "begin": 351,
+      "returns": [
+            359
+      ],
+      "end": 361
+}{
+      "name": "err_t ethernetif_init(struct netif *netif)",
+      "begin": 377,
+      "returns": [
+            419
+      ],
+      "end": 420
+}{
+      "name": "void pbuf_free_custom(struct pbuf *p)",
+      "begin": 428,
+      "returns": [],
+      "end": 439
+}{
+      "name": "u32_t sys_now(void)",
+      "begin": 450,
+      "returns": [
+            451
+      ],
+      "end": 452
+}{
+      "name": "void HAL_ETH_MspInit(ETH_HandleTypeDef* ethHandle)",
+      "begin": 463,
+      "returns": [],
+      "end": 520
+}{
+      "name": "void HAL_ETH_MspDeInit(ETH_HandleTypeDef* ethHandle)",
+      "begin": 523,
+      "returns": [],
+      "end": 555
+}{
+      "name": "int32_t ETH_PHY_IO_Init(void)",
+      "begin": 566,
+      "returns": [
+            574
+      ],
+      "end": 575
+}{
+      "name": "int32_t ETH_PHY_IO_DeInit (void)",
+      "begin": 583,
+      "returns": [
+            584
+      ],
+      "end": 585
+}{
+      "name": "int32_t ETH_PHY_IO_ReadReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t *pRegVal)",
+      "begin": 595,
+      "returns": [
+            598,
+            601
+      ],
+      "end": 602
+}{
+      "name": "int32_t ETH_PHY_IO_WriteReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t RegVal)",
+      "begin": 612,
+      "returns": [
+            615,
+            618
+      ],
+      "end": 619
+}{
+      "name": "int32_t ETH_PHY_IO_GetTick(void)",
+      "begin": 626,
+      "returns": [
+            627
+      ],
+      "end": 628
+}{
+      "name": "void ethernet_link_check_state(struct netif *netif)",
+      "begin": 635,
+      "returns": [],
+      "end": 689
+}{
+      "name": "void HAL_ETH_RxAllocateCallback(uint8_t **buff)",
+      "begin": 692,
+      "returns": [],
+      "end": 711
+}{
+      "name": "void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t Length)",
+      "begin": 714,
+      "returns": [],
+      "end": 751
+}{
+      "name": "void HAL_ETH_TxFreeCallback(uint32_t * buff)",
+      "begin": 754,
+      "returns": [],
+      "end": 760
+}
