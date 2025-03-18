@@ -53,24 +53,22 @@ class CFileManip:
 
         return ret_val
 
-    def add_dbg_fun(self, functions_to_change: FunctObject, lines):
-            
+    def add_dbg_fun(self, functions_to_change, lines):
             function_begin_ln = functions_to_change.begin
             function_rets = functions_to_change.returns
             function_end_ln = functions_to_change.end
-            
+            print(function_begin_ln)
+            print(function_rets)
+            print(function_end_ln)
             lines[function_begin_ln] = self.add_sequence_in_begin(lines[function_begin_ln], self.to_be_added["begin"] + ' \n')
 
-            if type(function_rets) == int: 
-                lines[function_rets] = self.add_sequence_in_return(lines[function_rets], self.to_be_added["ret"] + ' \n')
-            elif len(function_rets) > 0:
-                for ret in function_rets.split():
-                    ret = int(ret)
-                    lines[ret] = self.add_sequence_in_return(lines[ret], self.to_be_added["ret"] + ' \n')
+
+            for ret in function_rets:
+                if ret["need_brackets"] == False:
+                    lines[ret["begin"]] = self.add_sequence_in_return(lines[ret["begin"]], self.to_be_added["ret"] + ' \n')
             
-            else: 
-                print(function_rets.split())
-                lines[function_end_ln] = self.add_sequence_in_end(lines[function_end_ln], self.to_be_added["end"] + ' \n')
+            #else: 
+            lines[function_end_ln] = self.add_sequence_in_end(lines[function_end_ln], self.to_be_added["end"] + ' \n')
 
 
     def add_dbg_functions(self, filepath, functions_to_change: list, user_functions: dict):
@@ -84,7 +82,7 @@ class CFileManip:
             self.add_include_info(lines)
 
             for function_obj in functions_to_change:
-                self.add_dbg_fun(function_obj, lines)
+                self.add_dbg_fun(functions_to_change[function_obj], lines)
 
             file.seek(0)
             
