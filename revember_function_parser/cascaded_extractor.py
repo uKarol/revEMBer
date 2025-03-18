@@ -5,6 +5,7 @@ from revember_function_parser.comment_extractor import CommentExtractor
 from revember_function_parser.block_extractor import BlockExtractor, BlockCodeDiscriminator
 from revember_function_parser.function_extractor import *
 from revember_function_parser.experimantal_preprocessing import *
+from revember_function_parser.revember_function_parser_data_classes import *
 
 class CascadedExtractor:
 
@@ -12,7 +13,7 @@ class CascadedExtractor:
         self.next_stage_processing = next_stage_processing
 
     def remove_single_block_comments(self,line, line_num):
-        extracted = re.sub('/(.+?)/', '', line)
+        extracted = re.sub('/(.+?)\*/', '', line)
         if(len(extracted) > 0):
             self.next_stage_processing(extracted, line_num)
 
@@ -52,11 +53,20 @@ class FunctionDetector:
     def _function_extracting(self, line_num):
         splitter_status = self.fun_extractor.block_end(line_num)
         if(splitter_status == SUCCESS):
+            
             signature = self.fun_extractor.get_function_signature()
             function_data = self.fun_extractor.get_function_begin()
-            function_data.returns = self.code_disc.get_found_rets()
-            self.found_functions.update({signature : function_data})
+            function_details = self.code_disc.get_found_rets()
+            self.found_functions.update({signature : FUnctionParser_FunctData(function_data.name,
+                                                                            function_data.parameters,
+                                                                            function_data.begin,
+                                                                            function_data.end,
+                                                                            function_details.returns,
+                                                                            function_details.warnings,
+                                                                            function_details.revember_artifacts
+                                                                            )})
             self.code_disc.reset_vals()
+
         else:
             self.code_disc.get_found_rets()
             self.code_disc.reset_vals()

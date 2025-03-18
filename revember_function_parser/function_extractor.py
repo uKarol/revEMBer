@@ -42,7 +42,7 @@ class FunctionExtractor:
         self.fun_list[0] = new_val
     
     def get_function_begin(self):
-        return FunctionParser_FunctObject(self.last_result[0], self.function_begin, self.last_returns, self.function_end)
+        return FunctionParser_FunctObject(self.last_result[0], [] , self.function_begin, self.function_end)
 
     def get_function_signature(self):
         return self.last_result[0]

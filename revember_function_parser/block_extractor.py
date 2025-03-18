@@ -1,6 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 import re
+from revember_function_parser.revember_function_parser_data_classes import *
 
 SIGNLE_LINE_BLOCK = 0
 BLOCK_BEGIN = 1
@@ -102,21 +103,36 @@ class IN_BLOCK(BlockExtractorState):
 class BlockCodeDiscriminator():
     
     def __init__(self):
-        self.rets = []
-        self.prev_line ="{"
-        self.assembled_block = ""
-        self.statement_start = 0
-        self.statement_end = 0
-        self.started = False
+        self.reset_vals()
 
     def get_found_rets(self):
-        ret_val = self.rets
-        self.rets = []
-        return ret_val
+        return FunctionParser_FunctDetails(self.rets, self.warnings, [])
     
-    def check_return(self, start, end, block):
-        #print(f"{block} in line {start} - {end}")
-        self.rets.append(end)
+    def check_return(self, start, end, block):  
+        need_extra_brackets = False
+        ret_warnings = ""
+        pattern = r"return(.*?)\;"
+        match = re.split(pattern, block)
+
+        if len(match) > 1:
+            
+            if match[0].strip().endswith(")"):
+                need_extra_brackets = True
+            open_count = match[1].count('(')
+            close_count = match[1].count(')')
+            if(open_count == 0 and close_count == 0 ):
+                ret_warnings = ""
+            elif(open_count == close_count):
+                ret_warnings = "compound return value"
+
+            else:
+                ret_warnings = "improper return statement"
+
+            self.rets.append({"begin": start, "end" : end, "need_brackets" : need_extra_brackets, "returned_value" : match[1].strip(), "return_warning" : ret_warnings})
+        else:
+            print("Delimiters not found")
+
+
 
     def reset_vals(self):
         self.rets = []
@@ -124,6 +140,7 @@ class BlockCodeDiscriminator():
         self.assembled_block = ""
         self.statement_start = 0
         self.statement_end = 0
+        self.warnings = []
         self.started = False
 
     def process_line_in_block(self, line, line_num):
@@ -137,7 +154,7 @@ class BlockCodeDiscriminator():
             self.started = False
             self.statement_end = line_num
             self.assembled_block = self.assembled_block + " " + line
-            if( "return" in self.assembled_block):
+            if( "return " in self.assembled_block) or ("return(" in self.assembled_block):
                 self.check_return(self.statement_start, self.statement_end, self.assembled_block)
 
             self.assembled_block = " "
@@ -147,24 +164,6 @@ class BlockCodeDiscriminator():
                 self.statement_start = line_num
             self.assembled_block = self.assembled_block + " " + line
                     
-
-        
-        # if(line.startswith("return ") and line.endswith(";")):
-        #     match = re.search(pattern, s)
-
-        #     # Check if a match is found and extract the substring
-        #     if match:
-        #         result = match.group(1)
-
-        #    or line.startswith("return(") or line.startswith("return;") 
-           
-        #    or " return;" in line or
-        #    " return " in line or " return(" in line ) and line.endswith(";"):
-        #     self.rets.append(line_num)
-        #     if self.prev_end.endswith(")"):
-        #         print(f"Stray return {line_num}")
-        # self.prev_end = line
-
 
 if __name__ == "__main__":
 
