@@ -55,9 +55,11 @@ class FunctionDetector:
             signature = self.fun_extractor.get_function_signature()
             function_data = self.fun_extractor.get_function_begin()
             function_data.returns = self.code_disc.get_found_rets()
-            self.found_functions.update({signature : function_data}) 
+            self.found_functions.update({signature : function_data})
+            self.code_disc.reset_vals()
         else:
             self.code_disc.get_found_rets()
+            self.code_disc.reset_vals()
 
     def get_found_functions(self):
         return self.found_functions
