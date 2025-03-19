@@ -45,7 +45,10 @@ class revEMBer_controller:
         for file in items:
             for function in items[file]:
                 functions_to_be_changed.update({function.name : self.model.get_function_data(file, function.name)})
+            #print("FILE" + file)
+            #print(functions_to_be_changed)
             fman.add_dbg_functions(file, functions_to_be_changed, user_function)
+            functions_to_be_changed= {}
 
     def process_selected_files(self):
         selected_files = self.view.get_selected_files()

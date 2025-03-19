@@ -1,9 +1,3 @@
-/* 
-THIS FILE HAS ADDED DEBUG INFORMATIONS 
- revEMBer projct in github: https://github.com/uKarol/revEMBer 
-jefvcoe oefpm d actmdhsae
-*/
-#include "revEMBer.h"
 /**
   ******************************************************************************
   * @file    stm32g4xx_hal_dma.c
@@ -157,13 +151,11 @@ static void DMA_CalcDMAMUXRequestGenBaseAndMask(DMA_HandleTypeDef *hdma);
   */
 HAL_StatusTypeDef HAL_DMA_Init(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t tmp;
 
   /* Check the DMA handle allocation */
   if (hdma == NULL)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -259,7 +251,6 @@ REVEMBER_FUNCTION_EXIT()
   /* Allocate lock resource and initialize it */
   hdma->Lock = HAL_UNLOCKED;
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -271,12 +262,10 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_DMA_DeInit(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
 
   /* Check the DMA handle allocation */
   if (NULL == hdma)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -351,7 +340,6 @@ REVEMBER_FUNCTION_EXIT()
   /* Release Lock */
   __HAL_UNLOCK(hdma);
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -389,7 +377,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_DMA_Start(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   /* Check the parameters */
@@ -419,7 +406,6 @@ REVEMBER_FUNCTION_ENTRY()
     __HAL_UNLOCK(hdma);
     status = HAL_BUSY;
   }
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -435,7 +421,6 @@ REVEMBER_FUNCTION_EXIT()
 HAL_StatusTypeDef HAL_DMA_Start_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress,
                                    uint32_t DataLength)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   /* Check the parameters */
@@ -494,7 +479,6 @@ REVEMBER_FUNCTION_ENTRY()
     /* Remain BUSY */
     status = HAL_BUSY;
   }
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -506,7 +490,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_DMA_Abort(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   if(hdma->State != HAL_DMA_STATE_BUSY)
@@ -549,7 +532,6 @@ REVEMBER_FUNCTION_ENTRY()
   /* Process Unlocked */
   __HAL_UNLOCK(hdma);
 
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -561,7 +543,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_DMA_Abort_IT(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   if (HAL_DMA_STATE_BUSY != hdma->State)
@@ -616,7 +597,6 @@ REVEMBER_FUNCTION_ENTRY()
       hdma->XferAbortCallback(hdma);
     }
   }
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -631,7 +611,6 @@ REVEMBER_FUNCTION_EXIT()
 HAL_StatusTypeDef HAL_DMA_PollForTransfer(DMA_HandleTypeDef *hdma, HAL_DMA_LevelCompleteTypeDef CompleteLevel,
                                           uint32_t Timeout)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t temp;
   uint32_t tickstart;
 
@@ -640,7 +619,6 @@ REVEMBER_FUNCTION_ENTRY()
     /* no transfer ongoing */
     hdma->ErrorCode = HAL_DMA_ERROR_NO_XFER;
     __HAL_UNLOCK(hdma);
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -648,7 +626,6 @@ REVEMBER_FUNCTION_EXIT()
   if (0U != (hdma->Instance->CCR & DMA_CCR_CIRC))
   {
     hdma->ErrorCode = HAL_DMA_ERROR_NOT_SUPPORTED;
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -686,7 +663,6 @@ REVEMBER_FUNCTION_EXIT()
       /* Process Unlocked */
       __HAL_UNLOCK(hdma);
 
-REVEMBER_FUNCTION_EXIT() 
       return HAL_ERROR;
     }
     /* Check for the Timeout */
@@ -703,7 +679,6 @@ REVEMBER_FUNCTION_EXIT()
         /* Process Unlocked */
         __HAL_UNLOCK(hdma);
 
-REVEMBER_FUNCTION_EXIT() 
         return HAL_ERROR;
       }
     }
@@ -754,7 +729,6 @@ REVEMBER_FUNCTION_EXIT()
   /* Process unlocked */
   __HAL_UNLOCK(hdma);
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -766,7 +740,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_DMA_IRQHandler(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t flag_it = hdma->DmaBaseAddress->ISR;
   uint32_t source_it = hdma->Instance->CCR;
 
@@ -846,7 +819,6 @@ REVEMBER_FUNCTION_ENTRY()
   {
     /* Nothing To Do */
   }
-REVEMBER_FUNCTION_EXIT() 
   return;
 }
 
@@ -862,7 +834,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_DMA_RegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_CallbackIDTypeDef CallbackID, void (* pCallback)(DMA_HandleTypeDef *_hdma))
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   /* Process locked */
@@ -901,7 +872,6 @@ REVEMBER_FUNCTION_ENTRY()
   /* Release Lock */
   __HAL_UNLOCK(hdma);
 
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -915,7 +885,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_DMA_UnRegisterCallback(DMA_HandleTypeDef *hdma, HAL_DMA_CallbackIDTypeDef CallbackID)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   /* Process locked */
@@ -961,7 +930,6 @@ REVEMBER_FUNCTION_ENTRY()
   /* Release Lock */
   __HAL_UNLOCK(hdma);
 
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -995,9 +963,7 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_DMA_StateTypeDef HAL_DMA_GetState(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Return DMA handle state */
-REVEMBER_FUNCTION_EXIT() 
   return hdma->State;
 }
 
@@ -1009,8 +975,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 uint32_t HAL_DMA_GetError(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
-REVEMBER_FUNCTION_EXIT() 
   return hdma->ErrorCode;
 }
 
@@ -1037,7 +1001,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void DMA_SetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Clear the DMAMUX synchro overrun flag */
   hdma->DMAmuxChannelStatus->CFR = hdma->DMAmuxChannelStatusMask;
 
@@ -1071,7 +1034,6 @@ REVEMBER_FUNCTION_ENTRY()
     /* Configure DMA Channel destination address */
     hdma->Instance->CMAR = DstAddress;
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -1082,7 +1044,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void DMA_CalcDMAMUXChannelBaseAndMask(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t dmamux_base_addr;
   uint32_t channel_number;
   DMAMUX_Channel_TypeDef *DMAMUX1_ChannelBase;
@@ -1109,7 +1070,6 @@ REVEMBER_FUNCTION_ENTRY()
   hdma->DMAmuxChannel = (DMAMUX_Channel_TypeDef *)(uint32_t)(dmamux_base_addr + ((hdma->ChannelIndex >> 2U) * ((uint32_t)DMAMUX1_Channel1 - (uint32_t)DMAMUX1_Channel0)));
   hdma->DMAmuxChannelStatus = DMAMUX1_ChannelStatus;
   hdma->DMAmuxChannelStatusMask = 1UL << (channel_number & 0x1FU);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -1121,7 +1081,6 @@ REVEMBER_FUNCTION_EXIT()
 
 static void DMA_CalcDMAMUXRequestGenBaseAndMask(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t request =  hdma->Init.Request & DMAMUX_CxCR_DMAREQ_ID;
 
   /* DMA Channels are connected to DMAMUX1 request generator blocks*/
@@ -1130,7 +1089,6 @@ REVEMBER_FUNCTION_ENTRY()
   hdma->DMAmuxRequestGenStatus = DMAMUX1_RequestGenStatus;
 
   hdma->DMAmuxRequestGenStatusMask = 1UL << ((request - 1U) & 0x1FU);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**

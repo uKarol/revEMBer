@@ -1,9 +1,3 @@
-/* 
-THIS FILE HAS ADDED DEBUG INFORMATIONS 
- revEMBer projct in github: https://github.com/uKarol/revEMBer 
-jefvcoe oefpm d actmdhsae
-*/
-#include "revEMBer.h"
 /**
   ******************************************************************************
   * @file    stm32g4xx_hal_cortex.c
@@ -168,13 +162,11 @@ jefvcoe oefpm d actmdhsae
   */
 void HAL_NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_NVIC_PRIORITY_GROUP(PriorityGroup));
 
   /* Set the PRIGROUP[10:8] bits according to the PriorityGroup parameter value */
   NVIC_SetPriorityGrouping(PriorityGroup);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -192,7 +184,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t SubPriority)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t prioritygroup;
 
   /* Check the parameters */
@@ -202,7 +193,6 @@ REVEMBER_FUNCTION_ENTRY()
   prioritygroup = NVIC_GetPriorityGrouping();
 
   NVIC_SetPriority(IRQn, NVIC_EncodePriority(prioritygroup, PreemptPriority, SubPriority));
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -216,13 +206,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_NVIC_EnableIRQ(IRQn_Type IRQn)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_NVIC_DEVICE_IRQ(IRQn));
   
   /* Enable interrupt */
   NVIC_EnableIRQ(IRQn);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -234,13 +222,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_NVIC_DisableIRQ(IRQn_Type IRQn)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_NVIC_DEVICE_IRQ(IRQn));
   
   /* Disable interrupt */
   NVIC_DisableIRQ(IRQn);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -249,10 +235,8 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_NVIC_SystemReset(void)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* System Reset */
   NVIC_SystemReset();
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -264,8 +248,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 uint32_t HAL_SYSTICK_Config(uint32_t TicksNumb)
 {
-REVEMBER_FUNCTION_ENTRY() 
-REVEMBER_FUNCTION_EXIT() 
    return SysTick_Config(TicksNumb);
 }
 /**
@@ -294,9 +276,7 @@ REVEMBER_FUNCTION_EXIT()
   */
 uint32_t HAL_NVIC_GetPriorityGrouping(void)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Get the PRIGROUP[10:8] field value */
-REVEMBER_FUNCTION_EXIT() 
   return NVIC_GetPriorityGrouping();
 }
 
@@ -323,12 +303,10 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_NVIC_GetPriority(IRQn_Type IRQn, uint32_t PriorityGroup, uint32_t *pPreemptPriority, uint32_t *pSubPriority)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_NVIC_PRIORITY_GROUP(PriorityGroup));
  /* Get priority for Cortex-M system or device specific interrupts */
   NVIC_DecodePriority(NVIC_GetPriority(IRQn), PriorityGroup, pPreemptPriority, pSubPriority);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -340,13 +318,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_NVIC_SetPendingIRQ(IRQn_Type IRQn)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_NVIC_DEVICE_IRQ(IRQn));
   
   /* Set interrupt pending */
   NVIC_SetPendingIRQ(IRQn);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -360,12 +336,10 @@ REVEMBER_FUNCTION_EXIT()
   */
 uint32_t HAL_NVIC_GetPendingIRQ(IRQn_Type IRQn)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_NVIC_DEVICE_IRQ(IRQn));
   
   /* Return 1 if pending else 0 */
-REVEMBER_FUNCTION_EXIT() 
   return NVIC_GetPendingIRQ(IRQn);
 }
 
@@ -378,13 +352,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_NVIC_ClearPendingIRQ(IRQn_Type IRQn)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_NVIC_DEVICE_IRQ(IRQn));
   
   /* Clear pending interrupt */
   NVIC_ClearPendingIRQ(IRQn);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -397,9 +369,7 @@ REVEMBER_FUNCTION_EXIT()
   */
 uint32_t HAL_NVIC_GetActive(IRQn_Type IRQn)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Return 1 if active else 0 */
-REVEMBER_FUNCTION_EXIT() 
   return NVIC_GetActive(IRQn);
 }
 
@@ -413,7 +383,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_SYSTICK_CLKSourceConfig(uint32_t CLKSource)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_SYSTICK_CLK_SOURCE(CLKSource));
   if (CLKSource == SYSTICK_CLKSOURCE_HCLK)
@@ -424,7 +393,6 @@ REVEMBER_FUNCTION_ENTRY()
   {
     SysTick->CTRL &= ~SYSTICK_CLKSOURCE_HCLK;
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -433,9 +401,7 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_SYSTICK_IRQHandler(void)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_SYSTICK_Callback();
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -444,11 +410,9 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_SYSTICK_Callback(void)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_SYSTICK_Callback could be implemented in the user file
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 #if (__MPU_PRESENT == 1)
@@ -465,14 +429,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_MPU_Enable(uint32_t MPU_Control)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Enable the MPU */
   MPU->CTRL = (MPU_Control | MPU_CTRL_ENABLE_Msk);
 
   /* Ensure MPU setting take effects */
   __DSB();
   __ISB();
-REVEMBER_FUNCTION_EXIT() 
 }
 
 
@@ -482,13 +444,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_MPU_Disable(void)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Make sure outstanding transfers are done */
   __DMB();
 
   /* Disable the MPU and clear the control register*/
   MPU->CTRL  = 0;
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -497,7 +457,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_MPU_EnableRegion(uint32_t RegionNumber)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_MPU_REGION_NUMBER(RegionNumber));
 
@@ -506,7 +465,6 @@ REVEMBER_FUNCTION_ENTRY()
 
   /* Enable the Region */
   SET_BIT(MPU->RASR, MPU_RASR_ENABLE_Msk);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -515,7 +473,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_MPU_DisableRegion(uint32_t RegionNumber)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_MPU_REGION_NUMBER(RegionNumber));
 
@@ -524,7 +481,6 @@ REVEMBER_FUNCTION_ENTRY()
 
   /* Disable the Region */
   CLEAR_BIT(MPU->RASR, MPU_RASR_ENABLE_Msk);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -535,7 +491,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef *MPU_Init)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_MPU_REGION_NUMBER(MPU_Init->Number));
   assert_param(IS_MPU_REGION_ENABLE(MPU_Init->Enable));
@@ -564,7 +519,6 @@ REVEMBER_FUNCTION_ENTRY()
               ((uint32_t)MPU_Init->SubRegionDisable        << MPU_RASR_SRD_Pos)  |
               ((uint32_t)MPU_Init->Size                    << MPU_RASR_SIZE_Pos) |
               ((uint32_t)MPU_Init->Enable                  << MPU_RASR_ENABLE_Pos);
-REVEMBER_FUNCTION_EXIT() 
 }
 #endif /* __MPU_PRESENT */
 
