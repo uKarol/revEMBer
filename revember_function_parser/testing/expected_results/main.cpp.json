@@ -188,7 +188,7 @@
                   "begin": 158,
                   "end": 158,
                   "need_brackets": false,
-                  "returned_value": "ERR_ARG)",
+                  "returned_value": "ERR_ARG",
                   "return_warning": ""
             }
       ],
