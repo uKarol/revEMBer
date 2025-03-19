@@ -120,8 +120,8 @@ void pattern3(int x, int y){
   
  
     std::cout<<"pattern3";
- 
-  
+    int return_value;
+    int value_return;
 }
 
 err_t
@@ -136,7 +136,7 @@ udp_send_chksum(struct udp_pcb *pcb, struct pbuf *p,
 }
 
 err_t
-udp_send_chksum(struct udp_pcb *pcb, struct pbuf *p,
+udp_send_chksum2(struct udp_pcb *pcb, struct pbuf *p,
                 u8_t have_chksum, u16_t chksum){
   
     return udp_sendto_chksum(pcb, p, &pcb->remote_ip, pcb->remote_port,
