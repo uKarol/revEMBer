@@ -1,111 +1,194 @@
 {
       "name": "voidtcp_input(struct pbuf *p, struct netif *inp)",
+      "parameters": [],
       "begin": 118,
-      "returns": [
-            310,
-            382,
-            397,
-            586
-      ],
-      "end": 591
+      "end": 591,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static inttcp_input_delayed_close(struct tcp_pcb *pcb)",
+      "parameters": [],
       "begin": 600,
+      "end": 617,
       "returns": [
-            614,
-            616
+            {
+                  "begin": 614,
+                  "end": 614,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 616,
+                  "end": 616,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
       ],
-      "end": 617
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static voidtcp_listen_input(struct tcp_pcb_listen *pcb)",
+      "parameters": [],
       "begin": 630,
-      "returns": [
-            637,
-            655,
-            668,
-            713,
-            721,
-            725
-      ],
-      "end": 726
+      "end": 726,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static voidtcp_timewait_input(struct tcp_pcb *pcb)",
+      "parameters": [],
       "begin": 739,
-      "returns": [
-            746,
-            759,
-            772
-      ],
-      "end": 773
+      "end": 773,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static err_ttcp_process(struct tcp_pcb *pcb)",
+      "parameters": [],
       "begin": 788,
+      "end": 1041,
       "returns": [
-            826,
-            832,
-            839,
-            903,
-            948,
-            1040
+            {
+                  "begin": 826,
+                  "end": 826,
+                  "need_brackets": false,
+                  "returned_value": "ERR_RST",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 832,
+                  "end": 832,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 839,
+                  "end": 839,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 903,
+                  "end": 903,
+                  "need_brackets": false,
+                  "returned_value": "ERR_ABRT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 948,
+                  "end": 948,
+                  "need_brackets": false,
+                  "returned_value": "ERR_ABRT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1040,
+                  "end": 1040,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 1041
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static voidtcp_oos_insert_segment(struct tcp_seg *cseg, struct tcp_seg *next)",
+      "parameters": [],
       "begin": 1051,
+      "end": 1082,
       "returns": [],
-      "end": 1082
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static struct tcp_seg *tcp_free_acked_segments(struct tcp_pcb *pcb, struct tcp_seg *seg_list, const char *dbg_list_name,struct tcp_seg *dbg_other_seg_list)",
+      "parameters": [],
       "begin": 1089,
+      "end": 1125,
       "returns": [
-            1124
+            {
+                  "begin": 1124,
+                  "end": 1124,
+                  "need_brackets": false,
+                  "returned_value": "seg_list",
+                  "return_warning": ""
+            }
       ],
-      "end": 1125
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static voidtcp_receive(struct tcp_pcb *pcb)",
+      "parameters": [],
       "begin": 1141,
+      "end": 1884,
       "returns": [],
-      "end": 1884
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static u8_ttcp_get_next_optbyte(void)",
+      "parameters": [],
       "begin": 1888,
+      "end": 1897,
       "returns": [
-            1892,
-            1895
+            {
+                  "begin": 1892,
+                  "end": 1892,
+                  "need_brackets": false,
+                  "returned_value": "opts[optidx]",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1895,
+                  "end": 1895,
+                  "need_brackets": false,
+                  "returned_value": "tcphdr_opt2[idx]",
+                  "return_warning": ""
+            }
       ],
-      "end": 1897
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static voidtcp_parseopt(struct tcp_pcb *pcb)",
+      "parameters": [],
       "begin": 1909,
-      "returns": [
-            1926,
-            1936,
-            1950,
-            1976,
-            2001,
-            2017
-      ],
-      "end": 2025
+      "end": 2025,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "voidtcp_trigger_input_pcb_close(void)",
+      "parameters": [],
       "begin": 2029,
+      "end": 2031,
       "returns": [],
-      "end": 2031
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static voidtcp_add_sack(struct tcp_pcb *pcb, u32_t left, u32_t right)",
+      "parameters": [],
       "begin": 2047,
-      "returns": [
-            2052
-      ],
-      "end": 2093
+      "end": 2093,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static voidtcp_remove_sacks_lt(struct tcp_pcb *pcb, u32_t seq)",
+      "parameters": [],
       "begin": 2107,
+      "end": 2132,
       "returns": [],
-      "end": 2132
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static voidtcp_remove_sacks_gt(struct tcp_pcb *pcb, u32_t seq)",
+      "parameters": [],
       "begin": 2147,
+      "end": 2172,
       "returns": [],
-      "end": 2172
+      "warnings": [],
+      "revember_artifacts": []
 }
