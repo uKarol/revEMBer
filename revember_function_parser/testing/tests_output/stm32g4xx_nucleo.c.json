@@ -1,162 +1,366 @@
 {
-      "name": "6*/int32_t BSP_GetVersion(void)",
+      "name": "int32_t BSP_GetVersion(void)",
+      "parameters": [],
       "begin": 138,
+      "end": 140,
       "returns": [
-            139
+            {
+                  "begin": 139,
+                  "end": 139,
+                  "need_brackets": false,
+                  "returned_value": "(int32_t)STM32G4XX_NUCLEO_BSP_VERSION",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 140
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "const uint8_t* BSP_GetBoardName(void)",
+      "parameters": [],
       "begin": 147,
+      "end": 149,
       "returns": [
-            148
+            {
+                  "begin": 148,
+                  "end": 148,
+                  "need_brackets": false,
+                  "returned_value": "(const uint8_t*)STM32G4XX_NUCLEO_BSP_BOARD_NAME",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 149
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "const uint8_t* BSP_GetBoardID(void)",
+      "parameters": [],
       "begin": 156,
+      "end": 158,
       "returns": [
-            157
+            {
+                  "begin": 157,
+                  "end": 157,
+                  "need_brackets": false,
+                  "returned_value": "(const uint8_t*)STM32G4XX_NUCLEO_BSP_BOARD_ID",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 158
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_Init(Led_TypeDef Led)",
+      "parameters": [],
       "begin": 168,
+      "end": 184,
       "returns": [
-            183
+            {
+                  "begin": 183,
+                  "end": 183,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_NONE",
+                  "return_warning": ""
+            }
       ],
-      "end": 184
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_DeInit(Led_TypeDef Led)",
+      "parameters": [],
       "begin": 195,
+      "end": 203,
       "returns": [
-            202
+            {
+                  "begin": 202,
+                  "end": 202,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_NONE",
+                  "return_warning": ""
+            }
       ],
-      "end": 203
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_On(Led_TypeDef Led)",
+      "parameters": [],
       "begin": 213,
+      "end": 217,
       "returns": [
-            216
+            {
+                  "begin": 216,
+                  "end": 216,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_NONE",
+                  "return_warning": ""
+            }
       ],
-      "end": 217
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_Off(Led_TypeDef Led)",
+      "parameters": [],
       "begin": 227,
+      "end": 231,
       "returns": [
-            230
+            {
+                  "begin": 230,
+                  "end": 230,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_NONE",
+                  "return_warning": ""
+            }
       ],
-      "end": 231
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_Toggle(Led_TypeDef Led)",
+      "parameters": [],
       "begin": 241,
+      "end": 245,
       "returns": [
-            244
+            {
+                  "begin": 244,
+                  "end": 244,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_NONE",
+                  "return_warning": ""
+            }
       ],
-      "end": 245
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_GetState(Led_TypeDef Led)",
+      "parameters": [],
       "begin": 255,
+      "end": 257,
       "returns": [
-            256
+            {
+                  "begin": 256,
+                  "end": 256,
+                  "need_brackets": false,
+                  "returned_value": "(int32_t)HAL_GPIO_ReadPin(LED_PORT[Led], LED_PIN[Led])",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 257
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef ButtonMode)",
+      "parameters": [],
       "begin": 273,
+      "end": 308,
       "returns": [
-            307
+            {
+                  "begin": 307,
+                  "end": 307,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_NONE",
+                  "return_warning": ""
+            }
       ],
-      "end": 308
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_PB_DeInit(Button_TypeDef Button)",
+      "parameters": [],
       "begin": 319,
+      "end": 324,
       "returns": [
-            323
+            {
+                  "begin": 323,
+                  "end": 323,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_NONE",
+                  "return_warning": ""
+            }
       ],
-      "end": 324
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_PB_GetState(Button_TypeDef Button)",
+      "parameters": [],
       "begin": 334,
+      "end": 336,
       "returns": [
-            335
+            {
+                  "begin": 335,
+                  "end": 335,
+                  "need_brackets": false,
+                  "returned_value": "(int32_t)HAL_GPIO_ReadPin(BUTTON_PORT[Button], BUTTON_PIN[Button])",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 336
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "void BSP_PB_IRQHandler(Button_TypeDef Button)",
+      "parameters": [],
       "begin": 344,
+      "end": 346,
       "returns": [],
-      "end": 346
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void BSP_PB_Callback(Button_TypeDef Button)",
+      "parameters": [],
       "begin": 354,
+      "end": 360,
       "returns": [],
-      "end": 360
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_Init(COM_TypeDef COM, COM_InitTypeDef *COM_Init)",
+      "parameters": [],
       "begin": 373,
+      "end": 402,
       "returns": [
-            390,
-            397,
-            401
+            {
+                  "begin": 390,
+                  "end": 390,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_MSP_FAILURE",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 397,
+                  "end": 397,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_PERIPH_FAILURE",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 401,
+                  "end": 401,
+                  "need_brackets": false,
+                  "returned_value": "ret",
+                  "return_warning": ""
+            }
       ],
-      "end": 402
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_DeInit(COM_TypeDef COM)",
+      "parameters": [],
       "begin": 411,
+      "end": 434,
       "returns": [
-            429,
-            433
+            {
+                  "begin": 429,
+                  "end": 429,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_PERIPH_FAILURE",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 433,
+                  "end": 433,
+                  "need_brackets": false,
+                  "returned_value": "ret",
+                  "return_warning": ""
+            }
       ],
-      "end": 434
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak HAL_StatusTypeDef MX_LPUART1_Init(UART_HandleTypeDef *huart, MX_UART_InitTypeDef *COM_Init)",
+      "parameters": [],
       "begin": 444,
+      "end": 456,
       "returns": [
-            455
+            {
+                  "begin": 455,
+                  "end": 455,
+                  "need_brackets": false,
+                  "returned_value": "HAL_UART_Init(huart)",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 456
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_RegisterDefaultMspCallbacks(COM_TypeDef COM)",
+      "parameters": [],
       "begin": 466,
+      "end": 494,
       "returns": [
-            493
+            {
+                  "begin": 493,
+                  "end": 493,
+                  "need_brackets": false,
+                  "returned_value": "ret",
+                  "return_warning": ""
+            }
       ],
-      "end": 494
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_RegisterMspCallbacks(COM_TypeDef COM , BSP_COM_Cb_t *Callback)",
+      "parameters": [],
       "begin": 504,
+      "end": 531,
       "returns": [
-            530
+            {
+                  "begin": 530,
+                  "end": 530,
+                  "need_brackets": false,
+                  "returned_value": "ret",
+                  "return_warning": ""
+            }
       ],
-      "end": 531
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_SelectLogPort(COM_TypeDef COM)",
+      "parameters": [],
       "begin": 542,
+      "end": 548,
       "returns": [
-            547
+            {
+                  "begin": 547,
+                  "end": 547,
+                  "need_brackets": false,
+                  "returned_value": "BSP_ERROR_NONE",
+                  "return_warning": ""
+            }
       ],
-      "end": 548
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "size_t __write(int file, unsigned char const *ptr, size_t len)",
+      "parameters": [],
       "begin": 559,
+      "end": 569,
       "returns": [
-            568
+            {
+                  "begin": 568,
+                  "end": 568,
+                  "need_brackets": false,
+                  "returned_value": "len",
+                  "return_warning": ""
+            }
       ],
-      "end": 569
+      "warnings": [],
+      "revember_artifacts": []
 }{
-      "name": "}static void BUTTON_USER_EXTI_Callback(void)",
+      "name": "static void BUTTON_USER_EXTI_Callback(void)",
+      "parameters": [],
       "begin": 596,
+      "end": 598,
       "returns": [],
-      "end": 598
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void COM1_MspInit(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 608,
+      "end": 634,
       "returns": [],
-      "end": 634
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void COM1_MspDeInit(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 642,
+      "end": 657,
       "returns": [],
-      "end": 657
+      "warnings": [],
+      "revember_artifacts": []
 }

@@ -2654,6 +2654,7 @@ REVEMBER_FUNCTION_EXIT()
 REVEMBER_FUNCTION_EXIT() 
     return;
   }
+REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4064,6 +4065,7 @@ REVEMBER_FUNCTION_EXIT()
   /* Call legacy weak Abort complete callback */
   HAL_UART_AbortCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
+REVEMBER_FUNCTION_EXIT() 
 }
 
 
@@ -4118,6 +4120,7 @@ REVEMBER_FUNCTION_EXIT()
   /* Call legacy weak Abort complete callback */
   HAL_UART_AbortCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
+REVEMBER_FUNCTION_EXIT() 
 }
 
 

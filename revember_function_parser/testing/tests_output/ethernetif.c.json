@@ -1,0 +1,254 @@
+{
+      "name": "static void low_level_init(struct netif *netif)",
+      "parameters": [],
+      "begin": 158,
+      "end": 240,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t low_level_output(struct netif *netif, struct pbuf *p)",
+      "parameters": [],
+      "begin": 259,
+      "end": 295,
+      "returns": [
+            {
+                  "begin": 269,
+                  "end": 270,
+                  "need_brackets": true,
+                  "returned_value": "ERR_IF",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 294,
+                  "end": 294,
+                  "need_brackets": false,
+                  "returned_value": "errval",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static struct pbuf * low_level_input(struct netif *netif)",
+      "parameters": [],
+      "begin": 306,
+      "end": 315,
+      "returns": [
+            {
+                  "begin": 314,
+                  "end": 314,
+                  "need_brackets": false,
+                  "returned_value": "p",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void ethernetif_input(struct netif *netif)",
+      "parameters": [],
+      "begin": 327,
+      "end": 341,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t low_level_output_arp_off(struct netif *netif, struct pbuf *q, const ip4_addr_t *ipaddr)",
+      "parameters": [],
+      "begin": 351,
+      "end": 361,
+      "returns": [
+            {
+                  "begin": 359,
+                  "end": 359,
+                  "need_brackets": false,
+                  "returned_value": "errval",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "err_t ethernetif_init(struct netif *netif)",
+      "parameters": [],
+      "begin": 377,
+      "end": 420,
+      "returns": [
+            {
+                  "begin": 419,
+                  "end": 419,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void pbuf_free_custom(struct pbuf *p)",
+      "parameters": [],
+      "begin": 428,
+      "end": 439,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u32_t sys_now(void)",
+      "parameters": [],
+      "begin": 450,
+      "end": 452,
+      "returns": [
+            {
+                  "begin": 451,
+                  "end": 451,
+                  "need_brackets": false,
+                  "returned_value": "HAL_GetTick()",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void HAL_ETH_MspInit(ETH_HandleTypeDef* ethHandle)",
+      "parameters": [],
+      "begin": 463,
+      "end": 520,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void HAL_ETH_MspDeInit(ETH_HandleTypeDef* ethHandle)",
+      "parameters": [],
+      "begin": 523,
+      "end": 555,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "int32_t ETH_PHY_IO_Init(void)",
+      "parameters": [],
+      "begin": 566,
+      "end": 575,
+      "returns": [
+            {
+                  "begin": 574,
+                  "end": 574,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "int32_t ETH_PHY_IO_DeInit (void)",
+      "parameters": [],
+      "begin": 583,
+      "end": 585,
+      "returns": [
+            {
+                  "begin": 584,
+                  "end": 584,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "int32_t ETH_PHY_IO_ReadReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t *pRegVal)",
+      "parameters": [],
+      "begin": 595,
+      "end": 602,
+      "returns": [
+            {
+                  "begin": 598,
+                  "end": 598,
+                  "need_brackets": false,
+                  "returned_value": "-1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 601,
+                  "end": 601,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "int32_t ETH_PHY_IO_WriteReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t RegVal)",
+      "parameters": [],
+      "begin": 612,
+      "end": 619,
+      "returns": [
+            {
+                  "begin": 615,
+                  "end": 615,
+                  "need_brackets": false,
+                  "returned_value": "-1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 618,
+                  "end": 618,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "int32_t ETH_PHY_IO_GetTick(void)",
+      "parameters": [],
+      "begin": 626,
+      "end": 628,
+      "returns": [
+            {
+                  "begin": 627,
+                  "end": 627,
+                  "need_brackets": false,
+                  "returned_value": "HAL_GetTick()",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void ethernet_link_check_state(struct netif *netif)",
+      "parameters": [],
+      "begin": 635,
+      "end": 689,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void HAL_ETH_RxAllocateCallback(uint8_t **buff)",
+      "parameters": [],
+      "begin": 692,
+      "end": 711,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t Length)",
+      "parameters": [],
+      "begin": 714,
+      "end": 751,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void HAL_ETH_TxFreeCallback(uint32_t * buff)",
+      "parameters": [],
+      "begin": 754,
+      "end": 760,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}

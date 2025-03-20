@@ -11,35 +11,22 @@ FAILURE = 2
 class FunctionExtractor:
 
     def __init__(self):
-        self.stage = 0
-        self.splitt_str = ['{', '}']
         self.fun_list = ['','','','']
-        self.unallowed_words_in_stage = [ ['=',';'],[], [] ]
+        self.unallowed_words_in_stage = ['=',';']
         self.last_result = []
         self.function_begin = 0
         self.function_end = 0
-        self.return_statements = []
         self.last_returns = []
+        self.last_status = FAILURE
 
-        self.token_validation = [self.token_stage0_validate, self.token_stage1_validate]
-        self.stage_validation = [self.stage_0_validate, self.stage_1_validate]
-
-    def token_stage0_validate(self, token, line_num):
+    def token_validate(self, token):
         ret_val = True
-        if( any(wrd in token for wrd in self.unallowed_words_in_stage[self.stage]) ):
+        if( any(wrd in token for wrd in self.unallowed_words_in_stage) ):
             ret_val = False
         return ret_val
 
-    def token_stage1_validate(self, token, line_num):
-        if('return' in token):
-            self.return_statements.append(line_num)
-        return True
 
-    def stage_1_validate(self, line_num):
-        return True
-
-    def stage_0_validate(self, line_num):
-        self.function_begin = line_num
+    def function_signature_validate(self):
         signature = self.fun_list[0]
         if( len(signature) > 0) and ('(' in signature) and ( ')' in signature ):
             return True
@@ -48,64 +35,38 @@ class FunctionExtractor:
 
     def reset_variables(self):
         self.fun_list = ['','','','']
-        self.stage = 0
-        self.return_statements = []
 
     def add_val(self, new_val):
-        to_be_added = self.fun_list[self.stage]
+        to_be_added = self.fun_list[0]
         new_val = to_be_added + new_val
-        self.fun_list[self.stage] = new_val
-
-    
-    def validate_stage(self, line_num):
-        if self.stage == 0:
-            self.function_begin = line_num
-            return self.stage_0_validate()
-        else: 
-            return True
-
+        self.fun_list[0] = new_val
     
     def get_function_begin(self):
-        return FunctionParser_FunctObject(self.last_result[0], self.function_begin, self.last_returns, self.function_end)
+        return FunctionParser_FunctObject(self.last_result[0], [] , self.function_begin, self.function_end)
 
     def get_function_signature(self):
         return self.last_result[0]
+    
+    def block_begin(self, line_num):
+        if(self.function_signature_validate() == True):
+            self.last_status = SUCCESS
+            self.function_begin = line_num
+        else:    
+            self.last_status = FAILURE
+            self.reset_variables()
+
+    def block_end(self, line_num):
+        if self.last_status == SUCCESS:
+            self.function_end = line_num
+            self.function_end = line_num
+            self.last_result = self.fun_list
+            self.reset_variables()
+        return self.last_status
 
     def process_line(self, line, line_num):
-        to_be_added: str
-        next_token = "test"
-        state_transition = False
-        while(len(next_token) > 0):
-
-            if(self.splitt_str[self.stage] in line):
-                splitted = line.split(self.splitt_str[self.stage]) 
-                to_be_added = splitted[0]
-                next_token = splitted[1]
-                state_transition = True
-            else:
-                to_be_added = line
-                state_transition = False
-
-            if self.token_validation[self.stage](to_be_added, line_num) == True:
-                self.add_val(to_be_added)
-            else:
-                self.reset_variables()
-                return FAILURE 
-
-            if(state_transition == True):
-                if(self.stage_validation[self.stage](line_num) == True):
-                    self.stage = self.stage + 1
-
-                    if(self.stage == len(self.splitt_str)):
-                        self.function_end = line_num
-                        self.last_result = self.fun_list
-                        self.last_returns = self.return_statements
-                        self.reset_variables()
-                        return SUCCESS
-                    else:
-                        line = next_token
-                else:
-                    self.reset_variables()
-                    return FAILURE
-            else:
-                return INCOMPLETE    
+        if self.token_validate(line) == True:
+            self.last_status = INCOMPLETE
+            self.add_val(line)
+        else:
+            self.last_status = FAILURE
+            self.reset_variables()

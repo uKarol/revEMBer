@@ -1,8 +1,11 @@
+import sys
+sys.path.append('..')
 import re
 from revember_function_parser.comment_extractor import CommentExtractor 
-from revember_function_parser.block_extractor import BlockExtractor
+from revember_function_parser.block_extractor import BlockExtractor, BlockCodeDiscriminator
 from revember_function_parser.function_extractor import *
-
+from revember_function_parser.experimantal_preprocessing import *
+from revember_function_parser.revember_function_parser_data_classes import *
 
 class CascadedExtractor:
 
@@ -10,7 +13,7 @@ class CascadedExtractor:
         self.next_stage_processing = next_stage_processing
 
     def remove_single_block_comments(self,line, line_num):
-        extracted = re.sub('/(.+?)/', '', line)
+        extracted = re.sub('/(.+?)\*/', '', line)
         if(len(extracted) > 0):
             self.next_stage_processing(extracted, line_num)
 
@@ -19,16 +22,11 @@ class CascadedExtractor:
         if(len(splitted) > 0):
             self.next_stage_processing(splitted, line_num)
 
-    def proprocessor_processing(self, line, line_num):
-        pass
 
     def process_line(self, line, line_num):
         line_to_process = line.strip()
         
-        if (line_to_process.startswith('#')):
-            self.proprocessor_processing(line, line_num)
-
-        elif("//" in line_to_process):
+        if("//" in line_to_process):
             self.remove_single_line_comments(line_to_process, line_num)
 
         elif ("/*" in line_to_process) and ("*/" in line_to_process):
@@ -41,17 +39,37 @@ class CascadedExtractor:
 class FunctionDetector:
 
     def __init__(self):
-        block_extr = BlockExtractor(self._function_extracting)
-        comment_extr = CommentExtractor(block_extr.process_line)
-        self.extractor = CascadedExtractor(comment_extr.process_line)
-        self.found_functions = {}
-        self.fun_extractor = FunctionExtractor()
         
-    def _function_extracting(self, line, line_num):
-        splitter_status = self.fun_extractor.process_line(line, line_num)
+        self.code_disc = BlockCodeDiscriminator() 
+        self.fun_extractor = FunctionExtractor()
+        block_extr = BlockExtractor(self.fun_extractor.process_line, self.fun_extractor.block_begin, self._function_extracting, self.code_disc.process_line_in_block)
+        self.prep = DefineDecoder(block_extr.process_line) 
+        self.conditional_extractor = ConditionalCompilationDecoder(self.prep.process_line)
+        self.comment_extr = CommentExtractor(self.conditional_extractor.process_line)
+        self.extractor = CascadedExtractor(self.comment_extr.process_line) 
+        self.found_functions = {}
+
+        
+    def _function_extracting(self, line_num):
+        splitter_status = self.fun_extractor.block_end(line_num)
         if(splitter_status == SUCCESS):
+            
             signature = self.fun_extractor.get_function_signature()
-            self.found_functions.update({signature : self.fun_extractor.get_function_begin()})     
+            function_data = self.fun_extractor.get_function_begin()
+            function_details = self.code_disc.get_found_rets()
+            self.found_functions.update({signature : FUnctionParser_FunctData(function_data.name,
+                                                                            function_data.parameters,
+                                                                            function_data.begin,
+                                                                            function_data.end,
+                                                                            function_details.returns,
+                                                                            function_details.warnings,
+                                                                            function_details.revember_artifacts
+                                                                            )})
+            self.code_disc.reset_vals()
+
+        else:
+            self.code_disc.get_found_rets()
+            self.code_disc.reset_vals()
 
     def get_found_functions(self):
         return self.found_functions

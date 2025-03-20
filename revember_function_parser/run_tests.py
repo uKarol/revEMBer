@@ -1,3 +1,8 @@
+import sys
+import os
+# setting path
+sys.path.append('..')
+
 from cascaded_extractor import *
 import dataclasses 
 import json

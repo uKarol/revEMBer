@@ -13,8 +13,9 @@ class CFileManip:
         }   
 
     def add_include_info(self, lines):
-        lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
-
+        if not (self.comment in lines):
+            lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
+            
     def add_sequence_in_begin(self, line:str, sequence_to_add: str):
         
         ret_val = line
@@ -24,7 +25,7 @@ class CFileManip:
                 ret_val = line + sequence_to_add
             else:
                 substrs = line.split('{', maxsplit= 1)
-                ret_val = substrs[0] + '{\n' + sequence_to_add + substrs[1]
+                ret_val = f"{substrs[0]} {{\n {sequence_to_add} {substrs[1]} "
         
         return ret_val
     
@@ -38,38 +39,45 @@ class CFileManip:
                 ret_val = sequence_to_add + line
             else:
                 substrs = line.split('}', maxsplit= 1)
-                ret_val = substrs[0] + '\n' + sequence_to_add + substrs[1] + '}'
+                ret_val = f"{substrs[0]} \n {sequence_to_add} {substrs[1]} }}"
         
         return ret_val
 
-    def add_sequence_in_return(self, line: str, sequence_to_add: str):
+    def add_sequence_in_return(self, line: str, sequence_to_add: str, add_brace):
         ret_val = line 
+        prefix = ""
+        if(add_brace == True):
+            prefix = "{\n"
         if 'return' in line:
             if line.strip().startswith('return'):
-                ret_val =  sequence_to_add + line
+                ret_val =  prefix + sequence_to_add + line
             else:
                 substrs = line.split('return', maxsplit= 1)
-                ret_val = substrs[0] + sequence_to_add + "return " + substrs[1]
-
+                ret_val = substrs[0] + prefix + sequence_to_add +" return"+ substrs[1]
+        else:
+            ret_val = line + prefix + sequence_to_add 
         return ret_val
 
-    def add_dbg_fun(self, functions_to_change: FunctObject, lines):
-            
+    def add_dbg_fun(self, functions_to_change, lines):
             function_begin_ln = functions_to_change.begin
             function_rets = functions_to_change.returns
             function_end_ln = functions_to_change.end
-            
             lines[function_begin_ln] = self.add_sequence_in_begin(lines[function_begin_ln], self.to_be_added["begin"] + ' \n')
+            add_ex = True
 
-            if type(function_rets) == int: 
-                lines[function_rets] = self.add_sequence_in_return(lines[function_rets], self.to_be_added["ret"] + ' \n')
-            elif len(function_rets) > 0:
-                for ret in function_rets.split():
-                    ret = int(ret)
-                    lines[ret] = self.add_sequence_in_return(lines[ret], self.to_be_added["ret"] + ' \n')
-            
-            else: 
-                print(function_rets.split())
+            for ret in function_rets:
+                if ret["return_warning"] == "improper return statement":
+                    lines[ret["begin"]] = '#waring "improper return statement - add revember macros manually" \n' + lines[ret["begin"]] 
+                else:
+                    if ret["returned_value"] != "":
+                        add_ex = False
+                    need_braces = ret["need_brackets"]
+                    if need_braces == False:
+                        lines[ret["begin"]] = self.add_sequence_in_return(lines[ret["begin"]], self.to_be_added["ret"] + ' \n', need_braces)
+                    else:
+                        lines[ret["begin"]] = self.add_sequence_in_return(lines[ret["begin"]], self.to_be_added["ret"] + ' \n', need_braces)
+                        lines[ret["end"]] = lines[ret["end"]] + " }\n"
+            if add_ex:
                 lines[function_end_ln] = self.add_sequence_in_end(lines[function_end_ln], self.to_be_added["end"] + ' \n')
 
 
@@ -84,7 +92,7 @@ class CFileManip:
             self.add_include_info(lines)
 
             for function_obj in functions_to_change:
-                self.add_dbg_fun(function_obj, lines)
+                self.add_dbg_fun(functions_to_change[function_obj], lines)
 
             file.seek(0)
             

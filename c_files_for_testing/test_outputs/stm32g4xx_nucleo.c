@@ -1,9 +1,3 @@
-/* 
-THIS FILE HAS ADDED DEBUG INFORMATIONS 
- revEMBer projct in github: https://github.com/uKarol/revEMBer 
-jefvcoe oefpm d actmdhsae
-*/
-#include "revEMBer.h"
 /**
   ******************************************************************************
   * @file    stm32g4xx_nucleo.c
@@ -143,8 +137,6 @@ int iar_fputc(int ch);
   */
 int32_t BSP_GetVersion(void)
 {
-REVEMBER_FUNCTION_ENTRY() 
-REVEMBER_FUNCTION_EXIT() 
   return (int32_t)STM32G4XX_NUCLEO_BSP_VERSION;
 }
 
@@ -154,8 +146,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 const uint8_t* BSP_GetBoardName(void)
 {
-REVEMBER_FUNCTION_ENTRY() 
-REVEMBER_FUNCTION_EXIT() 
   return (const uint8_t*)STM32G4XX_NUCLEO_BSP_BOARD_NAME;
 }
 
@@ -165,8 +155,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 const uint8_t* BSP_GetBoardID(void)
 {
-REVEMBER_FUNCTION_ENTRY() 
-REVEMBER_FUNCTION_EXIT() 
   return (const uint8_t*)STM32G4XX_NUCLEO_BSP_BOARD_ID;
 }
 
@@ -179,7 +167,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_LED_Init(Led_TypeDef Led)
 {
-REVEMBER_FUNCTION_ENTRY() 
   GPIO_InitTypeDef  gpio_init_structure;
 
   /* Enable the GPIO LED Clock */
@@ -194,7 +181,6 @@ REVEMBER_FUNCTION_ENTRY()
   HAL_GPIO_Init(LED_PORT[Led], &gpio_init_structure);
   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
 
-REVEMBER_FUNCTION_EXIT() 
   return BSP_ERROR_NONE;
 }
 
@@ -208,14 +194,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_LED_DeInit(Led_TypeDef Led)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Turn off LED */
   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
 
   /* DeInit the GPIO_LED pin */
   HAL_GPIO_DeInit(LED_PORT[Led], LED_PIN[Led]);
 
-REVEMBER_FUNCTION_EXIT() 
   return BSP_ERROR_NONE;
 }
 
@@ -228,10 +212,8 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_LED_On(Led_TypeDef Led)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_SET);
 
-REVEMBER_FUNCTION_EXIT() 
   return BSP_ERROR_NONE;
 }
 
@@ -244,10 +226,8 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_LED_Off(Led_TypeDef Led)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_GPIO_WritePin(LED_PORT[Led], LED_PIN[Led], GPIO_PIN_RESET);
 
-REVEMBER_FUNCTION_EXIT() 
   return BSP_ERROR_NONE;
 }
 
@@ -260,10 +240,8 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_LED_Toggle(Led_TypeDef Led)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_GPIO_TogglePin(LED_PORT[Led], LED_PIN[Led]);
 
-REVEMBER_FUNCTION_EXIT() 
   return BSP_ERROR_NONE;
 }
 
@@ -276,8 +254,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_LED_GetState(Led_TypeDef Led)
 {
-REVEMBER_FUNCTION_ENTRY() 
-REVEMBER_FUNCTION_EXIT() 
   return (int32_t)HAL_GPIO_ReadPin(LED_PORT[Led], LED_PIN[Led]);
 }
 
@@ -296,7 +272,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef ButtonMode)
 {
-REVEMBER_FUNCTION_ENTRY() 
   GPIO_InitTypeDef gpio_init_structure;
   static BSP_EXTI_LineCallback ButtonCallback[BUTTONn] = {BUTTON_USER_EXTI_Callback};
   static uint32_t BSP_BUTTON_PRIO [BUTTONn] = {BSP_BUTTON_USER_IT_PRIORITY};
@@ -330,7 +305,6 @@ REVEMBER_FUNCTION_ENTRY()
     HAL_NVIC_EnableIRQ((BUTTON_IRQn[Button]));
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return BSP_ERROR_NONE;
 }
 
@@ -344,11 +318,9 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_PB_DeInit(Button_TypeDef Button)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_NVIC_DisableIRQ((BUTTON_IRQn[Button]));
   HAL_GPIO_DeInit(BUTTON_PORT[Button], BUTTON_PIN[Button]);
 
-REVEMBER_FUNCTION_EXIT() 
   return BSP_ERROR_NONE;
 }
 
@@ -361,8 +333,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_PB_GetState(Button_TypeDef Button)
 {
-REVEMBER_FUNCTION_ENTRY() 
-REVEMBER_FUNCTION_EXIT() 
   return (int32_t)HAL_GPIO_ReadPin(BUTTON_PORT[Button], BUTTON_PIN[Button]);
 }
 
@@ -373,9 +343,7 @@ REVEMBER_FUNCTION_EXIT()
   */
 void BSP_PB_IRQHandler(Button_TypeDef Button)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_EXTI_IRQHandler(&hpb_exti[Button]);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -385,13 +353,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void BSP_PB_Callback(Button_TypeDef Button)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(Button);
 
   /* This function should be implemented by the user application.
      It is called into this driver when an event on Button is triggered. */
-REVEMBER_FUNCTION_EXIT() 
 }
 #endif /* USE_NUCLEO_64 */
 
@@ -406,7 +372,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_COM_Init(COM_TypeDef COM, COM_InitTypeDef *COM_Init)
 {
-REVEMBER_FUNCTION_ENTRY() 
   int32_t ret = BSP_ERROR_NONE;
 
   if(COM > COMn)
@@ -423,7 +388,6 @@ REVEMBER_FUNCTION_ENTRY()
     {
       if(BSP_COM_RegisterDefaultMspCallbacks(COM) != BSP_ERROR_NONE)
       {
-REVEMBER_FUNCTION_EXIT() 
         return BSP_ERROR_MSP_FAILURE;
       }
     }
@@ -431,12 +395,10 @@ REVEMBER_FUNCTION_EXIT()
 
     if(MX_LPUART1_Init(&hcom_uart[COM], COM_Init) != HAL_OK)
     {
-REVEMBER_FUNCTION_EXIT() 
       return BSP_ERROR_PERIPH_FAILURE;
     }
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return ret;
 }
 
@@ -448,7 +410,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_COM_DeInit(COM_TypeDef COM)
 {
-REVEMBER_FUNCTION_ENTRY() 
   int32_t ret = BSP_ERROR_NONE;
 
   if(COM >= COMn)
@@ -466,12 +427,10 @@ REVEMBER_FUNCTION_ENTRY()
 
     if(HAL_UART_DeInit(&hcom_uart[COM]) != HAL_OK)
     {
-REVEMBER_FUNCTION_EXIT() 
       return BSP_ERROR_PERIPH_FAILURE;
     }
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return ret;
 }
 
@@ -484,7 +443,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak HAL_StatusTypeDef MX_LPUART1_Init(UART_HandleTypeDef *huart, MX_UART_InitTypeDef *COM_Init)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* USART configuration */
  huart->Instance          = COM_USART[COM1];
  huart->Init.BaudRate     = COM_Init->BaudRate;
@@ -495,7 +453,6 @@ REVEMBER_FUNCTION_ENTRY()
  huart->Init.HwFlowCtl    = (uint32_t)COM_Init->HwFlowCtl;
  huart->Init.OverSampling = UART_OVERSAMPLING_8;
 
-REVEMBER_FUNCTION_EXIT() 
  return HAL_UART_Init(huart);
 }
 
@@ -508,7 +465,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_COM_RegisterDefaultMspCallbacks(COM_TypeDef COM)
 {
-REVEMBER_FUNCTION_ENTRY() 
   int32_t ret = BSP_ERROR_NONE;
 
   if(COM >= COMn)
@@ -535,7 +491,6 @@ REVEMBER_FUNCTION_ENTRY()
   }
 
   /* BSP status */
-REVEMBER_FUNCTION_EXIT() 
   return ret;
 }
 
@@ -548,7 +503,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_COM_RegisterMspCallbacks(COM_TypeDef COM , BSP_COM_Cb_t *Callback)
 {
-REVEMBER_FUNCTION_ENTRY() 
   int32_t ret = BSP_ERROR_NONE;
 
   if(COM >= COMn)
@@ -574,7 +528,6 @@ REVEMBER_FUNCTION_ENTRY()
     }
   }
   /* BSP status */
-REVEMBER_FUNCTION_EXIT() 
   return ret;
 }
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
@@ -588,12 +541,10 @@ REVEMBER_FUNCTION_EXIT()
   */
 int32_t BSP_COM_SelectLogPort(COM_TypeDef COM)
 {
-REVEMBER_FUNCTION_ENTRY() 
   if(COM_ActiveLogPort != COM)
   {
     COM_ActiveLogPort = COM;
   }
-REVEMBER_FUNCTION_EXIT() 
   return BSP_ERROR_NONE;
 }
 
@@ -607,7 +558,6 @@ REVEMBER_FUNCTION_EXIT()
 #if defined(__ICCARM__)
 size_t __write(int file, unsigned char const *ptr, size_t len)
 {
-REVEMBER_FUNCTION_ENTRY() 
   size_t idx;
   unsigned char const *pdata = ptr;
 
@@ -616,7 +566,6 @@ REVEMBER_FUNCTION_ENTRY()
     iar_fputc((int)*pdata);
     pdata++;
   }
-REVEMBER_FUNCTION_EXIT() 
   return len;
 }
 #endif /* __ICCARM__ */
@@ -646,9 +595,7 @@ PUTCHAR_PROTOTYPE
   */
 static void BUTTON_USER_EXTI_Callback(void)
 {
-REVEMBER_FUNCTION_ENTRY() 
   BSP_PB_Callback(BUTTON_USER);
-REVEMBER_FUNCTION_EXIT() 
 }
 #endif /* USE_NUCLEO_64 */
 
@@ -660,7 +607,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void COM1_MspInit(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   GPIO_InitTypeDef gpio_init_structure;
 
   /* Prevent unused argument(s) compilation warning */
@@ -686,7 +632,6 @@ REVEMBER_FUNCTION_ENTRY()
   gpio_init_structure.Mode = GPIO_MODE_AF_PP;
   gpio_init_structure.Alternate = COM1_RX_AF;
   HAL_GPIO_Init(COM1_RX_GPIO_PORT, &gpio_init_structure);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -696,7 +641,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void COM1_MspDeInit(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   GPIO_InitTypeDef gpio_init_structure;
 
   /* Prevent unused argument(s) compilation warning */
@@ -711,7 +655,6 @@ REVEMBER_FUNCTION_ENTRY()
 
   /* Disable USART clock */
   COM1_CLK_DISABLE();
-REVEMBER_FUNCTION_EXIT() 
 }
 #endif /* (USE_BSP_COM_FEATURE > 0) */
 

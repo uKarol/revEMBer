@@ -31,10 +31,15 @@ int t[5] {
     0,
 };
 
-int get_trash(){
+int get_trash() {
+ REVEMBER_FUNCTION_ENTRY() 
+ REVEMBER_FUNCTION_EXIT() 
+ return 0;}
+ 
+int get_trash1(){
 REVEMBER_FUNCTION_ENTRY() 
 REVEMBER_FUNCTION_EXIT() 
-return  0;}
+    return 1;}
 
 /* dziadostwo */
 void put_trash(){
@@ -77,16 +82,62 @@ REVEMBER_FUNCTION_EXIT()
 /*
     nie wiem co to
 */
+static err_t low_level_output(struct netif *netif, struct pbuf *p)
+{
+REVEMBER_FUNCTION_ENTRY() 
+  uint32_t i = 0U;
+  struct pbuf *q = NULL;
+  err_t errval = ERR_OK;
+  ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT] = {0};
+
+  memset(Txbuffer, 0 , ETH_TX_DESC_CNT*sizeof(ETH_BufferTypeDef));
+
+  for(q = p; q != NULL; q = q->next)
+  {
+    if(i >= ETH_TX_DESC_CNT)
+{
+REVEMBER_FUNCTION_EXIT() 
+      return ERR_IF;
+ }
+
+    Txbuffer[i].buffer = q->payload;
+    Txbuffer[i].len = q->len;
+
+    if(i>0)
+    {
+      Txbuffer[i-1].next = &Txbuffer[i];
+    }
+
+    if(q->next == NULL)
+    {
+        if(i >= ETH_TX_DESC_CNT) {
+REVEMBER_FUNCTION_EXIT() 
+ return ERR_IF;
+ }
+    }
+
+    i++;
+  }
+
+  TxConfig.Length = p->tot_len;
+  TxConfig.TxBuffer = Txbuffer;
+  TxConfig.pData = p;
+
+  HAL_ETH_Transmit(&heth, &TxConfig, ETH_DMA_TRANSMIT_TIMEOUT);
+
+REVEMBER_FUNCTION_EXIT() 
+  return errval;
+}
 
 
 /* DZIWNE FUNKCJE */
 
-void pattern1 (int x, int y) {
-REVEMBER_FUNCTION_ENTRY() 
-std::cout<<"pattern1";
-REVEMBER_FUNCTION_EXIT() 
-
-}void pattern2(int x, int y){
+void pattern1 (int x, int y)  {
+ REVEMBER_FUNCTION_ENTRY() 
+ std::cout<<"pattern1"; 
+ REVEMBER_FUNCTION_EXIT() 
+ 
+  }void pattern2(int x, int y){
 REVEMBER_FUNCTION_ENTRY() 
   
  
@@ -101,25 +152,56 @@ REVEMBER_FUNCTION_ENTRY()
   
  
     std::cout<<"pattern3";
- 
-  
+    int return_value;
+    int value_return;
 REVEMBER_FUNCTION_EXIT() 
 }
 
-void pattern4(int x, int y){
+err_t
+udp_send_chksum(struct udp_pcb *pcb, struct pbuf *p,
+                u8_t have_chksum, u16_t chksum){
+REVEMBER_FUNCTION_ENTRY() 
+    
+    if(pcb == NULL)
+{
+REVEMBER_FUNCTION_EXIT() 
+    return udp_sendto_chksum(pcb, p, &pcb->remote_ip, pcb->remote_port,
+        have_chksum, chksum);
+ }
+
+REVEMBER_FUNCTION_EXIT() 
+    return 0;
+}
+
+err_t
+udp_send_chksum2(struct udp_pcb *pcb, struct pbuf *p,
+                u8_t have_chksum, u16_t chksum){
 REVEMBER_FUNCTION_ENTRY() 
   
- 
-    std::cout<<"pattern4";
- 
-  
 REVEMBER_FUNCTION_EXIT() 
+    return udp_sendto_chksum(pcb, p, &pcb->remote_ip, pcb->remote_port,
+        have_chksum, chksum);
 }
 
-void pattern5(int x, int y)
+err_t
+netconn_recv_tcp_pbuf_flags(struct netconn *conn, struct pbuf **new_buf, u8_t apiflags)
+{
+REVEMBER_FUNCTION_ENTRY() 
+#waring "improper return statement - add revember macros manually" 
+  LWIP_ERROR("netconn_recv_tcp_pbuf: invalid conn", (conn != NULL) &&
+             NETCONNTYPE_GROUP(netconn_type(conn)) == NETCONN_TCP, return ERR_ARG;);
+
+REVEMBER_FUNCTION_EXIT() 
+  return netconn_recv_data_tcp(conn, new_buf, apiflags);
+}
+
+err_t
+netconn_getaddr pattern5(int x, int y)
 {
 REVEMBER_FUNCTION_ENTRY() 
     std::cout<<"pattern5";
+#waring "improper return statement - add revember macros manually" 
+    LWIP_ERROR("netconn_getaddr: invalid conn", (conn != NULL), return ERR_ARG;);
 REVEMBER_FUNCTION_EXIT() 
 }
 
@@ -134,10 +216,10 @@ REVEMBER_FUNCTION_EXIT()
 void pattern7(int x, 
     int y
 )
-{
-REVEMBER_FUNCTION_ENTRY() 
-  std::cout<<"pattern7";
-  
+ {
+ REVEMBER_FUNCTION_ENTRY() 
+   std::cout<<"pattern7";
+   
 REVEMBER_FUNCTION_EXIT() 
 }
 

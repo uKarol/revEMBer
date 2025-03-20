@@ -1,9 +1,3 @@
-/* 
-THIS FILE HAS ADDED DEBUG INFORMATIONS 
- revEMBer projct in github: https://github.com/uKarol/revEMBer 
-jefvcoe oefpm d actmdhsae
-*/
-#include "revEMBer.h"
 /**
   ******************************************************************************
   * @file    stm32g4xx_hal_uart.c
@@ -312,11 +306,9 @@ const uint16_t UARTPrescTable[12] = {1U, 2U, 4U, 6U, 8U, 10U, 12U, 16U, 32U, 64U
   */
 HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the UART handle allocation */
   if (huart == NULL)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -366,7 +358,6 @@ REVEMBER_FUNCTION_EXIT()
   /* Set the UART Communication parameters */
   if (UART_SetConfig(huart) == HAL_ERROR)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -379,7 +370,6 @@ REVEMBER_FUNCTION_EXIT()
   __HAL_UART_ENABLE(huart);
 
   /* TEACK and/or REACK to check before moving huart->gState and huart->RxState to Ready */
-REVEMBER_FUNCTION_EXIT() 
   return (UART_CheckIdleState(huart));
 }
 
@@ -391,11 +381,9 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_HalfDuplex_Init(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the UART handle allocation */
   if (huart == NULL)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -437,7 +425,6 @@ REVEMBER_FUNCTION_EXIT()
   /* Set the UART Communication parameters */
   if (UART_SetConfig(huart) == HAL_ERROR)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -453,7 +440,6 @@ REVEMBER_FUNCTION_EXIT()
   __HAL_UART_ENABLE(huart);
 
   /* TEACK and/or REACK to check before moving huart->gState and huart->RxState to Ready */
-REVEMBER_FUNCTION_EXIT() 
   return (UART_CheckIdleState(huart));
 }
 
@@ -470,11 +456,9 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_LIN_Init(UART_HandleTypeDef *huart, uint32_t BreakDetectLength)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the UART handle allocation */
   if (huart == NULL)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -486,13 +470,11 @@ REVEMBER_FUNCTION_EXIT()
   /* LIN mode limited to 16-bit oversampling only */
   if (huart->Init.OverSampling == UART_OVERSAMPLING_8)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
   /* LIN mode limited to 8-bit data length */
   if (huart->Init.WordLength != UART_WORDLENGTH_8B)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -531,7 +513,6 @@ REVEMBER_FUNCTION_EXIT()
   /* Set the UART Communication parameters */
   if (UART_SetConfig(huart) == HAL_ERROR)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -550,7 +531,6 @@ REVEMBER_FUNCTION_EXIT()
   __HAL_UART_ENABLE(huart);
 
   /* TEACK and/or REACK to check before moving huart->gState and huart->RxState to Ready */
-REVEMBER_FUNCTION_EXIT() 
   return (UART_CheckIdleState(huart));
 }
 
@@ -575,11 +555,9 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_MultiProcessor_Init(UART_HandleTypeDef *huart, uint8_t Address, uint32_t WakeUpMethod)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the UART handle allocation */
   if (huart == NULL)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -621,7 +599,6 @@ REVEMBER_FUNCTION_EXIT()
   /* Set the UART Communication parameters */
   if (UART_SetConfig(huart) == HAL_ERROR)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -643,7 +620,6 @@ REVEMBER_FUNCTION_EXIT()
   __HAL_UART_ENABLE(huart);
 
   /* TEACK and/or REACK to check before moving huart->gState and huart->RxState to Ready */
-REVEMBER_FUNCTION_EXIT() 
   return (UART_CheckIdleState(huart));
 }
 
@@ -655,11 +631,9 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_DeInit(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the UART handle allocation */
   if (huart == NULL)
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -694,7 +668,6 @@ REVEMBER_FUNCTION_EXIT()
 
   __HAL_UNLOCK(huart);
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -705,14 +678,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_UART_MspInit can be implemented in the user file
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -722,14 +693,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_UART_MspDeInit can be implemented in the user file
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 #if (USE_HAL_UART_REGISTER_CALLBACKS == 1)
@@ -761,14 +730,12 @@ REVEMBER_FUNCTION_EXIT()
 HAL_StatusTypeDef HAL_UART_RegisterCallback(UART_HandleTypeDef *huart, HAL_UART_CallbackIDTypeDef CallbackID,
                                             pUART_CallbackTypeDef pCallback)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   if (pCallback == NULL)
   {
     huart->ErrorCode |= HAL_UART_ERROR_INVALID_CALLBACK;
 
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -861,7 +828,6 @@ REVEMBER_FUNCTION_EXIT()
     status =  HAL_ERROR;
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -891,7 +857,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_UnRegisterCallback(UART_HandleTypeDef *huart, HAL_UART_CallbackIDTypeDef CallbackID)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   if (HAL_UART_STATE_READY == huart->gState)
@@ -985,7 +950,6 @@ REVEMBER_FUNCTION_ENTRY()
     status =  HAL_ERROR;
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -998,14 +962,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_RegisterRxEventCallback(UART_HandleTypeDef *huart, pUART_RxEventCallbackTypeDef pCallback)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   if (pCallback == NULL)
   {
     huart->ErrorCode |= HAL_UART_ERROR_INVALID_CALLBACK;
 
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 
@@ -1020,7 +982,6 @@ REVEMBER_FUNCTION_EXIT()
     status =  HAL_ERROR;
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -1032,7 +993,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_UnRegisterRxEventCallback(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   HAL_StatusTypeDef status = HAL_OK;
 
   if (huart->RxState == HAL_UART_STATE_READY)
@@ -1046,7 +1006,6 @@ REVEMBER_FUNCTION_ENTRY()
     status =  HAL_ERROR;
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return status;
 }
 
@@ -1157,7 +1116,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout)
 {
-REVEMBER_FUNCTION_ENTRY() 
   const uint8_t  *pdata8bits;
   const uint16_t *pdata16bits;
   uint32_t tickstart;
@@ -1167,7 +1125,6 @@ REVEMBER_FUNCTION_ENTRY()
   {
     if ((pData == NULL) || (Size == 0U))
     {
-REVEMBER_FUNCTION_EXIT() 
       return  HAL_ERROR;
     }
 
@@ -1199,7 +1156,6 @@ REVEMBER_FUNCTION_EXIT()
 
         huart->gState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
         return HAL_TIMEOUT;
       }
       if (pdata8bits == NULL)
@@ -1219,19 +1175,16 @@ REVEMBER_FUNCTION_EXIT()
     {
       huart->gState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
       return HAL_TIMEOUT;
     }
 
     /* At end of Tx process, restore huart->gState to Ready */
     huart->gState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
     return HAL_OK;
   }
   else
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_BUSY;
   }
 }
@@ -1253,7 +1206,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint8_t  *pdata8bits;
   uint16_t *pdata16bits;
   uint16_t uhMask;
@@ -1264,7 +1216,6 @@ REVEMBER_FUNCTION_ENTRY()
   {
     if ((pData == NULL) || (Size == 0U))
     {
-REVEMBER_FUNCTION_EXIT() 
       return  HAL_ERROR;
     }
 
@@ -1301,7 +1252,6 @@ REVEMBER_FUNCTION_EXIT()
       {
         huart->RxState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
         return HAL_TIMEOUT;
       }
       if (pdata8bits == NULL)
@@ -1320,12 +1270,10 @@ REVEMBER_FUNCTION_EXIT()
     /* At end of Rx process, restore huart->RxState to Ready */
     huart->RxState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
     return HAL_OK;
   }
   else
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_BUSY;
   }
 }
@@ -1342,13 +1290,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check that a Tx process is not already ongoing */
   if (huart->gState == HAL_UART_STATE_READY)
   {
     if ((pData == NULL) || (Size == 0U))
     {
-REVEMBER_FUNCTION_EXIT() 
       return HAL_ERROR;
     }
 
@@ -1392,12 +1338,10 @@ REVEMBER_FUNCTION_EXIT()
       ATOMIC_SET_BIT(huart->Instance->CR1, USART_CR1_TXEIE_TXFNFIE);
     }
 
-REVEMBER_FUNCTION_EXIT() 
     return HAL_OK;
   }
   else
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_BUSY;
   }
 }
@@ -1414,13 +1358,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check that a Rx process is not already ongoing */
   if (huart->RxState == HAL_UART_STATE_READY)
   {
     if ((pData == NULL) || (Size == 0U))
     {
-REVEMBER_FUNCTION_EXIT() 
       return HAL_ERROR;
     }
 
@@ -1437,12 +1379,10 @@ REVEMBER_FUNCTION_EXIT()
       }
     }
 
-REVEMBER_FUNCTION_EXIT() 
     return (UART_Start_Receive_IT(huart, pData, Size));
   }
   else
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_BUSY;
   }
 }
@@ -1459,13 +1399,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_Transmit_DMA(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check that a Tx process is not already ongoing */
   if (huart->gState == HAL_UART_STATE_READY)
   {
     if ((pData == NULL) || (Size == 0U))
     {
-REVEMBER_FUNCTION_EXIT() 
       return HAL_ERROR;
     }
 
@@ -1499,7 +1437,6 @@ REVEMBER_FUNCTION_EXIT()
         /* Restore huart->gState to ready */
         huart->gState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
         return HAL_ERROR;
       }
     }
@@ -1510,12 +1447,10 @@ REVEMBER_FUNCTION_EXIT()
     in the UART CR3 register */
     ATOMIC_SET_BIT(huart->Instance->CR3, USART_CR3_DMAT);
 
-REVEMBER_FUNCTION_EXIT() 
     return HAL_OK;
   }
   else
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_BUSY;
   }
 }
@@ -1534,13 +1469,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check that a Rx process is not already ongoing */
   if (huart->RxState == HAL_UART_STATE_READY)
   {
     if ((pData == NULL) || (Size == 0U))
     {
-REVEMBER_FUNCTION_EXIT() 
       return HAL_ERROR;
     }
 
@@ -1557,12 +1490,10 @@ REVEMBER_FUNCTION_EXIT()
       }
     }
 
-REVEMBER_FUNCTION_EXIT() 
     return (UART_Start_Receive_DMA(huart, pData, Size));
   }
   else
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_BUSY;
   }
 }
@@ -1574,7 +1505,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_DMAPause(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   const HAL_UART_StateTypeDef gstate = huart->gState;
   const HAL_UART_StateTypeDef rxstate = huart->RxState;
 
@@ -1595,7 +1525,6 @@ REVEMBER_FUNCTION_ENTRY()
     ATOMIC_CLEAR_BIT(huart->Instance->CR3, USART_CR3_DMAR);
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -1606,7 +1535,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_DMAResume(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   if (huart->gState == HAL_UART_STATE_BUSY_TX)
   {
     /* Enable the UART DMA Tx request */
@@ -1628,7 +1556,6 @@ REVEMBER_FUNCTION_ENTRY()
     ATOMIC_SET_BIT(huart->Instance->CR3, USART_CR3_DMAR);
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -1639,7 +1566,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_DMAStop(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* The Lock is not implemented on this API to allow the user application
      to call the HAL UART API under callbacks HAL_UART_TxCpltCallback() / HAL_UART_RxCpltCallback() /
      HAL_UART_TxHalfCpltCallback / HAL_UART_RxHalfCpltCallback:
@@ -1666,7 +1592,6 @@ REVEMBER_FUNCTION_ENTRY()
           /* Set error code to DMA */
           huart->ErrorCode = HAL_UART_ERROR_DMA;
 
-REVEMBER_FUNCTION_EXIT() 
           return HAL_TIMEOUT;
         }
       }
@@ -1691,7 +1616,6 @@ REVEMBER_FUNCTION_EXIT()
           /* Set error code to DMA */
           huart->ErrorCode = HAL_UART_ERROR_DMA;
 
-REVEMBER_FUNCTION_EXIT() 
           return HAL_TIMEOUT;
         }
       }
@@ -1700,7 +1624,6 @@ REVEMBER_FUNCTION_EXIT()
     UART_EndRxTransfer(huart);
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -1718,7 +1641,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_Abort(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Disable TXE, TC, RXNE, PE, RXFT, TXFT and ERR (Frame error, noise error, overrun error) interrupts */
   ATOMIC_CLEAR_BIT(huart->Instance->CR1, (USART_CR1_RXNEIE_RXFNEIE | USART_CR1_PEIE |
                                           USART_CR1_TXEIE_TXFNFIE | USART_CR1_TCIE));
@@ -1750,7 +1672,6 @@ REVEMBER_FUNCTION_ENTRY()
           /* Set error code to DMA */
           huart->ErrorCode = HAL_UART_ERROR_DMA;
 
-REVEMBER_FUNCTION_EXIT() 
           return HAL_TIMEOUT;
         }
       }
@@ -1777,7 +1698,6 @@ REVEMBER_FUNCTION_EXIT()
           /* Set error code to DMA */
           huart->ErrorCode = HAL_UART_ERROR_DMA;
 
-REVEMBER_FUNCTION_EXIT() 
           return HAL_TIMEOUT;
         }
       }
@@ -1807,7 +1727,6 @@ REVEMBER_FUNCTION_EXIT()
 
   huart->ErrorCode = HAL_UART_ERROR_NONE;
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -1825,7 +1744,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_AbortTransmit(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Disable TCIE, TXEIE and TXFTIE interrupts */
   ATOMIC_CLEAR_BIT(huart->Instance->CR1, (USART_CR1_TCIE | USART_CR1_TXEIE_TXFNFIE));
   ATOMIC_CLEAR_BIT(huart->Instance->CR3, USART_CR3_TXFTIE);
@@ -1850,7 +1768,6 @@ REVEMBER_FUNCTION_ENTRY()
           /* Set error code to DMA */
           huart->ErrorCode = HAL_UART_ERROR_DMA;
 
-REVEMBER_FUNCTION_EXIT() 
           return HAL_TIMEOUT;
         }
       }
@@ -1869,7 +1786,6 @@ REVEMBER_FUNCTION_EXIT()
   /* Restore huart->gState to Ready */
   huart->gState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -1887,7 +1803,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_AbortReceive(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Disable PEIE, EIE, RXNEIE and RXFTIE interrupts */
   ATOMIC_CLEAR_BIT(huart->Instance->CR1, (USART_CR1_PEIE | USART_CR1_RXNEIE_RXFNEIE));
   ATOMIC_CLEAR_BIT(huart->Instance->CR3, USART_CR3_EIE | USART_CR3_RXFTIE);
@@ -1918,7 +1833,6 @@ REVEMBER_FUNCTION_ENTRY()
           /* Set error code to DMA */
           huart->ErrorCode = HAL_UART_ERROR_DMA;
 
-REVEMBER_FUNCTION_EXIT() 
           return HAL_TIMEOUT;
         }
       }
@@ -1938,7 +1852,6 @@ REVEMBER_FUNCTION_EXIT()
   huart->RxState = HAL_UART_STATE_READY;
   huart->ReceptionType = HAL_UART_RECEPTION_STANDARD;
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -1958,7 +1871,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_Abort_IT(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t abortcplt = 1U;
 
   /* Disable interrupts */
@@ -2093,7 +2005,6 @@ REVEMBER_FUNCTION_ENTRY()
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -2113,7 +2024,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_AbortTransmit_IT(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Disable interrupts */
   ATOMIC_CLEAR_BIT(huart->Instance->CR1, (USART_CR1_TCIE | USART_CR1_TXEIE_TXFNFIE));
   ATOMIC_CLEAR_BIT(huart->Instance->CR3, USART_CR3_TXFTIE);
@@ -2186,7 +2096,6 @@ REVEMBER_FUNCTION_ENTRY()
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -2206,7 +2115,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_AbortReceive_IT(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Disable RXNE, PE and ERR (Frame error, noise error, overrun error) interrupts */
   ATOMIC_CLEAR_BIT(huart->Instance->CR1, (USART_CR1_PEIE | USART_CR1_RXNEIE_RXFNEIE));
   ATOMIC_CLEAR_BIT(huart->Instance->CR3, (USART_CR3_EIE | USART_CR3_RXFTIE));
@@ -2290,7 +2198,6 @@ REVEMBER_FUNCTION_ENTRY()
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
   }
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -2301,7 +2208,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t isrflags   = READ_REG(huart->Instance->ISR);
   uint32_t cr1its     = READ_REG(huart->Instance->CR1);
   uint32_t cr3its     = READ_REG(huart->Instance->CR3);
@@ -2322,7 +2228,6 @@ REVEMBER_FUNCTION_ENTRY()
       {
         huart->RxISR(huart);
       }
-REVEMBER_FUNCTION_EXIT() 
       return;
     }
   }
@@ -2461,7 +2366,6 @@ REVEMBER_FUNCTION_EXIT()
         huart->ErrorCode = HAL_UART_ERROR_NONE;
       }
     }
-REVEMBER_FUNCTION_EXIT() 
     return;
 
   } /* End if some error occurs */
@@ -2543,7 +2447,6 @@ REVEMBER_FUNCTION_EXIT()
           }
         }
       }
-REVEMBER_FUNCTION_EXIT() 
       return;
     }
     else
@@ -2582,7 +2485,6 @@ REVEMBER_FUNCTION_EXIT()
         HAL_UARTEx_RxEventCallback(huart, nb_rx_data);
 #endif /* (USE_HAL_UART_REGISTER_CALLBACKS) */
       }
-REVEMBER_FUNCTION_EXIT() 
       return;
     }
   }
@@ -2602,7 +2504,6 @@ REVEMBER_FUNCTION_EXIT()
     /* Call legacy weak Wakeup Callback */
     HAL_UARTEx_WakeupCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
-REVEMBER_FUNCTION_EXIT() 
     return;
   }
 
@@ -2615,7 +2516,6 @@ REVEMBER_FUNCTION_EXIT()
     {
       huart->TxISR(huart);
     }
-REVEMBER_FUNCTION_EXIT() 
     return;
   }
 
@@ -2623,7 +2523,6 @@ REVEMBER_FUNCTION_EXIT()
   if (((isrflags & USART_ISR_TC) != 0U) && ((cr1its & USART_CR1_TCIE) != 0U))
   {
     UART_EndTransmit_IT(huart);
-REVEMBER_FUNCTION_EXIT() 
     return;
   }
 
@@ -2637,7 +2536,6 @@ REVEMBER_FUNCTION_EXIT()
     /* Call legacy weak Tx Fifo Empty Callback */
     HAL_UARTEx_TxFifoEmptyCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
-REVEMBER_FUNCTION_EXIT() 
     return;
   }
 
@@ -2651,7 +2549,6 @@ REVEMBER_FUNCTION_EXIT()
     /* Call legacy weak Rx Fifo Full Callback */
     HAL_UARTEx_RxFifoFullCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
-REVEMBER_FUNCTION_EXIT() 
     return;
   }
 }
@@ -2663,14 +2560,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_UART_TxCpltCallback can be implemented in the user file.
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2680,14 +2575,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE: This function should not be modified, when the callback is needed,
            the HAL_UART_TxHalfCpltCallback can be implemented in the user file.
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2697,14 +2590,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_UART_RxCpltCallback can be implemented in the user file.
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2714,14 +2605,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE: This function should not be modified, when the callback is needed,
            the HAL_UART_RxHalfCpltCallback can be implemented in the user file.
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2731,14 +2620,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_UART_ErrorCallback can be implemented in the user file.
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2748,14 +2635,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_UART_AbortCpltCallback can be implemented in the user file.
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2765,14 +2650,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_AbortTransmitCpltCallback(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_UART_AbortTransmitCpltCallback can be implemented in the user file.
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2782,14 +2665,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UART_AbortReceiveCpltCallback(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
 
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_UART_AbortReceiveCpltCallback can be implemented in the user file.
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2801,7 +2682,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 __weak void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(huart);
   UNUSED(Size);
@@ -2809,7 +2689,6 @@ REVEMBER_FUNCTION_ENTRY()
   /* NOTE : This function should not be modified, when the callback is needed,
             the HAL_UARTEx_RxEventCallback can be implemented in the user file.
    */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2851,13 +2730,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_UART_ReceiverTimeout_Config(UART_HandleTypeDef *huart, uint32_t TimeoutValue)
 {
-REVEMBER_FUNCTION_ENTRY() 
   if (!(IS_LPUART_INSTANCE(huart->Instance)))
   {
     assert_param(IS_UART_RECEIVER_TIMEOUT_VALUE(TimeoutValue));
     MODIFY_REG(huart->Instance->RTOR, USART_RTOR_RTO, TimeoutValue);
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -2868,7 +2745,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_EnableReceiverTimeout(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   if (!(IS_LPUART_INSTANCE(huart->Instance)))
   {
     if (huart->gState == HAL_UART_STATE_READY)
@@ -2886,18 +2762,15 @@ REVEMBER_FUNCTION_ENTRY()
       /* Process Unlocked */
       __HAL_UNLOCK(huart);
 
-REVEMBER_FUNCTION_EXIT() 
       return HAL_OK;
     }
     else
     {
-REVEMBER_FUNCTION_EXIT() 
       return HAL_BUSY;
     }
   }
   else
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 }
@@ -2910,7 +2783,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_UART_DisableReceiverTimeout(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   if (!(IS_LPUART_INSTANCE(huart->Instance)))
   {
     if (huart->gState == HAL_UART_STATE_READY)
@@ -2928,18 +2800,15 @@ REVEMBER_FUNCTION_ENTRY()
       /* Process Unlocked */
       __HAL_UNLOCK(huart);
 
-REVEMBER_FUNCTION_EXIT() 
       return HAL_OK;
     }
     else
     {
-REVEMBER_FUNCTION_EXIT() 
       return HAL_BUSY;
     }
   }
   else
   {
-REVEMBER_FUNCTION_EXIT() 
     return HAL_ERROR;
   }
 }
@@ -2952,7 +2821,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_MultiProcessor_EnableMuteMode(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   __HAL_LOCK(huart);
 
   huart->gState = HAL_UART_STATE_BUSY;
@@ -2962,7 +2830,6 @@ REVEMBER_FUNCTION_ENTRY()
 
   huart->gState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
   return (UART_CheckIdleState(huart));
 }
 
@@ -2974,7 +2841,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_MultiProcessor_DisableMuteMode(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   __HAL_LOCK(huart);
 
   huart->gState = HAL_UART_STATE_BUSY;
@@ -2984,7 +2850,6 @@ REVEMBER_FUNCTION_ENTRY()
 
   huart->gState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
   return (UART_CheckIdleState(huart));
 }
 
@@ -2996,9 +2861,7 @@ REVEMBER_FUNCTION_EXIT()
   */
 void HAL_MultiProcessor_EnterMuteMode(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   __HAL_UART_SEND_REQ(huart, UART_MUTE_MODE_REQUEST);
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -3008,7 +2871,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_HalfDuplex_EnableTransmitter(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   __HAL_LOCK(huart);
   huart->gState = HAL_UART_STATE_BUSY;
 
@@ -3022,7 +2884,6 @@ REVEMBER_FUNCTION_ENTRY()
 
   __HAL_UNLOCK(huart);
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -3033,7 +2894,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_HalfDuplex_EnableReceiver(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   __HAL_LOCK(huart);
   huart->gState = HAL_UART_STATE_BUSY;
 
@@ -3047,7 +2907,6 @@ REVEMBER_FUNCTION_ENTRY()
 
   __HAL_UNLOCK(huart);
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -3059,7 +2918,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef HAL_LIN_SendBreak(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check the parameters */
   assert_param(IS_UART_LIN_INSTANCE(huart->Instance));
 
@@ -3074,7 +2932,6 @@ REVEMBER_FUNCTION_ENTRY()
 
   __HAL_UNLOCK(huart);
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -3106,13 +2963,11 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_UART_StateTypeDef HAL_UART_GetState(const UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t temp1;
   uint32_t temp2;
   temp1 = huart->gState;
   temp2 = huart->RxState;
 
-REVEMBER_FUNCTION_EXIT() 
   return (HAL_UART_StateTypeDef)(temp1 | temp2);
 }
 
@@ -3124,8 +2979,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 uint32_t HAL_UART_GetError(const UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
-REVEMBER_FUNCTION_EXIT() 
   return huart->ErrorCode;
 }
 /**
@@ -3148,7 +3001,6 @@ REVEMBER_FUNCTION_EXIT()
 #if (USE_HAL_UART_REGISTER_CALLBACKS == 1)
 void UART_InitCallbacksToDefault(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Init the UART Callback settings */
   huart->TxHalfCpltCallback        = HAL_UART_TxHalfCpltCallback;        /* Legacy weak TxHalfCpltCallback        */
   huart->TxCpltCallback            = HAL_UART_TxCpltCallback;            /* Legacy weak TxCpltCallback            */
@@ -3163,7 +3015,6 @@ REVEMBER_FUNCTION_ENTRY()
   huart->TxFifoEmptyCallback       = HAL_UARTEx_TxFifoEmptyCallback;     /* Legacy weak TxFifoEmptyCallback       */
   huart->RxEventCallback           = HAL_UARTEx_RxEventCallback;         /* Legacy weak RxEventCallback           */
 
-REVEMBER_FUNCTION_EXIT() 
 }
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
 
@@ -3174,7 +3025,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef UART_SetConfig(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t tmpreg;
   uint16_t brrtemp;
   UART_ClockSourceTypeDef clocksource;
@@ -3382,7 +3232,6 @@ REVEMBER_FUNCTION_ENTRY()
   huart->RxISR = NULL;
   huart->TxISR = NULL;
 
-REVEMBER_FUNCTION_EXIT() 
   return ret;
 }
 
@@ -3393,7 +3242,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 void UART_AdvFeatureConfig(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check whether the set of advanced features to configure is properly set */
   assert_param(IS_UART_ADVFEATURE_INIT(huart->AdvancedInit.AdvFeatureInit));
 
@@ -3459,7 +3307,6 @@ REVEMBER_FUNCTION_ENTRY()
     assert_param(IS_UART_ADVFEATURE_MSBFIRST(huart->AdvancedInit.MSBFirst));
     MODIFY_REG(huart->Instance->CR2, USART_CR2_MSBFIRST, huart->AdvancedInit.MSBFirst);
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -3469,7 +3316,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef UART_CheckIdleState(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint32_t tickstart;
 
   /* Initialize the UART ErrorCode */
@@ -3492,7 +3338,6 @@ REVEMBER_FUNCTION_ENTRY()
       __HAL_UNLOCK(huart);
 
       /* Timeout occurred */
-REVEMBER_FUNCTION_EXIT() 
       return HAL_TIMEOUT;
     }
   }
@@ -3513,7 +3358,6 @@ REVEMBER_FUNCTION_EXIT()
       __HAL_UNLOCK(huart);
 
       /* Timeout occurred */
-REVEMBER_FUNCTION_EXIT() 
       return HAL_TIMEOUT;
     }
   }
@@ -3526,7 +3370,6 @@ REVEMBER_FUNCTION_EXIT()
 
   __HAL_UNLOCK(huart);
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -3543,7 +3386,6 @@ REVEMBER_FUNCTION_EXIT()
 HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_t Flag, FlagStatus Status,
                                               uint32_t Tickstart, uint32_t Timeout)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Wait until flag is set */
   while ((__HAL_UART_GET_FLAG(huart, Flag) ? SET : RESET) == Status)
   {
@@ -3553,7 +3395,6 @@ REVEMBER_FUNCTION_ENTRY()
       if (((HAL_GetTick() - Tickstart) > Timeout) || (Timeout == 0U))
       {
 
-REVEMBER_FUNCTION_EXIT() 
         return HAL_TIMEOUT;
       }
 
@@ -3574,7 +3415,6 @@ REVEMBER_FUNCTION_EXIT()
           /* Process Unlocked */
           __HAL_UNLOCK(huart);
 
-REVEMBER_FUNCTION_EXIT() 
           return HAL_ERROR;
         }
         if (__HAL_UART_GET_FLAG(huart, UART_FLAG_RTOF) == SET)
@@ -3592,13 +3432,11 @@ REVEMBER_FUNCTION_EXIT()
           /* Process Unlocked */
           __HAL_UNLOCK(huart);
 
-REVEMBER_FUNCTION_EXIT() 
           return HAL_TIMEOUT;
         }
       }
     }
   }
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -3615,7 +3453,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef UART_Start_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)
 {
-REVEMBER_FUNCTION_ENTRY() 
   huart->pRxBuffPtr  = pData;
   huart->RxXferSize  = Size;
   huart->RxXferCount = Size;
@@ -3672,7 +3509,6 @@ REVEMBER_FUNCTION_ENTRY()
       ATOMIC_SET_BIT(huart->Instance->CR1, USART_CR1_RXNEIE_RXFNEIE);
     }
   }
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -3689,7 +3525,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 HAL_StatusTypeDef UART_Start_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)
 {
-REVEMBER_FUNCTION_ENTRY() 
   huart->pRxBuffPtr = pData;
   huart->RxXferSize = Size;
 
@@ -3719,7 +3554,6 @@ REVEMBER_FUNCTION_ENTRY()
       /* Restore huart->RxState to ready */
       huart->RxState = HAL_UART_STATE_READY;
 
-REVEMBER_FUNCTION_EXIT() 
       return HAL_ERROR;
     }
   }
@@ -3737,7 +3571,6 @@ REVEMBER_FUNCTION_EXIT()
   in the UART CR3 register */
   ATOMIC_SET_BIT(huart->Instance->CR3, USART_CR3_DMAR);
 
-REVEMBER_FUNCTION_EXIT() 
   return HAL_OK;
 }
 
@@ -3749,14 +3582,12 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_EndTxTransfer(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Disable TXEIE, TCIE, TXFT interrupts */
   ATOMIC_CLEAR_BIT(huart->Instance->CR1, (USART_CR1_TXEIE_TXFNFIE | USART_CR1_TCIE));
   ATOMIC_CLEAR_BIT(huart->Instance->CR3, (USART_CR3_TXFTIE));
 
   /* At end of Tx process, restore huart->gState to Ready */
   huart->gState = HAL_UART_STATE_READY;
-REVEMBER_FUNCTION_EXIT() 
 }
 
 
@@ -3767,7 +3598,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_EndRxTransfer(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Disable RXNE, PE and ERR (Frame error, noise error, overrun error) interrupts */
   ATOMIC_CLEAR_BIT(huart->Instance->CR1, (USART_CR1_RXNEIE_RXFNEIE | USART_CR1_PEIE));
   ATOMIC_CLEAR_BIT(huart->Instance->CR3, (USART_CR3_EIE | USART_CR3_RXFTIE));
@@ -3784,7 +3614,6 @@ REVEMBER_FUNCTION_ENTRY()
 
   /* Reset RxIsr function pointer */
   huart->RxISR = NULL;
-REVEMBER_FUNCTION_EXIT() 
 }
 
 
@@ -3795,7 +3624,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMATransmitCplt(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)(hdma->Parent);
 
   /* DMA Normal mode */
@@ -3821,7 +3649,6 @@ REVEMBER_FUNCTION_ENTRY()
     HAL_UART_TxCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -3831,7 +3658,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMATxHalfCplt(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)(hdma->Parent);
 
 #if (USE_HAL_UART_REGISTER_CALLBACKS == 1)
@@ -3841,7 +3667,6 @@ REVEMBER_FUNCTION_ENTRY()
   /*Call legacy weak Tx Half complete callback*/
   HAL_UART_TxHalfCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -3851,7 +3676,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMAReceiveCplt(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)(hdma->Parent);
 
   /* DMA Normal mode */
@@ -3904,7 +3728,6 @@ REVEMBER_FUNCTION_ENTRY()
     HAL_UART_RxCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -3914,7 +3737,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMARxHalfCplt(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)(hdma->Parent);
 
   /* Initialize type of RxEvent that correspond to RxEvent callback execution;
@@ -3944,7 +3766,6 @@ REVEMBER_FUNCTION_ENTRY()
     HAL_UART_RxHalfCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -3954,7 +3775,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMAError(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)(hdma->Parent);
 
   const HAL_UART_StateTypeDef gstate = huart->gState;
@@ -3985,7 +3805,6 @@ REVEMBER_FUNCTION_ENTRY()
   /*Call legacy weak error callback*/
   HAL_UART_ErrorCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -3996,7 +3815,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMAAbortOnError(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)(hdma->Parent);
   huart->RxXferCount = 0U;
 
@@ -4007,7 +3825,6 @@ REVEMBER_FUNCTION_ENTRY()
   /*Call legacy weak error callback*/
   HAL_UART_ErrorCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4020,7 +3837,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMATxAbortCallback(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)(hdma->Parent);
 
   huart->hdmatx->XferAbortCallback = NULL;
@@ -4030,7 +3846,6 @@ REVEMBER_FUNCTION_ENTRY()
   {
     if (huart->hdmarx->XferAbortCallback != NULL)
     {
-REVEMBER_FUNCTION_EXIT() 
       return;
     }
   }
@@ -4077,7 +3892,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMARxAbortCallback(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)(hdma->Parent);
 
   huart->hdmarx->XferAbortCallback = NULL;
@@ -4087,7 +3901,6 @@ REVEMBER_FUNCTION_ENTRY()
   {
     if (huart->hdmatx->XferAbortCallback != NULL)
     {
-REVEMBER_FUNCTION_EXIT() 
       return;
     }
   }
@@ -4131,7 +3944,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMATxOnlyAbortCallback(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)(hdma->Parent);
 
   huart->TxXferCount = 0U;
@@ -4153,7 +3965,6 @@ REVEMBER_FUNCTION_ENTRY()
   /* Call legacy weak Abort Transmit Complete Callback */
   HAL_UART_AbortTransmitCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4166,7 +3977,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_DMARxOnlyAbortCallback(DMA_HandleTypeDef *hdma)
 {
-REVEMBER_FUNCTION_ENTRY() 
   UART_HandleTypeDef *huart = (UART_HandleTypeDef *)((DMA_HandleTypeDef *)hdma)->Parent;
 
   huart->RxXferCount = 0U;
@@ -4189,7 +3999,6 @@ REVEMBER_FUNCTION_ENTRY()
   /* Call legacy weak Abort Receive Complete Callback */
   HAL_UART_AbortReceiveCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4201,7 +4010,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_TxISR_8BIT(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Check that a Tx process is ongoing */
   if (huart->gState == HAL_UART_STATE_BUSY_TX)
   {
@@ -4220,7 +4028,6 @@ REVEMBER_FUNCTION_ENTRY()
       huart->TxXferCount--;
     }
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4232,7 +4039,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_TxISR_16BIT(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   const uint16_t *tmp;
 
   /* Check that a Tx process is ongoing */
@@ -4254,7 +4060,6 @@ REVEMBER_FUNCTION_ENTRY()
       huart->TxXferCount--;
     }
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4266,7 +4071,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_TxISR_8BIT_FIFOEN(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint16_t  nb_tx_data;
 
   /* Check that a Tx process is ongoing */
@@ -4296,7 +4100,6 @@ REVEMBER_FUNCTION_ENTRY()
       }
     }
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4308,7 +4111,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_TxISR_16BIT_FIFOEN(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   const uint16_t *tmp;
   uint16_t  nb_tx_data;
 
@@ -4340,7 +4142,6 @@ REVEMBER_FUNCTION_ENTRY()
       }
     }
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4351,7 +4152,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_EndTransmit_IT(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   /* Disable the UART Transmit Complete Interrupt */
   ATOMIC_CLEAR_BIT(huart->Instance->CR1, USART_CR1_TCIE);
 
@@ -4368,7 +4168,6 @@ REVEMBER_FUNCTION_ENTRY()
   /*Call legacy weak Tx complete callback*/
   HAL_UART_TxCpltCallback(huart);
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4378,7 +4177,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_RxISR_8BIT(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint16_t uhMask = huart->Mask;
   uint16_t  uhdata;
 
@@ -4459,7 +4257,6 @@ REVEMBER_FUNCTION_ENTRY()
     /* Clear RXNE interrupt flag */
     __HAL_UART_SEND_REQ(huart, UART_RXDATA_FLUSH_REQUEST);
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4471,7 +4268,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_RxISR_16BIT(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint16_t *tmp;
   uint16_t uhMask = huart->Mask;
   uint16_t  uhdata;
@@ -4554,7 +4350,6 @@ REVEMBER_FUNCTION_ENTRY()
     /* Clear RXNE interrupt flag */
     __HAL_UART_SEND_REQ(huart, UART_RXDATA_FLUSH_REQUEST);
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4566,7 +4361,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_RxISR_8BIT_FIFOEN(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint16_t  uhMask = huart->Mask;
   uint16_t  uhdata;
   uint16_t  nb_rx_data;
@@ -4719,7 +4513,6 @@ REVEMBER_FUNCTION_ENTRY()
     /* Clear RXNE interrupt flag */
     __HAL_UART_SEND_REQ(huart, UART_RXDATA_FLUSH_REQUEST);
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**
@@ -4731,7 +4524,6 @@ REVEMBER_FUNCTION_EXIT()
   */
 static void UART_RxISR_16BIT_FIFOEN(UART_HandleTypeDef *huart)
 {
-REVEMBER_FUNCTION_ENTRY() 
   uint16_t *tmp;
   uint16_t  uhMask = huart->Mask;
   uint16_t  uhdata;
@@ -4886,7 +4678,6 @@ REVEMBER_FUNCTION_ENTRY()
     /* Clear RXNE interrupt flag */
     __HAL_UART_SEND_REQ(huart, UART_RXDATA_FLUSH_REQUEST);
   }
-REVEMBER_FUNCTION_EXIT() 
 }
 
 /**

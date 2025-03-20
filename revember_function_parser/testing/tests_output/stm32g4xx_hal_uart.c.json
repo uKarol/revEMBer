@@ -1,511 +1,1300 @@
 {
       "name": "HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 307,
+      "end": 373,
       "returns": [
-            311,
-            360,
-            372
+            {
+                  "begin": 311,
+                  "end": 311,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 360,
+                  "end": 360,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 372,
+                  "end": 372,
+                  "need_brackets": false,
+                  "returned_value": "(UART_CheckIdleState(huart))",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 373
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_HalfDuplex_Init(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 382,
+      "end": 443,
       "returns": [
-            386,
-            427,
-            442
+            {
+                  "begin": 386,
+                  "end": 386,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 427,
+                  "end": 427,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 442,
+                  "end": 442,
+                  "need_brackets": false,
+                  "returned_value": "(UART_CheckIdleState(huart))",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 443
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_LIN_Init(UART_HandleTypeDef *huart, uint32_t BreakDetectLength)",
+      "parameters": [],
       "begin": 457,
+      "end": 534,
       "returns": [
-            461,
-            472,
-            477,
-            515,
-            533
+            {
+                  "begin": 461,
+                  "end": 461,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 472,
+                  "end": 472,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 477,
+                  "end": 477,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 515,
+                  "end": 515,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 533,
+                  "end": 533,
+                  "need_brackets": false,
+                  "returned_value": "(UART_CheckIdleState(huart))",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 534
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_MultiProcessor_Init(UART_HandleTypeDef *huart, uint8_t Address, uint32_t WakeUpMethod)",
+      "parameters": [],
       "begin": 556,
+      "end": 623,
       "returns": [
-            560,
-            601,
-            622
+            {
+                  "begin": 560,
+                  "end": 560,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 601,
+                  "end": 601,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 622,
+                  "end": 622,
+                  "need_brackets": false,
+                  "returned_value": "(UART_CheckIdleState(huart))",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 623
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_DeInit(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 632,
+      "end": 671,
       "returns": [
-            636,
-            670
+            {
+                  "begin": 636,
+                  "end": 636,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 670,
+                  "end": 670,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 671
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_MspInit(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 679,
+      "end": 686,
       "returns": [],
-      "end": 686
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 694,
+      "end": 701,
       "returns": [],
-      "end": 701
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_RegisterCallback(UART_HandleTypeDef *huart, HAL_UART_CallbackIDTypeDef CallbackID,pUART_CallbackTypeDef pCallback)",
+      "parameters": [],
       "begin": 731,
+      "end": 831,
       "returns": [
-            738,
-            830
+            {
+                  "begin": 738,
+                  "end": 738,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 830,
+                  "end": 830,
+                  "need_brackets": false,
+                  "returned_value": "status",
+                  "return_warning": ""
+            }
       ],
-      "end": 831
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_UnRegisterCallback(UART_HandleTypeDef *huart, HAL_UART_CallbackIDTypeDef CallbackID)",
+      "parameters": [],
       "begin": 858,
+      "end": 953,
       "returns": [
-            952
+            {
+                  "begin": 952,
+                  "end": 952,
+                  "need_brackets": false,
+                  "returned_value": "status",
+                  "return_warning": ""
+            }
       ],
-      "end": 953
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_RegisterRxEventCallback(UART_HandleTypeDef *huart, pUART_RxEventCallbackTypeDef pCallback)",
+      "parameters": [],
       "begin": 963,
+      "end": 985,
       "returns": [
-            970,
-            984
+            {
+                  "begin": 970,
+                  "end": 970,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 984,
+                  "end": 984,
+                  "need_brackets": false,
+                  "returned_value": "status",
+                  "return_warning": ""
+            }
       ],
-      "end": 985
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_UnRegisterRxEventCallback(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 994,
+      "end": 1009,
       "returns": [
-            1008
+            {
+                  "begin": 1008,
+                  "end": 1008,
+                  "need_brackets": false,
+                  "returned_value": "status",
+                  "return_warning": ""
+            }
       ],
-      "end": 1009
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout)",
+      "parameters": [],
       "begin": 1117,
+      "end": 1189,
       "returns": [
-            1127,
-            1158,
-            1177,
-            1183,
-            1187
+            {
+                  "begin": 1127,
+                  "end": 1127,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1158,
+                  "end": 1158,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1177,
+                  "end": 1177,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1183,
+                  "end": 1183,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1187,
+                  "end": 1187,
+                  "need_brackets": false,
+                  "returned_value": "HAL_BUSY",
+                  "return_warning": ""
+            }
       ],
-      "end": 1189
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout)",
+      "parameters": [],
       "begin": 1207,
+      "end": 1278,
       "returns": [
-            1218,
-            1254,
-            1272,
-            1276
+            {
+                  "begin": 1218,
+                  "end": 1218,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1254,
+                  "end": 1254,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1272,
+                  "end": 1272,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1276,
+                  "end": 1276,
+                  "need_brackets": false,
+                  "returned_value": "HAL_BUSY",
+                  "return_warning": ""
+            }
       ],
-      "end": 1278
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size)",
+      "parameters": [],
       "begin": 1291,
+      "end": 1346,
       "returns": [
-            1297,
-            1340,
-            1344
+            {
+                  "begin": 1297,
+                  "end": 1297,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1340,
+                  "end": 1340,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1344,
+                  "end": 1344,
+                  "need_brackets": false,
+                  "returned_value": "HAL_BUSY",
+                  "return_warning": ""
+            }
       ],
-      "end": 1346
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)",
+      "parameters": [],
       "begin": 1359,
+      "end": 1387,
       "returns": [
-            1365,
-            1381,
-            1385
+            {
+                  "begin": 1365,
+                  "end": 1365,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1381,
+                  "end": 1381,
+                  "need_brackets": false,
+                  "returned_value": "(UART_Start_Receive_IT(huart, pData, Size))",
+                  "return_warning": "compound return value"
+            },
+            {
+                  "begin": 1385,
+                  "end": 1385,
+                  "need_brackets": false,
+                  "returned_value": "HAL_BUSY",
+                  "return_warning": ""
+            }
       ],
-      "end": 1387
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_Transmit_DMA(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size)",
+      "parameters": [],
       "begin": 1400,
+      "end": 1455,
       "returns": [
-            1406,
-            1439,
-            1449,
-            1453
+            {
+                  "begin": 1406,
+                  "end": 1406,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1439,
+                  "end": 1439,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1449,
+                  "end": 1449,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1453,
+                  "end": 1453,
+                  "need_brackets": false,
+                  "returned_value": "HAL_BUSY",
+                  "return_warning": ""
+            }
       ],
-      "end": 1455
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)",
+      "parameters": [],
       "begin": 1470,
+      "end": 1498,
       "returns": [
-            1476,
-            1492,
-            1496
+            {
+                  "begin": 1476,
+                  "end": 1476,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1492,
+                  "end": 1492,
+                  "need_brackets": false,
+                  "returned_value": "(UART_Start_Receive_DMA(huart, pData, Size))",
+                  "return_warning": "compound return value"
+            },
+            {
+                  "begin": 1496,
+                  "end": 1496,
+                  "need_brackets": false,
+                  "returned_value": "HAL_BUSY",
+                  "return_warning": ""
+            }
       ],
-      "end": 1498
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_DMAPause(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 1506,
+      "end": 1528,
       "returns": [
-            1527
+            {
+                  "begin": 1527,
+                  "end": 1527,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 1528
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_DMAResume(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 1536,
+      "end": 1559,
       "returns": [
-            1558
+            {
+                  "begin": 1558,
+                  "end": 1558,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 1559
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_DMAStop(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 1567,
+      "end": 1627,
       "returns": [
-            1594,
-            1618,
-            1626
+            {
+                  "begin": 1594,
+                  "end": 1594,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1618,
+                  "end": 1618,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1626,
+                  "end": 1626,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 1627
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_Abort(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 1642,
+      "end": 1730,
       "returns": [
-            1674,
-            1700,
-            1729
+            {
+                  "begin": 1674,
+                  "end": 1674,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1700,
+                  "end": 1700,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1729,
+                  "end": 1729,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 1730
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_AbortTransmit(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 1745,
+      "end": 1789,
       "returns": [
-            1770,
-            1788
+            {
+                  "begin": 1770,
+                  "end": 1770,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1788,
+                  "end": 1788,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 1789
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_AbortReceive(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 1804,
+      "end": 1855,
       "returns": [
-            1835,
-            1854
+            {
+                  "begin": 1835,
+                  "end": 1835,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1854,
+                  "end": 1854,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 1855
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_Abort_IT(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 1872,
+      "end": 2008,
       "returns": [
-            2007
+            {
+                  "begin": 2007,
+                  "end": 2007,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 2008
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_AbortTransmit_IT(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2025,
+      "end": 2099,
       "returns": [
-            2098
+            {
+                  "begin": 2098,
+                  "end": 2098,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 2099
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_AbortReceive_IT(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2116,
+      "end": 2201,
       "returns": [
-            2200
+            {
+                  "begin": 2200,
+                  "end": 2200,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 2201
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2209,
+      "end": 2553,
       "returns": [
-            2230,
-            2368,
-            2449,
-            2487,
-            2506,
-            2518,
-            2525,
-            2538,
-            2551
+            {
+                  "begin": 2230,
+                  "end": 2230,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2368,
+                  "end": 2368,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2449,
+                  "end": 2449,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2487,
+                  "end": 2487,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2506,
+                  "end": 2506,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2518,
+                  "end": 2518,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2525,
+                  "end": 2525,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2538,
+                  "end": 2538,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2551,
+                  "end": 2551,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
       ],
-      "end": 2553
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2561,
+      "end": 2568,
       "returns": [],
-      "end": 2568
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2576,
+      "end": 2583,
       "returns": [],
-      "end": 2583
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2591,
+      "end": 2598,
       "returns": [],
-      "end": 2598
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2606,
+      "end": 2613,
       "returns": [],
-      "end": 2613
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2621,
+      "end": 2628,
       "returns": [],
-      "end": 2628
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2636,
+      "end": 2643,
       "returns": [],
-      "end": 2643
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_AbortTransmitCpltCallback(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2651,
+      "end": 2658,
       "returns": [],
-      "end": 2658
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UART_AbortReceiveCpltCallback(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2666,
+      "end": 2673,
       "returns": [],
-      "end": 2673
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "__weak void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)",
+      "parameters": [],
       "begin": 2683,
+      "end": 2691,
       "returns": [],
-      "end": 2691
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "void HAL_UART_ReceiverTimeout_Config(UART_HandleTypeDef *huart, uint32_t TimeoutValue)",
+      "parameters": [],
       "begin": 2731,
+      "end": 2737,
       "returns": [],
-      "end": 2737
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_EnableReceiverTimeout(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2746,
+      "end": 2775,
       "returns": [
-            2764,
-            2768,
-            2773
+            {
+                  "begin": 2764,
+                  "end": 2764,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2768,
+                  "end": 2768,
+                  "need_brackets": false,
+                  "returned_value": "HAL_BUSY",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2773,
+                  "end": 2773,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            }
       ],
-      "end": 2775
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_UART_DisableReceiverTimeout(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2784,
+      "end": 2813,
       "returns": [
-            2802,
-            2806,
-            2811
+            {
+                  "begin": 2802,
+                  "end": 2802,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2806,
+                  "end": 2806,
+                  "need_brackets": false,
+                  "returned_value": "HAL_BUSY",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2811,
+                  "end": 2811,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            }
       ],
-      "end": 2813
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_MultiProcessor_EnableMuteMode(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2822,
+      "end": 2833,
       "returns": [
-            2832
+            {
+                  "begin": 2832,
+                  "end": 2832,
+                  "need_brackets": false,
+                  "returned_value": "(UART_CheckIdleState(huart))",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 2833
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_MultiProcessor_DisableMuteMode(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2842,
+      "end": 2853,
       "returns": [
-            2852
+            {
+                  "begin": 2852,
+                  "end": 2852,
+                  "need_brackets": false,
+                  "returned_value": "(UART_CheckIdleState(huart))",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 2853
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "void HAL_MultiProcessor_EnterMuteMode(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2862,
+      "end": 2864,
       "returns": [],
-      "end": 2864
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_HalfDuplex_EnableTransmitter(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2872,
+      "end": 2887,
       "returns": [
-            2886
+            {
+                  "begin": 2886,
+                  "end": 2886,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 2887
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_HalfDuplex_EnableReceiver(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2895,
+      "end": 2910,
       "returns": [
-            2909
+            {
+                  "begin": 2909,
+                  "end": 2909,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 2910
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef HAL_LIN_SendBreak(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2919,
+      "end": 2935,
       "returns": [
-            2934
+            {
+                  "begin": 2934,
+                  "end": 2934,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 2935
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_UART_StateTypeDef HAL_UART_GetState(const UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2964,
+      "end": 2971,
       "returns": [
-            2970
+            {
+                  "begin": 2970,
+                  "end": 2970,
+                  "need_brackets": false,
+                  "returned_value": "(HAL_UART_StateTypeDef)(temp1 | temp2)",
+                  "return_warning": "compound return value"
+            }
       ],
-      "end": 2971
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "uint32_t HAL_UART_GetError(const UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 2980,
+      "end": 2982,
       "returns": [
-            2981
+            {
+                  "begin": 2981,
+                  "end": 2981,
+                  "need_brackets": false,
+                  "returned_value": "huart->ErrorCode",
+                  "return_warning": ""
+            }
       ],
-      "end": 2982
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "void UART_InitCallbacksToDefault(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 3002,
+      "end": 3017,
       "returns": [],
-      "end": 3017
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef UART_SetConfig(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 3026,
+      "end": 3235,
       "returns": [
-            3234
+            {
+                  "begin": 3234,
+                  "end": 3234,
+                  "need_brackets": false,
+                  "returned_value": "ret",
+                  "return_warning": ""
+            }
       ],
-      "end": 3235
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "void UART_AdvFeatureConfig(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 3243,
+      "end": 3309,
       "returns": [],
-      "end": 3309
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef UART_CheckIdleState(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 3317,
+      "end": 3373,
       "returns": [
-            3340,
-            3360,
-            3372
+            {
+                  "begin": 3340,
+                  "end": 3340,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 3360,
+                  "end": 3360,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 3372,
+                  "end": 3372,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 3373
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_t Flag, FlagStatus Status,uint32_t Tickstart, uint32_t Timeout)",
+      "parameters": [],
       "begin": 3387,
+      "end": 3440,
       "returns": [
-            3397,
-            3417,
-            3434,
-            3439
+            {
+                  "begin": 3397,
+                  "end": 3397,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 3417,
+                  "end": 3417,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 3434,
+                  "end": 3434,
+                  "need_brackets": false,
+                  "returned_value": "HAL_TIMEOUT",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 3439,
+                  "end": 3439,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 3440
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef UART_Start_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)",
+      "parameters": [],
       "begin": 3454,
+      "end": 3512,
       "returns": [
-            3511
+            {
+                  "begin": 3511,
+                  "end": 3511,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 3512
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "HAL_StatusTypeDef UART_Start_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)",
+      "parameters": [],
       "begin": 3526,
+      "end": 3574,
       "returns": [
-            3556,
-            3573
+            {
+                  "begin": 3556,
+                  "end": 3556,
+                  "need_brackets": false,
+                  "returned_value": "HAL_ERROR",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 3573,
+                  "end": 3573,
+                  "need_brackets": false,
+                  "returned_value": "HAL_OK",
+                  "return_warning": ""
+            }
       ],
-      "end": 3574
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_EndTxTransfer(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 3583,
+      "end": 3590,
       "returns": [],
-      "end": 3590
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_EndRxTransfer(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 3599,
+      "end": 3616,
       "returns": [],
-      "end": 3616
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMATransmitCplt(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3625,
+      "end": 3651,
       "returns": [],
-      "end": 3651
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMATxHalfCplt(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3659,
+      "end": 3669,
       "returns": [],
-      "end": 3669
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMAReceiveCplt(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3677,
+      "end": 3730,
       "returns": [],
-      "end": 3730
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMARxHalfCplt(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3738,
+      "end": 3768,
       "returns": [],
-      "end": 3768
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMAError(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3776,
+      "end": 3807,
       "returns": [],
-      "end": 3807
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMAAbortOnError(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3816,
+      "end": 3827,
       "returns": [],
-      "end": 3827
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMATxAbortCallback(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3838,
+      "end": 3881,
       "returns": [
-            3848
+            {
+                  "begin": 3848,
+                  "end": 3848,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
       ],
-      "end": 3881
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMARxAbortCallback(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3893,
+      "end": 3933,
       "returns": [
-            3903
+            {
+                  "begin": 3903,
+                  "end": 3903,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
       ],
-      "end": 3933
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMATxOnlyAbortCallback(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3945,
+      "end": 3967,
       "returns": [],
-      "end": 3967
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_DMARxOnlyAbortCallback(DMA_HandleTypeDef *hdma)",
+      "parameters": [],
       "begin": 3978,
+      "end": 4001,
       "returns": [],
-      "end": 4001
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_TxISR_8BIT(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 4011,
+      "end": 4030,
       "returns": [],
-      "end": 4030
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_TxISR_16BIT(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 4040,
+      "end": 4062,
       "returns": [],
-      "end": 4062
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_TxISR_8BIT_FIFOEN(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 4072,
+      "end": 4102,
       "returns": [],
-      "end": 4102
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_TxISR_16BIT_FIFOEN(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 4112,
+      "end": 4144,
       "returns": [],
-      "end": 4144
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_EndTransmit_IT(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 4153,
+      "end": 4170,
       "returns": [],
-      "end": 4170
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_RxISR_8BIT(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 4178,
+      "end": 4259,
       "returns": [],
-      "end": 4259
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_RxISR_16BIT(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 4269,
+      "end": 4352,
       "returns": [],
-      "end": 4352
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_RxISR_8BIT_FIFOEN(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 4362,
+      "end": 4515,
       "returns": [],
-      "end": 4515
+      "warnings": [],
+      "revember_artifacts": []
 }{
       "name": "static void UART_RxISR_16BIT_FIFOEN(UART_HandleTypeDef *huart)",
+      "parameters": [],
       "begin": 4525,
+      "end": 4680,
       "returns": [],
-      "end": 4680
+      "warnings": [],
+      "revember_artifacts": []
 }

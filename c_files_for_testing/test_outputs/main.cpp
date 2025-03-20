@@ -1,9 +1,3 @@
-/* 
-THIS FILE HAS ADDED DEBUG INFORMATIONS 
- revEMBer projct in github: https://github.com/uKarol/revEMBer 
-jefvcoe oefpm d actmdhsae
-*/
-#include "revEMBer.h"
 #include <iostream>
 
 typedef struct {
@@ -31,16 +25,14 @@ int t[5] {
     0,
 };
 
-int get_trash(){
-REVEMBER_FUNCTION_ENTRY() 
-REVEMBER_FUNCTION_EXIT() 
-return  0;}
+int get_trash(){return 0;}
+
+int get_trash1(){
+    return 1;}
 
 /* dziadostwo */
 void put_trash(){
-REVEMBER_FUNCTION_ENTRY() 
 std::cout<<"dupa";  
-REVEMBER_FUNCTION_EXIT() 
 }
 
 static 
@@ -52,11 +44,9 @@ intializer
 ) /*
 co to*/
 {
-REVEMBER_FUNCTION_ENTRY() 
     x = 1000;
     x++;
    // std::cout<< x;
-REVEMBER_FUNCTION_EXIT() 
     return x;
 }
 /*
@@ -65,80 +55,121 @@ REVEMBER_FUNCTION_EXIT()
     glowna
 */
 int main(){
-REVEMBER_FUNCTION_ENTRY() 
     xd_duo;
     int x = 0;
     x = intializer(0);
     float z{5};
     int y{6};
     std::cout << "Hello World" << x << " " << y <<std::endl; 
-REVEMBER_FUNCTION_EXIT() 
 }
 /*
     nie wiem co to
 */
+static err_t low_level_output(struct netif *netif, struct pbuf *p)
+{
+  uint32_t i = 0U;
+  struct pbuf *q = NULL;
+  err_t errval = ERR_OK;
+  ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT] = {0};
+
+  memset(Txbuffer, 0 , ETH_TX_DESC_CNT*sizeof(ETH_BufferTypeDef));
+
+  for(q = p; q != NULL; q = q->next)
+  {
+    if(i >= ETH_TX_DESC_CNT)
+      return ERR_IF;
+
+    Txbuffer[i].buffer = q->payload;
+    Txbuffer[i].len = q->len;
+
+    if(i>0)
+    {
+      Txbuffer[i-1].next = &Txbuffer[i];
+    }
+
+    if(q->next == NULL)
+    {
+        if(i >= ETH_TX_DESC_CNT) return ERR_IF;
+    }
+
+    i++;
+  }
+
+  TxConfig.Length = p->tot_len;
+  TxConfig.TxBuffer = Txbuffer;
+  TxConfig.pData = p;
+
+  HAL_ETH_Transmit(&heth, &TxConfig, ETH_DMA_TRANSMIT_TIMEOUT);
+
+  return errval;
+}
 
 
 /* DZIWNE FUNKCJE */
 
-void pattern1 (int x, int y) {
-REVEMBER_FUNCTION_ENTRY() 
-std::cout<<"pattern1";
-REVEMBER_FUNCTION_EXIT() 
-
-}void pattern2(int x, int y){
-REVEMBER_FUNCTION_ENTRY() 
+void pattern1 (int x, int y) {std::cout<<"pattern1";}
+void pattern2(int x, int y){
   
  
 std::cout<<"pattern2";
  
   
-REVEMBER_FUNCTION_EXIT() 
 }
 
 void pattern3(int x, int y){
-REVEMBER_FUNCTION_ENTRY() 
   
  
     std::cout<<"pattern3";
- 
-  
-REVEMBER_FUNCTION_EXIT() 
+    int return_value;
+    int value_return;
 }
 
-void pattern4(int x, int y){
-REVEMBER_FUNCTION_ENTRY() 
-  
- 
-    std::cout<<"pattern4";
- 
-  
-REVEMBER_FUNCTION_EXIT() 
+err_t
+udp_send_chksum(struct udp_pcb *pcb, struct pbuf *p,
+                u8_t have_chksum, u16_t chksum){
+    
+    if(pcb == NULL)
+    return udp_sendto_chksum(pcb, p, &pcb->remote_ip, pcb->remote_port,
+        have_chksum, chksum);
+
+    return 0;
 }
 
-void pattern5(int x, int y)
+err_t
+udp_send_chksum2(struct udp_pcb *pcb, struct pbuf *p,
+                u8_t have_chksum, u16_t chksum){
+  
+    return udp_sendto_chksum(pcb, p, &pcb->remote_ip, pcb->remote_port,
+        have_chksum, chksum);
+}
+
+err_t
+netconn_recv_tcp_pbuf_flags(struct netconn *conn, struct pbuf **new_buf, u8_t apiflags)
 {
-REVEMBER_FUNCTION_ENTRY() 
+  LWIP_ERROR("netconn_recv_tcp_pbuf: invalid conn", (conn != NULL) &&
+             NETCONNTYPE_GROUP(netconn_type(conn)) == NETCONN_TCP, return ERR_ARG;);
+
+  return netconn_recv_data_tcp(conn, new_buf, apiflags);
+}
+
+err_t
+netconn_getaddr pattern5(int x, int y)
+{
     std::cout<<"pattern5";
-REVEMBER_FUNCTION_EXIT() 
+    LWIP_ERROR("netconn_getaddr: invalid conn", (conn != NULL), return ERR_ARG;);
 }
 
 void pattern6(int x, int y
 )
 {
-REVEMBER_FUNCTION_ENTRY() 
     std::cout<<"pattern6";
-REVEMBER_FUNCTION_EXIT() 
 }
 
 void pattern7(int x, 
     int y
 )
-{
-REVEMBER_FUNCTION_ENTRY() 
-  std::cout<<"pattern7";
+{  std::cout<<"pattern7";
   
-REVEMBER_FUNCTION_EXIT() 
 }
 
 void pattern8(
@@ -146,9 +177,7 @@ void pattern8(
     int y
 )
 {
-REVEMBER_FUNCTION_ENTRY() 
   std::cout<<"pattern8";
-REVEMBER_FUNCTION_EXIT() 
 }
 
 static void (pattern9)
@@ -157,10 +186,8 @@ static void (pattern9)
     int y
 )
 {
-REVEMBER_FUNCTION_ENTRY() 
     std::cout<<"pattern9";
   
-REVEMBER_FUNCTION_EXIT() 
 }
 
 int dupa (int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *)); 
