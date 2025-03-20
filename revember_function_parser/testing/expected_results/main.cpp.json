@@ -166,7 +166,7 @@
                   "end": 149,
                   "need_brackets": false,
                   "returned_value": "ERR_ARG",
-                  "return_warning": ""
+                  "return_warning": "improper return statement"
             },
             {
                   "begin": 151,
@@ -189,7 +189,7 @@
                   "end": 158,
                   "need_brackets": false,
                   "returned_value": "ERR_ARG",
-                  "return_warning": ""
+                  "return_warning": "improper return statement"
             }
       ],
       "warnings": [],

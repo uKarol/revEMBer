@@ -157,7 +157,15 @@
       "parameters": [],
       "begin": 741,
       "end": 822,
-      "returns": [],
+      "returns": [
+            {
+                  "begin": 821,
+                  "end": 821,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
       "warnings": [],
       "revember_artifacts": []
 }{

@@ -114,23 +114,26 @@ class BlockCodeDiscriminator():
         pattern = r"return(.*?)\;"
         match = re.split(pattern, block)
 
-        if len(match) > 1:
-            
+        if (" return" in block or ")return" in block or "{return" in block )  and len(match) > 1:
             if match[0].strip().endswith(")"):
                 need_extra_brackets = True
-            open_count = match[1].count('(')
-            close_count = match[1].count(')')
-            if(open_count == 0 and close_count == 0 ):
-                ret_warnings = ""
-            elif(open_count == close_count):
-                ret_warnings = "compound return value"
-
+            outer_open_count = match[0].count('(')
+            outer_close_count = match[0].count(')')
+            inner_open_count = match[1].count('(')
+            inner_close_count = match[1].count(')')
+            if outer_open_count == outer_close_count:
+                if(inner_open_count == 0 and inner_open_count == 0 ):
+                    ret_warnings = ""
+                elif(inner_open_count == inner_close_count):
+                    ret_warnings = "compound return value"
+                else:
+                    ret_warnings = "improper return statement"
             else:
                 ret_warnings = "improper return statement"
 
             self.rets.append({"begin": start, "end" : end, "need_brackets" : need_extra_brackets, "returned_value" : match[1].strip(), "return_warning" : ret_warnings})
         else:
-            print("Delimiters not found")
+            pass
 
 
 
@@ -154,7 +157,7 @@ class BlockCodeDiscriminator():
             self.started = False
             self.statement_end = line_num
             self.assembled_block = self.assembled_block + " " + line
-            if( "return " in self.assembled_block) or ("return(" in self.assembled_block):
+            if( "return " in self.assembled_block) or ("return(" in self.assembled_block) or("return;" in self.assembled_block):
                 self.check_return(self.statement_start, self.statement_end, self.assembled_block)
 
             self.assembled_block = " "
