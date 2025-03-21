@@ -84,16 +84,11 @@ class CondState(ABC):
         if(self.b_open > self.b_close):
             for i in range(0, (self.b_open - self.b_close)):
                 self.context.next_stage_processing("}", line_num)
-        elif(self.b_open < self.b_close):
-            for i in range(0, (self.b_close - self.b_open)):
-                self.context.next_stage_processing("{", line_num)
-
+                
     def count_braces(self, line, line_num):
-        if "{" in line and "}" in line:
-            pass
-        elif "{" in line:
+        if "{" in line:
             self.b_open = self.b_open + 1
-        elif "}" in line:
+        if "}" in line:
             self.b_close = self.b_close + 1
 
 class UnconditionalProcessing(CondState):

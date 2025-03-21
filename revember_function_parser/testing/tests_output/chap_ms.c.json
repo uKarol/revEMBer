@@ -1,0 +1,259 @@
+{
+      "name": "static void chapms_generate_challenge(ppp_pcb *pcb, unsigned char *challenge) ",
+      "parameters": [],
+      "begin": 224,
+      "end": 234,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void chapms2_generate_challenge(ppp_pcb *pcb, unsigned char *challenge) ",
+      "parameters": [],
+      "begin": 236,
+      "end": 246,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int chapms_verify_response(ppp_pcb *pcb, int id, const char *name,const unsigned char *secret, int secret_len,const unsigned char *challenge, const unsigned char *response,char *message, int message_space) ",
+      "parameters": [],
+      "begin": 251,
+      "end": 294,
+      "returns": [
+            {
+                  "begin": 286,
+                  "end": 286,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 293,
+                  "end": 293,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int chapms2_verify_response(ppp_pcb *pcb, int id, const char *name,const unsigned char *secret, int secret_len,const unsigned char *challenge, const unsigned char *response,char *message, int message_space) ",
+      "parameters": [],
+      "begin": 299,
+      "end": 370,
+      "returns": [
+            {
+                  "begin": 342,
+                  "end": 342,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 369,
+                  "end": 369,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void chapms_make_response(ppp_pcb *pcb, unsigned char *response, int id, const char *our_name,const unsigned char *challenge, const char *secret, int secret_len,unsigned char *private_) ",
+      "parameters": [],
+      "begin": 375,
+      "end": 382,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void chapms2_make_response(ppp_pcb *pcb, unsigned char *response, int id, const char *our_name,const unsigned char *challenge, const char *secret, int secret_len,unsigned char *private_) ",
+      "parameters": [],
+      "begin": 386,
+      "end": 398,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int chapms2_check_success(ppp_pcb *pcb, unsigned char *msg, int len, unsigned char *private_) ",
+      "parameters": [],
+      "begin": 400,
+      "end": 428,
+      "returns": [
+            {
+                  "begin": 407,
+                  "end": 407,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 415,
+                  "end": 415,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 425,
+                  "end": 425,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 427,
+                  "end": 427,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void chapms_handle_failure(ppp_pcb *pcb, unsigned char *inp, int len) ",
+      "parameters": [],
+      "begin": 430,
+      "end": 493,
+      "returns": [
+            {
+                  "begin": 487,
+                  "end": 487,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ChallengeResponse(const u_char *challenge,const u_char PasswordHash[MD4_SIGNATURE_SIZE],u_char response[24]) ",
+      "parameters": [],
+      "begin": 497,
+      "end": 531,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ChallengeHash(const u_char PeerChallenge[16], const u_char *rchallenge,const char *username, u_char Challenge[8]) ",
+      "parameters": [],
+      "begin": 534,
+      "end": 554,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ascii2unicode(const char ascii[], int ascii_len, u_char unicode[]) ",
+      "parameters": [],
+      "begin": 563,
+      "end": 569,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void NTPasswordHash(u_char *secret, int secret_len, u_char hash[MD4_SIGNATURE_SIZE]) ",
+      "parameters": [],
+      "begin": 571,
+      "end": 579,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ChapMS_NT(const u_char *rchallenge, const char *secret, int secret_len,u_char NTResponse[24]) ",
+      "parameters": [],
+      "begin": 582,
+      "end": 591,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ChapMS2_NT(const u_char *rchallenge, const u_char PeerChallenge[16], const char *username,const char *secret, int secret_len, u_char NTResponse[24]) ",
+      "parameters": [],
+      "begin": 594,
+      "end": 606,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ChapMS_LANMan(u_char *rchallenge, char *secret, int secret_len,unsigned char *response) ",
+      "parameters": [],
+      "begin": 612,
+      "end": 637,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void GenerateAuthenticatorResponse(const u_char PasswordHashHash[MD4_SIGNATURE_SIZE],u_char NTResponse[24], const u_char PeerChallenge[16],const u_char *rchallenge, const char *username,u_char authResponse[MS_AUTH_RESPONSE_LENGTH+1]) ",
+      "parameters": [],
+      "begin": 644,
+      "end": 686,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void GenerateAuthenticatorResponsePlain(const char *secret, int secret_len,u_char NTResponse[24], const u_char PeerChallenge[16],const u_char *rchallenge, const char *username,u_char authResponse[MS_AUTH_RESPONSE_LENGTH+1]) ",
+      "parameters": [],
+      "begin": 693,
+      "end": 706,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void Set_Start_Key(ppp_pcb *pcb, const u_char *rchallenge, const char *secret, int secret_len) ",
+      "parameters": [],
+      "begin": 713,
+      "end": 738,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void SetMasterKeys(ppp_pcb *pcb, const char *secret, int secret_len, u_char NTResponse[24], int IsServer) ",
+      "parameters": [],
+      "begin": 743,
+      "end": 832,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ChapMS(ppp_pcb *pcb, const u_char *rchallenge, const char *secret, int secret_len,unsigned char *response) ",
+      "parameters": [],
+      "begin": 838,
+      "end": 859,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ChapMS2(ppp_pcb *pcb, const u_char *rchallenge, const u_char *PeerChallenge,const char *user, const char *secret, int secret_len, unsigned char *response,u_char authResponse[], int authenticator) ",
+      "parameters": [],
+      "begin": 874,
+      "end": 904,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void set_mppe_enc_types(int policy, int types) ",
+      "parameters": [],
+      "begin": 911,
+      "end": 935,
+      "returns": [
+            {
+                  "begin": 913,
+                  "end": 915,
+                  "need_brackets": true,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 918,
+                  "end": 919,
+                  "need_brackets": true,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}

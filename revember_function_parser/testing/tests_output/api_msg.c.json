@@ -1,0 +1,615 @@
+{
+      "name": "intlwip_netconn_is_deallocated_msg(void *msg)",
+      "parameters": [],
+      "begin": 99,
+      "end": 104,
+      "returns": [
+            {
+                  "begin": 101,
+                  "end": 101,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 103,
+                  "end": 103,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void *lwip_netconn_err_to_msg(err_t err)",
+      "parameters": [],
+      "begin": 115,
+      "end": 127,
+      "returns": [
+            {
+                  "begin": 117,
+                  "end": 118,
+                  "need_brackets": false,
+                  "returned_value": "LWIP_CONST_CAST(void *, &netconn_aborted)",
+                  "return_warning": "compound return value"
+            },
+            {
+                  "begin": 119,
+                  "end": 120,
+                  "need_brackets": false,
+                  "returned_value": "LWIP_CONST_CAST(void *, &netconn_reset)",
+                  "return_warning": "compound return value"
+            },
+            {
+                  "begin": 121,
+                  "end": 122,
+                  "need_brackets": false,
+                  "returned_value": "LWIP_CONST_CAST(void *, &netconn_closed)",
+                  "return_warning": "compound return value"
+            },
+            {
+                  "begin": 125,
+                  "end": 125,
+                  "need_brackets": false,
+                  "returned_value": "NULL",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "intlwip_netconn_is_err_msg(void *msg, err_t *err)",
+      "parameters": [],
+      "begin": 131,
+      "end": 145,
+      "returns": [
+            {
+                  "begin": 136,
+                  "end": 136,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 139,
+                  "end": 139,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 142,
+                  "end": 142,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 144,
+                  "end": 144,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static u8_trecv_raw(void *arg, struct raw_pcb *pcb, struct pbuf *p,const ip_addr_t *addr)",
+      "parameters": [],
+      "begin": 160,
+      "end": 206,
+      "returns": [
+            {
+                  "begin": 173,
+                  "end": 173,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 183,
+                  "end": 183,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 194,
+                  "end": 194,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 205,
+                  "end": 205,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static voidrecv_udp(void *arg, struct udp_pcb *pcb, struct pbuf *p,const ip_addr_t *addr, u16_t port)",
+      "parameters": [],
+      "begin": 219,
+      "end": 281,
+      "returns": [
+            {
+                  "begin": 234,
+                  "end": 234,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 247,
+                  "end": 247,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 253,
+                  "end": 253,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 273,
+                  "end": 273,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_trecv_tcp(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err)",
+      "parameters": [],
+      "begin": 293,
+      "end": 342,
+      "returns": [
+            {
+                  "begin": 306,
+                  "end": 306,
+                  "need_brackets": false,
+                  "returned_value": "ERR_VAL",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 316,
+                  "end": 316,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 332,
+                  "end": 332,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 341,
+                  "end": 341,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_tpoll_tcp(void *arg, struct tcp_pcb *pcb)",
+      "parameters": [],
+      "begin": 357,
+      "end": 387,
+      "returns": [
+            {
+                  "begin": 386,
+                  "end": 386,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_tsent_tcp(void *arg, struct tcp_pcb *pcb, u16_t len)",
+      "parameters": [],
+      "begin": 398,
+      "end": 421,
+      "returns": [
+            {
+                  "begin": 420,
+                  "end": 420,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static voiderr_tcp(void *arg, err_t err)",
+      "parameters": [],
+      "begin": 432,
+      "end": 504,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static voidsetup_tcp(struct netconn *conn)",
+      "parameters": [],
+      "begin": 514,
+      "end": 523,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_taccept_function(void *arg, struct tcp_pcb *newpcb, err_t err)",
+      "parameters": [],
+      "begin": 533,
+      "end": 598,
+      "returns": [
+            {
+                  "begin": 538,
+                  "end": 538,
+                  "need_brackets": false,
+                  "returned_value": "ERR_VAL",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 542,
+                  "end": 542,
+                  "need_brackets": false,
+                  "returned_value": "ERR_VAL",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 551,
+                  "end": 551,
+                  "need_brackets": false,
+                  "returned_value": "ERR_VAL",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 567,
+                  "end": 567,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 591,
+                  "end": 591,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 597,
+                  "end": 597,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static voidpcb_new(struct api_msg *msg)",
+      "parameters": [],
+      "begin": 609,
+      "end": 670,
+      "returns": [
+            {
+                  "begin": 665,
+                  "end": 665,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_newconn(void *m)",
+      "parameters": [],
+      "begin": 680,
+      "end": 692,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "struct netconn *netconn_alloc(enum netconn_type t, netconn_callback callback)",
+      "parameters": [],
+      "begin": 705,
+      "end": 784,
+      "returns": [
+            {
+                  "begin": 712,
+                  "end": 712,
+                  "need_brackets": false,
+                  "returned_value": "NULL",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 780,
+                  "end": 780,
+                  "need_brackets": false,
+                  "returned_value": "conn",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 783,
+                  "end": 783,
+                  "need_brackets": false,
+                  "returned_value": "NULL",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidnetconn_free(struct netconn *conn)",
+      "parameters": [],
+      "begin": 794,
+      "end": 815,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static voidnetconn_drain(struct netconn *conn)",
+      "parameters": [],
+      "begin": 827,
+      "end": 887,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static voidnetconn_mark_mbox_invalid(struct netconn *conn)",
+      "parameters": [],
+      "begin": 892,
+      "end": 907,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_tlwip_netconn_do_close_internal(struct netconn *conn  WRITE_DELAYED_PARAM)",
+      "parameters": [],
+      "begin": 920,
+      "end": 1102,
+      "returns": [
+            {
+                  "begin": 1083,
+                  "end": 1083,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1101,
+                  "end": 1101,
+                  "need_brackets": false,
+                  "returned_value": "err",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_delconn(void *m)",
+      "parameters": [],
+      "begin": 1113,
+      "end": 1205,
+      "returns": [
+            {
+                  "begin": 1187,
+                  "end": 1188,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_bind(void *m)",
+      "parameters": [],
+      "begin": 1216,
+      "end": 1246,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_bind_if(void *m)",
+      "parameters": [],
+      "begin": 1256,
+      "end": 1290,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_tlwip_netconn_do_connected(void *arg, struct tcp_pcb *pcb, err_t err)",
+      "parameters": [],
+      "begin": 1301,
+      "end": 1338,
+      "returns": [
+            {
+                  "begin": 1311,
+                  "end": 1311,
+                  "need_brackets": false,
+                  "returned_value": "ERR_VAL",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1337,
+                  "end": 1337,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_connect(void *m)",
+      "parameters": [],
+      "begin": 1350,
+      "end": 1414,
+      "returns": [
+            {
+                  "begin": 1397,
+                  "end": 1397,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_disconnect(void *m)",
+      "parameters": [],
+      "begin": 1425,
+      "end": 1438,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_listen(void *m)",
+      "parameters": [],
+      "begin": 1449,
+      "end": 1521,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_send(void *m)",
+      "parameters": [],
+      "begin": 1532,
+      "end": 1578,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_recv(void *m)",
+      "parameters": [],
+      "begin": 1589,
+      "end": 1604,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_accepted(void *m)",
+      "parameters": [],
+      "begin": 1614,
+      "end": 1624,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_tlwip_netconn_do_writemore(struct netconn *conn  WRITE_DELAYED_PARAM)",
+      "parameters": [],
+      "begin": 1640,
+      "end": 1802,
+      "returns": [
+            {
+                  "begin": 1798,
+                  "end": 1798,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1801,
+                  "end": 1801,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_write(void *m)",
+      "parameters": [],
+      "begin": 1813,
+      "end": 1857,
+      "returns": [
+            {
+                  "begin": 1841,
+                  "end": 1842,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_getaddr(void *m)",
+      "parameters": [],
+      "begin": 1867,
+      "end": 1923,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_close(void *m)",
+      "parameters": [],
+      "begin": 1934,
+      "end": 2003,
+      "returns": [
+            {
+                  "begin": 1995,
+                  "end": 1995,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_join_leave_group(void *m)",
+      "parameters": [],
+      "begin": 2014,
+      "end": 2051,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_join_leave_group_netif(void *m)",
+      "parameters": [],
+      "begin": 2060,
+      "end": 2106,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static voidlwip_netconn_do_dns_found(const char *name, const ip_addr_t *ipaddr, void *arg)",
+      "parameters": [],
+      "begin": 2117,
+      "end": 2133,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "voidlwip_netconn_do_gethostbyname(void *arg)",
+      "parameters": [],
+      "begin": 2143,
+      "end": 2169,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}
