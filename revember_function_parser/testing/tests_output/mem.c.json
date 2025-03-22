@@ -247,7 +247,7 @@
       "name": "void *mem_malloc(mem_size_t size_in)",
       "parameters": [],
       "begin": 831,
-      "end": 968,
+      "end": 975,
       "returns": [
             {
                   "begin": 840,
@@ -269,22 +269,13 @@
                   "need_brackets": false,
                   "returned_value": "(u8_t *)mem + SIZEOF_STRUCT_MEM + MEM_SANITY_OFFSET",
                   "return_warning": "compound return value"
-            }
-      ],
-      "warnings": [],
-      "revember_artifacts": []
-}{
-      "name": "}void *mem_calloc(mem_size_t count, mem_size_t size)",
-      "parameters": [],
-      "begin": 982,
-      "end": 984,
-      "returns": [
+            },
             {
-                  "begin": 983,
-                  "end": 983,
+                  "begin": 974,
+                  "end": 974,
                   "need_brackets": false,
-                  "returned_value": "mem_clib_calloc(count, size)",
-                  "return_warning": "compound return value"
+                  "returned_value": "NULL",
+                  "return_warning": ""
             }
       ],
       "warnings": [],

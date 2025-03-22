@@ -144,7 +144,7 @@ class IfProcessing(CondState):
         self.context.next_state(ElifProcessing())
 
     def on_endif(self, line, line_num):
-        self.check_braces(line, line_num)
+        #self.check_braces(line, line_num)
         super().on_endif(line, line_num)
 
     def on_else(self, line, line_num):
