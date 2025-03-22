@@ -1,0 +1,414 @@
+{
+      "name": "static void lcp_init(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 362,
+      "end": 399,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void lcp_open(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 405,
+      "end": 415,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void lcp_close(ppp_pcb *pcb, const char *reason) ",
+      "parameters": [],
+      "begin": 421,
+      "end": 450,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void lcp_lowerup(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 456,
+      "end": 475,
+      "returns": [
+            {
+                  "begin": 463,
+                  "end": 467,
+                  "need_brackets": true,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void lcp_lowerdown(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 481,
+      "end": 489,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_delayed_up(void *arg) ",
+      "parameters": [],
+      "begin": 495,
+      "end": 502,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_input(ppp_pcb *pcb, u_char *p, int len) ",
+      "parameters": [],
+      "begin": 508,
+      "end": 517,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int lcp_extcode(fsm *f, int code, int id, u_char *inp, int len) ",
+      "parameters": [],
+      "begin": 522,
+      "end": 553,
+      "returns": [
+            {
+                  "begin": 549,
+                  "end": 550,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 552,
+                  "end": 552,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_rprotrej(fsm *f, u_char *inp, int len) ",
+      "parameters": [],
+      "begin": 561,
+      "end": 612,
+      "returns": [
+            {
+                  "begin": 571,
+                  "end": 571,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 582,
+                  "end": 582,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 602,
+                  "end": 602,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_protrej(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 619,
+      "end": 625,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void lcp_sprotrej(ppp_pcb *pcb, u_char *p, int len) ",
+      "parameters": [],
+      "begin": 631,
+      "end": 644,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_resetci(fsm *f) ",
+      "parameters": [],
+      "begin": 650,
+      "end": 763,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int lcp_cilen(fsm *f) ",
+      "parameters": [],
+      "begin": 769,
+      "end": 827,
+      "returns": [
+            {
+                  "begin": 787,
+                  "end": 826,
+                  "need_brackets": false,
+                  "returned_value": "(LENCISHORT(go->neg_mru && go->mru != PPP_DEFMRU) + LENCILONG(go->neg_asyncmap && go->asyncmap != 0xFFFFFFFF) + LENCISHORT(go->neg_eap) + LENCICHAP(!go->neg_eap && go->neg_chap) + LENCICHAP(go->neg_chap) + LENCISHORT(!go->neg_eap && !go->neg_chap && go->neg_upap) + LENCISHORT(!go->neg_eap && go->neg_upap) + LENCISHORT(!go->neg_chap && go->neg_upap) + LENCISHORT(go->neg_upap) + LENCILQR(go->neg_lqr) + LENCICBCP(go->neg_cbcp) + LENCILONG(go->neg_magicnumber) + LENCIVOID(go->neg_pcompression) + LENCIVOID(go->neg_accompression) + LENCISHORT(go->neg_mrru) + LENCIVOID(go->neg_ssnhf) + (go->neg_endpoint? CILEN_CHAR + go->endpoint.length: 0))",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_addci(fsm *f, u_char *ucp, int *lenp) ",
+      "parameters": [],
+      "begin": 833,
+      "end": 935,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int lcp_ackci(fsm *f, u_char *p, int len) ",
+      "parameters": [],
+      "begin": 946,
+      "end": 1114,
+      "returns": [
+            {
+                  "begin": 1110,
+                  "end": 1110,
+                  "need_brackets": false,
+                  "returned_value": "(1)",
+                  "return_warning": "compound return value"
+            },
+            {
+                  "begin": 1113,
+                  "end": 1113,
+                  "need_brackets": false,
+                  "returned_value": "(0)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int lcp_nakci(fsm *f, u_char *p, int len, int treat_as_reject) ",
+      "parameters": [],
+      "begin": 1126,
+      "end": 1576,
+      "returns": [
+            {
+                  "begin": 1571,
+                  "end": 1571,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1575,
+                  "end": 1575,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int lcp_rejci(fsm *f, u_char *p, int len) ",
+      "parameters": [],
+      "begin": 1588,
+      "end": 1806,
+      "returns": [
+            {
+                  "begin": 1801,
+                  "end": 1801,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1805,
+                  "end": 1805,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int lcp_reqci(fsm *f, u_char *inp, int *lenp, int reject_if_disagree) ",
+      "parameters": [],
+      "begin": 1819,
+      "end": 2283,
+      "returns": [
+            {
+                  "begin": 1846,
+                  "end": 1847,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1850,
+                  "end": 1850,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2282,
+                  "end": 2282,
+                  "need_brackets": false,
+                  "returned_value": "(rc)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_up(fsm *f) ",
+      "parameters": [],
+      "begin": 2289,
+      "end": 2330,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_down(fsm *f) ",
+      "parameters": [],
+      "begin": 2338,
+      "end": 2351,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_starting(fsm *f) ",
+      "parameters": [],
+      "begin": 2357,
+      "end": 2360,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_finished(fsm *f) ",
+      "parameters": [],
+      "begin": 2366,
+      "end": 2369,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int lcp_printpkt(const u_char *p, int plen,void (*printer) (void *, const char *, ...), void *arg) ",
+      "parameters": [],
+      "begin": 2384,
+      "end": 2631,
+      "returns": [
+            {
+                  "begin": 2390,
+                  "end": 2391,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2396,
+                  "end": 2397,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2630,
+                  "end": 2630,
+                  "need_brackets": false,
+                  "returned_value": "p - pstart",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void LcpLinkFailure(fsm *f) ",
+      "parameters": [],
+      "begin": 2638,
+      "end": 2646,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void LcpEchoCheck(fsm *f) ",
+      "parameters": [],
+      "begin": 2652,
+      "end": 2666,
+      "returns": [
+            {
+                  "begin": 2656,
+                  "end": 2657,
+                  "need_brackets": true,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void LcpEchoTimeout(void *arg) ",
+      "parameters": [],
+      "begin": 2672,
+      "end": 2679,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_received_echo_reply(fsm *f, int id, u_char *inp, int len) ",
+      "parameters": [],
+      "begin": 2685,
+      "end": 2705,
+      "returns": [
+            {
+                  "begin": 2694,
+                  "end": 2694,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 2700,
+                  "end": 2700,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void LcpSendEchoRequest(fsm *f) ",
+      "parameters": [],
+      "begin": 2711,
+      "end": 2757,
+      "returns": [
+            {
+                  "begin": 2742,
+                  "end": 2742,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_echo_lowerup(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 2763,
+      "end": 2774,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void lcp_echo_lowerdown(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 2780,
+      "end": 2787,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}

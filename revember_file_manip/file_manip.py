@@ -67,7 +67,7 @@ class CFileManip:
 
             for ret in function_rets:
                 if ret["return_warning"] == "improper return statement":
-                    lines[ret["begin"]] = '#waring "improper return statement - add revember macros manually" \n' + lines[ret["begin"]] 
+                    lines[ret["begin"]] = '#warning "improper return statement - add revember macros manually" \n' + lines[ret["begin"]] 
                 else:
                     if ret["returned_value"] != "":
                         add_ex = False
@@ -75,7 +75,10 @@ class CFileManip:
                     if need_braces == False:
                         lines[ret["begin"]] = self.add_sequence_in_return(lines[ret["begin"]], self.to_be_added["ret"] + ' \n', need_braces)
                     else:
-                        lines[ret["begin"]] = self.add_sequence_in_return(lines[ret["begin"]], self.to_be_added["ret"] + ' \n', need_braces)
+                        for idx in range (ret["end"], ret["end"] + 1):
+                            if( "return" in lines[idx] ):
+                                break
+                        lines[idx] = self.add_sequence_in_return(lines[idx], self.to_be_added["ret"] + ' \n', need_braces)
                         lines[ret["end"]] = lines[ret["end"]] + " }\n"
             if add_ex:
                 lines[function_end_ln] = self.add_sequence_in_end(lines[function_end_ln], self.to_be_added["end"] + ' \n')

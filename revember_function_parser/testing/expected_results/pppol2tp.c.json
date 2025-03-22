@@ -1,0 +1,454 @@
+{
+      "name": "ppp_pcb *pppol2tp_create(struct netif *pppif,struct netif *netif, const ip_addr_t *ipaddr, u16_t port,const u8_t *secret, u8_t secret_len,ppp_link_status_cb_fn link_status_cb, void *ctx_cb) ",
+      "parameters": [],
+      "begin": 111,
+      "end": 161,
+      "returns": [
+            {
+                  "begin": 152,
+                  "end": 152,
+                  "need_brackets": false,
+                  "returned_value": "ppp",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 158,
+                  "end": 160,
+                  "need_brackets": false,
+                  "returned_value": "NULL",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_write(ppp_pcb *ppp, void *ctx, struct pbuf *p) ",
+      "parameters": [],
+      "begin": 164,
+      "end": 200,
+      "returns": [
+            {
+                  "begin": 180,
+                  "end": 180,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 193,
+                  "end": 193,
+                  "need_brackets": false,
+                  "returned_value": "ret",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 199,
+                  "end": 199,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_netif_output(ppp_pcb *ppp, void *ctx, struct pbuf *p, u_short protocol) ",
+      "parameters": [],
+      "begin": 203,
+      "end": 243,
+      "returns": [
+            {
+                  "begin": 220,
+                  "end": 220,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 236,
+                  "end": 236,
+                  "need_brackets": false,
+                  "returned_value": "err",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 242,
+                  "end": 242,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_destroy(ppp_pcb *ppp, void *ctx) ",
+      "parameters": [],
+      "begin": 246,
+      "end": 254,
+      "returns": [
+            {
+                  "begin": 253,
+                  "end": 253,
+                  "need_brackets": false,
+                  "returned_value": "ERR_OK",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void pppol2tp_connect(ppp_pcb *ppp, void *ctx) ",
+      "parameters": [],
+      "begin": 257,
+      "end": 328,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void pppol2tp_disconnect(ppp_pcb *ppp, void *ctx) ",
+      "parameters": [],
+      "begin": 331,
+      "end": 341,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void pppol2tp_input(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port) ",
+      "parameters": [],
+      "begin": 344,
+      "end": 482,
+      "returns": [
+            {
+                  "begin": 476,
+                  "end": 476,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void pppol2tp_dispatch_control_packet(pppol2tp_pcb *l2tp, u16_t port, struct pbuf *p, u16_t ns, u16_t nr) ",
+      "parameters": [],
+      "begin": 485,
+      "end": 728,
+      "returns": [
+            {
+                  "begin": 512,
+                  "end": 512,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 526,
+                  "end": 526,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 552,
+                  "end": 552,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 581,
+                  "end": 583,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 602,
+                  "end": 602,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 611,
+                  "end": 611,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 616,
+                  "end": 616,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 632,
+                  "end": 632,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 646,
+                  "end": 646,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 660,
+                  "end": 660,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 679,
+                  "end": 679,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 721,
+                  "end": 721,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 725,
+                  "end": 725,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void pppol2tp_timeout(void *arg) ",
+      "parameters": [],
+      "begin": 731,
+      "end": 800,
+      "returns": [
+            {
+                  "begin": 746,
+                  "end": 746,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 762,
+                  "end": 762,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 786,
+                  "end": 786,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 797,
+                  "end": 798,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void pppol2tp_abort_connect(pppol2tp_pcb *l2tp) ",
+      "parameters": [],
+      "begin": 803,
+      "end": 807,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_send_sccrq(pppol2tp_pcb *l2tp) ",
+      "parameters": [],
+      "begin": 810,
+      "end": 902,
+      "returns": [
+            {
+                  "begin": 826,
+                  "end": 826,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 901,
+                  "end": 901,
+                  "need_brackets": false,
+                  "returned_value": "pppol2tp_udp_send(l2tp, pb)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_send_scccn(pppol2tp_pcb *l2tp, u16_t ns) ",
+      "parameters": [],
+      "begin": 905,
+      "end": 953,
+      "returns": [
+            {
+                  "begin": 921,
+                  "end": 921,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 952,
+                  "end": 952,
+                  "need_brackets": false,
+                  "returned_value": "pppol2tp_udp_send(l2tp, pb)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_send_icrq(pppol2tp_pcb *l2tp, u16_t ns) ",
+      "parameters": [],
+      "begin": 956,
+      "end": 1002,
+      "returns": [
+            {
+                  "begin": 968,
+                  "end": 968,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1001,
+                  "end": 1001,
+                  "need_brackets": false,
+                  "returned_value": "pppol2tp_udp_send(l2tp, pb)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_send_iccn(pppol2tp_pcb *l2tp, u16_t ns) ",
+      "parameters": [],
+      "begin": 1005,
+      "end": 1049,
+      "returns": [
+            {
+                  "begin": 1016,
+                  "end": 1016,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1048,
+                  "end": 1048,
+                  "need_brackets": false,
+                  "returned_value": "pppol2tp_udp_send(l2tp, pb)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_send_zlb(pppol2tp_pcb *l2tp, u16_t ns, u16_t nr) ",
+      "parameters": [],
+      "begin": 1052,
+      "end": 1078,
+      "returns": [
+            {
+                  "begin": 1063,
+                  "end": 1063,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1077,
+                  "end": 1077,
+                  "need_brackets": false,
+                  "returned_value": "pppol2tp_udp_send(l2tp, pb)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_send_stopccn(pppol2tp_pcb *l2tp, u16_t ns) ",
+      "parameters": [],
+      "begin": 1081,
+      "end": 1125,
+      "returns": [
+            {
+                  "begin": 1092,
+                  "end": 1092,
+                  "need_brackets": false,
+                  "returned_value": "ERR_MEM",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1124,
+                  "end": 1124,
+                  "need_brackets": false,
+                  "returned_value": "pppol2tp_udp_send(l2tp, pb)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_xmit(pppol2tp_pcb *l2tp, struct pbuf *pb) ",
+      "parameters": [],
+      "begin": 1127,
+      "end": 1145,
+      "returns": [
+            {
+                  "begin": 1136,
+                  "end": 1136,
+                  "need_brackets": false,
+                  "returned_value": "ERR_BUF",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1144,
+                  "end": 1144,
+                  "need_brackets": false,
+                  "returned_value": "pppol2tp_udp_send(l2tp, pb)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static err_t pppol2tp_udp_send(pppol2tp_pcb *l2tp, struct pbuf *pb) ",
+      "parameters": [],
+      "begin": 1147,
+      "end": 1156,
+      "returns": [
+            {
+                  "begin": 1155,
+                  "end": 1155,
+                  "need_brackets": false,
+                  "returned_value": "err",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}

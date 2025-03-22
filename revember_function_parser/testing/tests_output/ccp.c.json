@@ -1,0 +1,455 @@
+{
+      "name": "static int ccp_anycompress(ccp_options *opt) ",
+      "parameters": [],
+      "begin": 247,
+      "end": 262,
+      "returns": [
+            {
+                  "begin": 248,
+                  "end": 261,
+                  "need_brackets": false,
+                  "returned_value": "(0 || (opt)->deflate || (opt)->bsd_compress || (opt)->predictor_1 || (opt)->predictor_2 || (opt)->mppe )",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_init(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 367,
+      "end": 403,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_open(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 408,
+      "end": 424,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_close(ppp_pcb *pcb, const char *reason) ",
+      "parameters": [],
+      "begin": 429,
+      "end": 433,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_lowerup(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 438,
+      "end": 441,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_lowerdown(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 446,
+      "end": 449,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_input(ppp_pcb *pcb, u_char *p, int len) ",
+      "parameters": [],
+      "begin": 454,
+      "end": 481,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int ccp_extcode(fsm *f, int code, int id, u_char *p, int len) ",
+      "parameters": [],
+      "begin": 486,
+      "end": 514,
+      "returns": [
+            {
+                  "begin": 509,
+                  "end": 510,
+                  "need_brackets": false,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 513,
+                  "end": 513,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_protrej(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 519,
+      "end": 535,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_resetci(fsm *f) ",
+      "parameters": [],
+      "begin": 540,
+      "end": 737,
+      "returns": [
+            {
+                  "begin": 593,
+                  "end": 593,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 598,
+                  "end": 598,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 606,
+                  "end": 606,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 624,
+                  "end": 624,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int ccp_cilen(fsm *f) ",
+      "parameters": [],
+      "begin": 742,
+      "end": 762,
+      "returns": [
+            {
+                  "begin": 746,
+                  "end": 761,
+                  "need_brackets": false,
+                  "returned_value": "0 + (go->bsd_compress? CILEN_BSD_COMPRESS: 0) + (go->deflate && go->deflate_correct? CILEN_DEFLATE: 0) + (go->deflate && go->deflate_draft? CILEN_DEFLATE: 0) + (go->predictor_1? CILEN_PREDICTOR_1: 0) + (go->predictor_2? CILEN_PREDICTOR_2: 0) + (go->mppe? CILEN_MPPE: 0)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_addci(fsm *f, u_char *p, int *lenp) ",
+      "parameters": [],
+      "begin": 767,
+      "end": 828,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int ccp_ackci(fsm *f, u_char *p, int len) ",
+      "parameters": [],
+      "begin": 834,
+      "end": 921,
+      "returns": [
+            {
+                  "begin": 848,
+                  "end": 849,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 853,
+                  "end": 854,
+                  "need_brackets": true,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 859,
+                  "end": 864,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 868,
+                  "end": 869,
+                  "need_brackets": true,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 871,
+                  "end": 876,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 884,
+                  "end": 887,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 891,
+                  "end": 892,
+                  "need_brackets": true,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 897,
+                  "end": 899,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 903,
+                  "end": 904,
+                  "need_brackets": true,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 907,
+                  "end": 909,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 913,
+                  "end": 914,
+                  "need_brackets": true,
+                  "returned_value": "1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 918,
+                  "end": 919,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 920,
+                  "end": 920,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int ccp_nakci(fsm *f, u_char *p, int len, int treat_as_reject) ",
+      "parameters": [],
+      "begin": 927,
+      "end": 1015,
+      "returns": [
+            {
+                  "begin": 1014,
+                  "end": 1014,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int ccp_rejci(fsm *f, u_char *p, int len) ",
+      "parameters": [],
+      "begin": 1020,
+      "end": 1097,
+      "returns": [
+            {
+                  "begin": 1030,
+                  "end": 1032,
+                  "need_brackets": true,
+                  "returned_value": "-1",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1046,
+                  "end": 1048,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1055,
+                  "end": 1057,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1068,
+                  "end": 1069,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1090,
+                  "end": 1091,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1096,
+                  "end": 1096,
+                  "need_brackets": false,
+                  "returned_value": "1",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int ccp_reqci(fsm *f, u_char *p, int *lenp, int dont_nak) ",
+      "parameters": [],
+      "begin": 1104,
+      "end": 1382,
+      "returns": [
+            {
+                  "begin": 1381,
+                  "end": 1381,
+                  "need_brackets": false,
+                  "returned_value": "ret",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static const char *method_name(ccp_options *opt, ccp_options *opt2) ",
+      "parameters": [],
+      "begin": 1387,
+      "end": 1453,
+      "returns": [
+            {
+                  "begin": 1393,
+                  "end": 1394,
+                  "need_brackets": true,
+                  "returned_value": "\"(none)\"",
+                  "return_warning": "compound return value"
+            },
+            {
+                  "begin": 1444,
+                  "end": 1445,
+                  "need_brackets": false,
+                  "returned_value": "\"Predictor 1\"",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1446,
+                  "end": 1447,
+                  "need_brackets": false,
+                  "returned_value": "\"Predictor 2\"",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1452,
+                  "end": 1452,
+                  "need_brackets": false,
+                  "returned_value": "result",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_up(fsm *f) ",
+      "parameters": [],
+      "begin": 1458,
+      "end": 1483,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_down(fsm *f) ",
+      "parameters": [],
+      "begin": 1488,
+      "end": 1508,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static int ccp_printpkt(const u_char *p, int plen, void (*printer) (void *, const char *, ...), void *arg) ",
+      "parameters": [],
+      "begin": 1521,
+      "end": 1643,
+      "returns": [
+            {
+                  "begin": 1527,
+                  "end": 1528,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1532,
+                  "end": 1533,
+                  "need_brackets": true,
+                  "returned_value": "0",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 1642,
+                  "end": 1642,
+                  "need_brackets": false,
+                  "returned_value": "p - p0",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_datainput(ppp_pcb *pcb, u_char *pkt, int len) ",
+      "parameters": [],
+      "begin": 1659,
+      "end": 1698,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void ccp_resetrequest(ppp_pcb *pcb) ",
+      "parameters": [],
+      "begin": 1705,
+      "end": 1722,
+      "returns": [
+            {
+                  "begin": 1708,
+                  "end": 1709,
+                  "need_brackets": true,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static void ccp_rack_timeout(void *arg) ",
+      "parameters": [],
+      "begin": 1727,
+      "end": 1737,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}
