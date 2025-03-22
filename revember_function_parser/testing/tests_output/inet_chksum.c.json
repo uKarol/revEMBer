@@ -1,0 +1,207 @@
+{
+      "name": "u16_tlwip_standard_chksum(const void *dataptr, int len)",
+      "parameters": [],
+      "begin": 189,
+      "end": 254,
+      "returns": [
+            {
+                  "begin": 253,
+                  "end": 253,
+                  "need_brackets": false,
+                  "returned_value": "(u16_t)sum",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static u16_tinet_cksum_pseudo_base(struct pbuf *p, u8_t proto, u16_t proto_len, u32_t acc)",
+      "parameters": [],
+      "begin": 260,
+      "end": 293,
+      "returns": [
+            {
+                  "begin": 292,
+                  "end": 292,
+                  "need_brackets": false,
+                  "returned_value": "(u16_t)~(acc & 0xffffUL)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_tinet_chksum_pseudo(struct pbuf *p, u8_t proto, u16_t proto_len,const ip4_addr_t *src, const ip4_addr_t *dest)",
+      "parameters": [],
+      "begin": 311,
+      "end": 326,
+      "returns": [
+            {
+                  "begin": 325,
+                  "end": 325,
+                  "need_brackets": false,
+                  "returned_value": "inet_cksum_pseudo_base(p, proto, proto_len, acc)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_tip6_chksum_pseudo(struct pbuf *p, u8_t proto, u16_t proto_len,const ip6_addr_t *src, const ip6_addr_t *dest)",
+      "parameters": [],
+      "begin": 344,
+      "end": 362,
+      "returns": [
+            {
+                  "begin": 361,
+                  "end": 361,
+                  "need_brackets": false,
+                  "returned_value": "inet_cksum_pseudo_base(p, proto, proto_len, acc)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_tip_chksum_pseudo(struct pbuf *p, u8_t proto, u16_t proto_len,const ip_addr_t *src, const ip_addr_t *dest)",
+      "parameters": [],
+      "begin": 380,
+      "end": 394,
+      "returns": [
+            {
+                  "begin": 383,
+                  "end": 383,
+                  "need_brackets": false,
+                  "returned_value": "ip6_chksum_pseudo(p, proto, proto_len, ip_2_ip6(src), ip_2_ip6(dest))",
+                  "return_warning": "compound return value"
+            },
+            {
+                  "begin": 391,
+                  "end": 391,
+                  "need_brackets": false,
+                  "returned_value": "inet_chksum_pseudo(p, proto, proto_len, ip_2_ip4(src), ip_2_ip4(dest))",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "static u16_tinet_cksum_pseudo_partial_base(struct pbuf *p, u8_t proto, u16_t proto_len,u16_t chksum_len, u32_t acc)",
+      "parameters": [],
+      "begin": 400,
+      "end": 439,
+      "returns": [
+            {
+                  "begin": 438,
+                  "end": 438,
+                  "need_brackets": false,
+                  "returned_value": "(u16_t)~(acc & 0xffffUL)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_tinet_chksum_pseudo_partial(struct pbuf *p, u8_t proto, u16_t proto_len,u16_t chksum_len, const ip4_addr_t *src, const ip4_addr_t *dest)",
+      "parameters": [],
+      "begin": 457,
+      "end": 472,
+      "returns": [
+            {
+                  "begin": 471,
+                  "end": 471,
+                  "need_brackets": false,
+                  "returned_value": "inet_cksum_pseudo_partial_base(p, proto, proto_len, chksum_len, acc)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_tip6_chksum_pseudo_partial(struct pbuf *p, u8_t proto, u16_t proto_len,u16_t chksum_len, const ip6_addr_t *src, const ip6_addr_t *dest)",
+      "parameters": [],
+      "begin": 492,
+      "end": 510,
+      "returns": [
+            {
+                  "begin": 509,
+                  "end": 509,
+                  "need_brackets": false,
+                  "returned_value": "inet_cksum_pseudo_partial_base(p, proto, proto_len, chksum_len, acc)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_tip_chksum_pseudo_partial(struct pbuf *p, u8_t proto, u16_t proto_len,u16_t chksum_len, const ip_addr_t *src, const ip_addr_t *dest)",
+      "parameters": [],
+      "begin": 527,
+      "end": 541,
+      "returns": [
+            {
+                  "begin": 530,
+                  "end": 530,
+                  "need_brackets": false,
+                  "returned_value": "ip6_chksum_pseudo_partial(p, proto, proto_len, chksum_len, ip_2_ip6(src), ip_2_ip6(dest))",
+                  "return_warning": "compound return value"
+            },
+            {
+                  "begin": 538,
+                  "end": 538,
+                  "need_brackets": false,
+                  "returned_value": "inet_chksum_pseudo_partial(p, proto, proto_len, chksum_len, ip_2_ip4(src), ip_2_ip4(dest))",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_tinet_chksum(const void *dataptr, u16_t len)",
+      "parameters": [],
+      "begin": 555,
+      "end": 557,
+      "returns": [
+            {
+                  "begin": 556,
+                  "end": 556,
+                  "need_brackets": false,
+                  "returned_value": "(u16_t)~(unsigned int)LWIP_CHKSUM(dataptr, len)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_tinet_chksum_pbuf(struct pbuf *p)",
+      "parameters": [],
+      "begin": 568,
+      "end": 587,
+      "returns": [
+            {
+                  "begin": 586,
+                  "end": 586,
+                  "need_brackets": false,
+                  "returned_value": "(u16_t)~(acc & 0xffffUL)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_tlwip_chksum_copy(void *dst, const void *src, u16_t len)",
+      "parameters": [],
+      "begin": 603,
+      "end": 606,
+      "returns": [
+            {
+                  "begin": 605,
+                  "end": 605,
+                  "need_brackets": false,
+                  "returned_value": "LWIP_CHKSUM(dst, len)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}
