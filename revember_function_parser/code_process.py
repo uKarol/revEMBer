@@ -44,13 +44,11 @@ class BlockExtractor:
         self.current_level = 0
         self.entry_level = 0
 
-        #last values
         self.last_signature = ""
         self.function_begin_line = 0
         self.function_end_line = 0
         self.last_returns = []
         self.last_warnings = []
-        #global data
         self.found_functions = {}
 
 
@@ -63,7 +61,6 @@ class BlockExtractor:
                                                                             [],
                                                                             [],
                                                                             )}
-        #print(new_fun)
         self.found_functions.update(new_fun)
         self.last_signature = ""
         self.function_begin_line = 0
@@ -101,7 +98,6 @@ class BlockExtractor:
 
 
     def process_line(self, line, line_num):
-
         if( "}" in line or "{" in line or ";" in line ):
             s_line = self.block_splitter(line)
 
@@ -126,10 +122,10 @@ class InFunction(BlockExtractorState):
         self.last_expression = ""
 
     def process_line(self, line, line_num) -> None:
-        if line != "":
+        if line.strip() != "":
             if(self.expression_begin == 0):
                 self.expression_begin = line_num
-            self.last_expression = self.last_expression + " " + line
+            self.last_expression = self.last_expression + line
 
     def block_begin(self, line_num):
         self.context.current_level = self.context.current_level + 1
@@ -139,7 +135,7 @@ class InFunction(BlockExtractorState):
     def block_end(self, line_num):
         self.context.current_level = self.context.current_level - 1
         if(self.context.current_level == self.context.entry_level):
-            self.function_end_line = line_num
+            self.context.function_end_line = line_num
             self.context.update_function_dict()
             self.context.transition_to(OutFunction())
         self.expression_begin = 0
@@ -149,6 +145,7 @@ class InFunction(BlockExtractorState):
         ret = find_keywords(self.last_expression, self.expression_begin, self.expression_end)
         if(ret != None):
             self.context.last_returns.append(ret)
+        self.expression_begin = 0    
         self.keyword_pos = 0
         self.expression_end = 0
         self.last_expression = ""
@@ -159,14 +156,14 @@ class OutFunction(BlockExtractorState):
         self.last_expression = ""
 
     def process_line(self, line, line_num) -> None:
-        self.last_expression = self.last_expression + " " + line
+        self.last_expression = self.last_expression + line
 
     def block_begin(self, line_num):
-        if( check_function_signature(self.last_expression) == True ):
+        if( check_function_signature(self.last_expression) == True ) and (self.context.current_level == 0):
             self.context.entry_level = self.context.current_level
-            self.context.last_signature = self.last_expression
+            self.context.last_signature = self.last_expression.strip()
+            self.context.function_begin_line = line_num
             self.context.transition_to(InFunction())
-            self.function_begin_line = line_num
         self.context.current_level = self.context.current_level + 1
 
     def block_end(self, line_num):
@@ -178,16 +175,17 @@ class OutFunction(BlockExtractorState):
 
 
 def find_keywords(text, expression_begin, expression_end):
-    return check_return(expression_begin, expression_end, text)
+    text = text + " "
+    if(" return " in text or ")return " in text or " return(" in text ):
+        return check_return(expression_begin, expression_end, text)
 
 
 def check_return(start, end, block):  
     need_extra_brackets = False
     ret_warnings = ""
-    pattern = r"return(.*?)\;"
-    match = re.split(pattern, block)
+    match = block.split("return")
     ret_val = None
-    if (" return" in block or ")return" in block ) and len(match) > 1:
+    if len(match) > 1:
             if match[0].strip().endswith(")"):
                 need_extra_brackets = True
             outer_open_count = match[0].count('(')
@@ -208,9 +206,7 @@ def check_return(start, end, block):
     return ret_val
 
 def check_function_signature(text):
-    #print("checking signature")
     if( "(" in text) and (")" in text):
-        print(text)
         return True
     else:
         return False

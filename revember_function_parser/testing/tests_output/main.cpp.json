@@ -39,7 +39,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "staticvolatileintintializer(   int x) ",
+      "name": "static volatile int intializer (    int x )",
       "parameters": [],
       "begin": 45,
       "end": 50,
@@ -93,7 +93,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "void pattern1 (int x, int y) ",
+      "name": "void pattern1 (int x, int y)",
       "parameters": [],
       "begin": 109,
       "end": 109,
@@ -117,7 +117,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tudp_send_chksum(struct udp_pcb *pcb, struct pbuf *p,u8_t have_chksum, u16_t chksum)",
+      "name": "err_t udp_send_chksum(struct udp_pcb *pcb, struct pbuf *p, u8_t have_chksum, u16_t chksum)",
       "parameters": [],
       "begin": 128,
       "end": 135,
@@ -140,7 +140,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tudp_send_chksum2(struct udp_pcb *pcb, struct pbuf *p,u8_t have_chksum, u16_t chksum)",
+      "name": "err_t udp_send_chksum2(struct udp_pcb *pcb, struct pbuf *p, u8_t have_chksum, u16_t chksum)",
       "parameters": [],
       "begin": 139,
       "end": 143,
@@ -156,7 +156,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tnetconn_recv_tcp_pbuf_flags(struct netconn *conn, struct pbuf **new_buf, u8_t apiflags)",
+      "name": "err_t netconn_recv_tcp_pbuf_flags(struct netconn *conn, struct pbuf **new_buf, u8_t apiflags)",
       "parameters": [],
       "begin": 147,
       "end": 152,
@@ -179,7 +179,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tnetconn_getaddr pattern5(int x, int y)",
+      "name": "err_t netconn_getaddr pattern5(int x, int y)",
       "parameters": [],
       "begin": 156,
       "end": 159,
@@ -195,7 +195,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "void pattern6(int x, int y)",
+      "name": "void pattern6(int x, int y )",
       "parameters": [],
       "begin": 163,
       "end": 165,
@@ -203,7 +203,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "void pattern7(int x,int y)",
+      "name": "void pattern7(int x, int y )",
       "parameters": [],
       "begin": 170,
       "end": 172,
@@ -211,7 +211,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "void pattern8(int x,int y)",
+      "name": "void pattern8( int x, int y )",
       "parameters": [],
       "begin": 178,
       "end": 180,
@@ -219,7 +219,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void (pattern9)(int x,int y)",
+      "name": "static void (pattern9) ( int x, int y )",
       "parameters": [],
       "begin": 187,
       "end": 190,

@@ -172,7 +172,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "HAL_StatusTypeDef HAL_UART_RegisterCallback(UART_HandleTypeDef *huart, HAL_UART_CallbackIDTypeDef CallbackID,pUART_CallbackTypeDef pCallback)",
+      "name": "HAL_StatusTypeDef HAL_UART_RegisterCallback(UART_HandleTypeDef *huart, HAL_UART_CallbackIDTypeDef CallbackID, pUART_CallbackTypeDef pCallback)",
       "parameters": [],
       "begin": 731,
       "end": 831,
@@ -1038,7 +1038,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_t Flag, FlagStatus Status,uint32_t Tickstart, uint32_t Timeout)",
+      "name": "HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_t Flag, FlagStatus Status, uint32_t Tickstart, uint32_t Timeout)",
       "parameters": [],
       "begin": 3387,
       "end": 3440,

@@ -1,5 +1,5 @@
 {
-      "name": "static int ccp_anycompress(ccp_options *opt) ",
+      "name": "static int ccp_anycompress(ccp_options *opt)",
       "parameters": [],
       "begin": 247,
       "end": 262,
@@ -15,7 +15,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_init(ppp_pcb *pcb) ",
+      "name": "static void ccp_init(ppp_pcb *pcb)",
       "parameters": [],
       "begin": 367,
       "end": 403,
@@ -23,7 +23,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_open(ppp_pcb *pcb) ",
+      "name": "static void ccp_open(ppp_pcb *pcb)",
       "parameters": [],
       "begin": 408,
       "end": 424,
@@ -31,7 +31,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_close(ppp_pcb *pcb, const char *reason) ",
+      "name": "static void ccp_close(ppp_pcb *pcb, const char *reason)",
       "parameters": [],
       "begin": 429,
       "end": 433,
@@ -39,7 +39,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_lowerup(ppp_pcb *pcb) ",
+      "name": "static void ccp_lowerup(ppp_pcb *pcb)",
       "parameters": [],
       "begin": 438,
       "end": 441,
@@ -47,7 +47,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_lowerdown(ppp_pcb *pcb) ",
+      "name": "static void ccp_lowerdown(ppp_pcb *pcb)",
       "parameters": [],
       "begin": 446,
       "end": 449,
@@ -55,7 +55,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_input(ppp_pcb *pcb, u_char *p, int len) ",
+      "name": "static void ccp_input(ppp_pcb *pcb, u_char *p, int len)",
       "parameters": [],
       "begin": 454,
       "end": 481,
@@ -63,7 +63,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_extcode(fsm *f, int code, int id, u_char *p, int len) ",
+      "name": "static int ccp_extcode(fsm *f, int code, int id, u_char *p, int len)",
       "parameters": [],
       "begin": 486,
       "end": 514,
@@ -86,7 +86,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_protrej(ppp_pcb *pcb) ",
+      "name": "static void ccp_protrej(ppp_pcb *pcb)",
       "parameters": [],
       "begin": 519,
       "end": 535,
@@ -94,7 +94,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_resetci(fsm *f) ",
+      "name": "static void ccp_resetci(fsm *f)",
       "parameters": [],
       "begin": 540,
       "end": 737,
@@ -131,7 +131,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_cilen(fsm *f) ",
+      "name": "static int ccp_cilen(fsm *f)",
       "parameters": [],
       "begin": 742,
       "end": 762,
@@ -147,7 +147,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_addci(fsm *f, u_char *p, int *lenp) ",
+      "name": "static void ccp_addci(fsm *f, u_char *p, int *lenp)",
       "parameters": [],
       "begin": 767,
       "end": 828,
@@ -155,7 +155,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_ackci(fsm *f, u_char *p, int len) ",
+      "name": "static int ccp_ackci(fsm *f, u_char *p, int len)",
       "parameters": [],
       "begin": 834,
       "end": 921,
@@ -255,7 +255,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_nakci(fsm *f, u_char *p, int len, int treat_as_reject) ",
+      "name": "static int ccp_nakci(fsm *f, u_char *p, int len, int treat_as_reject)",
       "parameters": [],
       "begin": 927,
       "end": 1015,
@@ -271,13 +271,13 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_rejci(fsm *f, u_char *p, int len) ",
+      "name": "static int ccp_rejci(fsm *f, u_char *p, int len)",
       "parameters": [],
       "begin": 1020,
       "end": 1097,
       "returns": [
             {
-                  "begin": 1030,
+                  "begin": 1031,
                   "end": 1032,
                   "need_brackets": true,
                   "returned_value": "-1",
@@ -322,7 +322,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_reqci(fsm *f, u_char *p, int *lenp, int dont_nak) ",
+      "name": "static int ccp_reqci(fsm *f, u_char *p, int *lenp, int dont_nak)",
       "parameters": [],
       "begin": 1104,
       "end": 1382,
@@ -338,7 +338,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static const char *method_name(ccp_options *opt, ccp_options *opt2) ",
+      "name": "static const char *method_name(ccp_options *opt, ccp_options *opt2)",
       "parameters": [],
       "begin": 1387,
       "end": 1453,
@@ -375,7 +375,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_up(fsm *f) ",
+      "name": "static void ccp_up(fsm *f)",
       "parameters": [],
       "begin": 1458,
       "end": 1483,
@@ -383,7 +383,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_down(fsm *f) ",
+      "name": "static void ccp_down(fsm *f)",
       "parameters": [],
       "begin": 1488,
       "end": 1508,
@@ -391,7 +391,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_printpkt(const u_char *p, int plen, void (*printer) (void *, const char *, ...), void *arg) ",
+      "name": "static int ccp_printpkt(const u_char *p, int plen, void (*printer) (void *, const char *, ...), void *arg)",
       "parameters": [],
       "begin": 1521,
       "end": 1643,
@@ -421,7 +421,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_datainput(ppp_pcb *pcb, u_char *pkt, int len) ",
+      "name": "static void ccp_datainput(ppp_pcb *pcb, u_char *pkt, int len)",
       "parameters": [],
       "begin": 1659,
       "end": 1698,
@@ -429,7 +429,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "void ccp_resetrequest(ppp_pcb *pcb) ",
+      "name": "void ccp_resetrequest(ppp_pcb *pcb)",
       "parameters": [],
       "begin": 1705,
       "end": 1722,
@@ -445,7 +445,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_rack_timeout(void *arg) ",
+      "name": "static void ccp_rack_timeout(void *arg)",
       "parameters": [],
       "begin": 1727,
       "end": 1737,
