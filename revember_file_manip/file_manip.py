@@ -75,7 +75,7 @@ class CFileManip:
                     if need_braces == False:
                         lines[ret["begin"]] = self.add_sequence_in_return(lines[ret["begin"]], self.to_be_added["ret"] + ' \n', need_braces)
                     else:
-                        for idx in range (ret["end"], ret["end"] + 1):
+                        for idx in range (ret["begin"], ret["end"] + 1):
                             if( "return" in lines[idx] ):
                                 break
                         lines[idx] = self.add_sequence_in_return(lines[idx], self.to_be_added["ret"] + ' \n', need_braces)

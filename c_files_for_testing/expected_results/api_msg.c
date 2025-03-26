@@ -1254,8 +1254,8 @@ REVEMBER_FUNCTION_ENTRY()
           lwip_netconn_do_close_internal(msg->conn);
 #endif /* LWIP_TCPIP_CORE_LOCKING */
           /* API_EVENT is called inside lwip_netconn_do_close_internal, before releasing
-             the application thread, so we can REVEMBER_FUNCTION_EXIT() 
- return at this point! */
+             the application thread, so we can return at this point! */
+REVEMBER_FUNCTION_EXIT() 
           return;
 #endif /* LWIP_TCP */
         default:

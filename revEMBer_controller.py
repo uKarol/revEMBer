@@ -4,7 +4,7 @@
 from revember_view import *
 from revember_file_manip.file_manip import CFileManip
 from revember_function_parser.cascaded_extractor import *
-from revember_view.testing_gui import *
+from revember_view.revember_view import *
 
 
 class revemberModel:
@@ -64,7 +64,7 @@ class revEMBer_controller:
         self.view.add_file(path)
         for ffunction in found_functions:
             self.model.add_functions(path, ffunction, found_functions[ffunction])
-            self.view.add_function(path, found_functions[ffunction].name, 0, 0, 0)
+            self.view.add_function(path, found_functions[ffunction].name, found_functions[ffunction].begin, found_functions[ffunction].end, found_functions[ffunction].returns)
 
     def start_app(self):
         self.view.start()

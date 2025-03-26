@@ -964,21 +964,14 @@ REVEMBER_FUNCTION_EXIT()
  * Set MPPE options from plugins.
  */
 void set_mppe_enc_types(int policy, int types) {
-REVEMBER_FUNCTION_ENTRY() 
     /* Early exit for unknown policies. */
     if (policy != MPPE_ENC_POL_ENC_ALLOWED ||
 	policy != MPPE_ENC_POL_ENC_REQUIRED)
-{
-REVEMBER_FUNCTION_EXIT() 
 	return;
- }
 
     /* Don't modify MPPE if it's optional and wasn't already configured. */
     if (policy == MPPE_ENC_POL_ENC_ALLOWED && !ccp_wantoptions[0].mppe)
-{
-REVEMBER_FUNCTION_EXIT() 
 	return;
- }
 
     /*
      * Disable undesirable encryption types.  Note that we don't ENABLE
@@ -994,7 +987,6 @@ REVEMBER_FUNCTION_EXIT()
 	default:
 	    break;
     }
-REVEMBER_FUNCTION_EXIT() 
 }
 #endif /* MPPE_SUPPORT */
 #endif /* UNUSED */

@@ -1,14 +1,32 @@
 {
-      "name": "voidip4_set_default_multicast_netif(struct netif *default_multicast_netif)",
-      "parameters": [],
+      "name": "void ip4_set_default_multicast_netif(struct netif *default_multicast_netif)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "default_multicast_netif"
+                  }
+            ]
+      ],
       "begin": 117,
       "end": 119,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "struct netif *ip4_route_src(const ip4_addr_t *src, const ip4_addr_t *dest)",
-      "parameters": [],
+      "name": "struct netif * ip4_route_src(const ip4_addr_t *src, const ip4_addr_t *dest)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "src"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "dest"
+                  }
+            ]
+      ],
       "begin": 129,
       "end": 138,
       "returns": [
@@ -30,8 +48,15 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "struct netif *ip4_route(const ip4_addr_t *dest)",
-      "parameters": [],
+      "name": "struct netif * ip4_route(const ip4_addr_t *dest)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "dest"
+                  }
+            ]
+      ],
       "begin": 152,
       "end": 227,
       "returns": [
@@ -109,8 +134,15 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static intip4_canforward(struct pbuf *p)",
-      "parameters": [],
+      "name": "static int ip4_canforward(struct pbuf *p)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  }
+            ]
+      ],
       "begin": 239,
       "end": 268,
       "returns": [
@@ -160,8 +192,23 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static voidip4_forward(struct pbuf *p, struct ip_hdr *iphdr, struct netif *inp)",
-      "parameters": [],
+      "name": "static void ip4_forward(struct pbuf *p, struct ip_hdr *iphdr, struct netif *inp)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "struct ip_hdr*",
+                        "param_name": "iphdr"
+                  },
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "inp"
+                  }
+            ]
+      ],
       "begin": 281,
       "end": 368,
       "returns": [
@@ -190,8 +237,15 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static intip4_input_accept(struct netif *netif)",
-      "parameters": [],
+      "name": "static int ip4_input_accept(struct netif *netif)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  }
+            ]
+      ],
       "begin": 374,
       "end": 408,
       "returns": [
@@ -220,8 +274,19 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tip4_input(struct pbuf *p, struct netif *inp)",
-      "parameters": [],
+      "name": "err_t ip4_input(struct pbuf *p, struct netif *inp)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "inp"
+                  }
+            ]
+      ],
       "begin": 426,
       "end": 758,
       "returns": [
@@ -299,8 +364,39 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tip4_output_if(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest,u8_t ttl, u8_t tos,u8_t proto, struct netif *netif)",
-      "parameters": [],
+      "name": "err_t ip4_output_if(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest, u8_t ttl, u8_t tos, u8_t proto, struct netif *netif)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "src"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "dest"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "ttl"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "tos"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "proto"
+                  },
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  }
+            ]
+      ],
       "begin": 789,
       "end": 792,
       "returns": [
@@ -315,8 +411,47 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tip4_output_if_opt(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest,u8_t ttl, u8_t tos, u8_t proto, struct netif *netif, void *ip_options,u16_t optlen)",
-      "parameters": [],
+      "name": "err_t ip4_output_if_opt(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest, u8_t ttl, u8_t tos, u8_t proto, struct netif *netif, void *ip_options, u16_t optlen)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "src"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "dest"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "ttl"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "tos"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "proto"
+                  },
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "ip_options"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "optlen"
+                  }
+            ]
+      ],
       "begin": 804,
       "end": 819,
       "returns": [
@@ -338,8 +473,39 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tip4_output_if_src(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest,u8_t ttl, u8_t tos,u8_t proto, struct netif *netif)",
-      "parameters": [],
+      "name": "err_t ip4_output_if_src(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest, u8_t ttl, u8_t tos, u8_t proto, struct netif *netif)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "src"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "dest"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "ttl"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "tos"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "proto"
+                  },
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  }
+            ]
+      ],
       "begin": 829,
       "end": 832,
       "returns": [
@@ -354,8 +520,47 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tip4_output_if_opt_src(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest,u8_t ttl, u8_t tos, u8_t proto, struct netif *netif, void *ip_options,u16_t optlen)",
-      "parameters": [],
+      "name": "err_t ip4_output_if_opt_src(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest, u8_t ttl, u8_t tos, u8_t proto, struct netif *netif, void *ip_options, u16_t optlen)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "src"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "dest"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "ttl"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "tos"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "proto"
+                  },
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "ip_options"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "optlen"
+                  }
+            ]
+      ],
       "begin": 842,
       "end": 1007,
       "returns": [
@@ -412,8 +617,35 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tip4_output(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest,u8_t ttl, u8_t tos, u8_t proto)",
-      "parameters": [],
+      "name": "err_t ip4_output(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest, u8_t ttl, u8_t tos, u8_t proto)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "src"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "dest"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "ttl"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "tos"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "proto"
+                  }
+            ]
+      ],
       "begin": 1029,
       "end": 1042,
       "returns": [
@@ -435,8 +667,39 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "err_tip4_output_hinted(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest,u8_t ttl, u8_t tos, u8_t proto, struct netif_hint *netif_hint)",
-      "parameters": [],
+      "name": "err_t ip4_output_hinted(struct pbuf *p, const ip4_addr_t *src, const ip4_addr_t *dest, u8_t ttl, u8_t tos, u8_t proto, struct netif_hint *netif_hint)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "src"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "dest"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "ttl"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "tos"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "proto"
+                  },
+                  {
+                        "param_type": "struct netif_hint*",
+                        "param_name": "netif_hint"
+                  }
+            ]
+      ],
       "begin": 1066,
       "end": 1084,
       "returns": [
@@ -458,8 +721,15 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "voidip4_debug_print(struct pbuf *p)",
-      "parameters": [],
+      "name": "void ip4_debug_print(struct pbuf *p)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  }
+            ]
+      ],
       "begin": 1093,
       "end": 1128,
       "returns": [],

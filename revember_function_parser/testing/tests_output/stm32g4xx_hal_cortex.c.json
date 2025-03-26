@@ -1,6 +1,13 @@
 {
       "name": "void HAL_NVIC_SetPriorityGrouping(uint32_t PriorityGroup)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "PriorityGroup"
+                  }
+            ]
+      ],
       "begin": 163,
       "end": 169,
       "returns": [],
@@ -8,7 +15,22 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t SubPriority)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "IRQn_Type",
+                        "param_name": "IRQn"
+                  },
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "PreemptPriority"
+                  },
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "SubPriority"
+                  }
+            ]
+      ],
       "begin": 185,
       "end": 195,
       "returns": [],
@@ -16,7 +38,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_NVIC_EnableIRQ(IRQn_Type IRQn)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "IRQn_Type",
+                        "param_name": "IRQn"
+                  }
+            ]
+      ],
       "begin": 207,
       "end": 213,
       "returns": [],
@@ -24,7 +53,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_NVIC_DisableIRQ(IRQn_Type IRQn)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "IRQn_Type",
+                        "param_name": "IRQn"
+                  }
+            ]
+      ],
       "begin": 223,
       "end": 229,
       "returns": [],
@@ -32,7 +68,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_NVIC_SystemReset(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 236,
       "end": 239,
       "returns": [],
@@ -40,7 +83,14 @@
       "revember_artifacts": []
 }{
       "name": "uint32_t HAL_SYSTICK_Config(uint32_t TicksNumb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "TicksNumb"
+                  }
+            ]
+      ],
       "begin": 249,
       "end": 251,
       "returns": [
@@ -56,7 +106,14 @@
       "revember_artifacts": []
 }{
       "name": "uint32_t HAL_NVIC_GetPriorityGrouping(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 277,
       "end": 280,
       "returns": [
@@ -72,7 +129,26 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_NVIC_GetPriority(IRQn_Type IRQn, uint32_t PriorityGroup, uint32_t *pPreemptPriority, uint32_t *pSubPriority)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "IRQn_Type",
+                        "param_name": "IRQn"
+                  },
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "PriorityGroup"
+                  },
+                  {
+                        "param_type": "uint32_t*",
+                        "param_name": "pPreemptPriority"
+                  },
+                  {
+                        "param_type": "uint32_t*",
+                        "param_name": "pSubPriority"
+                  }
+            ]
+      ],
       "begin": 304,
       "end": 309,
       "returns": [],
@@ -80,7 +156,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_NVIC_SetPendingIRQ(IRQn_Type IRQn)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "IRQn_Type",
+                        "param_name": "IRQn"
+                  }
+            ]
+      ],
       "begin": 319,
       "end": 325,
       "returns": [],
@@ -88,7 +171,14 @@
       "revember_artifacts": []
 }{
       "name": "uint32_t HAL_NVIC_GetPendingIRQ(IRQn_Type IRQn)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "IRQn_Type",
+                        "param_name": "IRQn"
+                  }
+            ]
+      ],
       "begin": 337,
       "end": 343,
       "returns": [
@@ -104,7 +194,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_NVIC_ClearPendingIRQ(IRQn_Type IRQn)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "IRQn_Type",
+                        "param_name": "IRQn"
+                  }
+            ]
+      ],
       "begin": 353,
       "end": 359,
       "returns": [],
@@ -112,7 +209,14 @@
       "revember_artifacts": []
 }{
       "name": "uint32_t HAL_NVIC_GetActive(IRQn_Type IRQn)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "IRQn_Type",
+                        "param_name": "IRQn"
+                  }
+            ]
+      ],
       "begin": 370,
       "end": 373,
       "returns": [
@@ -128,7 +232,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_SYSTICK_CLKSourceConfig(uint32_t CLKSource)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "CLKSource"
+                  }
+            ]
+      ],
       "begin": 384,
       "end": 395,
       "returns": [],
@@ -136,7 +247,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_SYSTICK_IRQHandler(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 402,
       "end": 404,
       "returns": [],
@@ -144,7 +262,14 @@
       "revember_artifacts": []
 }{
       "name": "__weak void HAL_SYSTICK_Callback(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 411,
       "end": 415,
       "returns": [],
@@ -152,7 +277,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_MPU_Enable(uint32_t MPU_Control)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "MPU_Control"
+                  }
+            ]
+      ],
       "begin": 430,
       "end": 437,
       "returns": [],
@@ -160,7 +292,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_MPU_Disable(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 445,
       "end": 451,
       "returns": [],
@@ -168,7 +307,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_MPU_EnableRegion(uint32_t RegionNumber)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "RegionNumber"
+                  }
+            ]
+      ],
       "begin": 458,
       "end": 467,
       "returns": [],
@@ -176,7 +322,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_MPU_DisableRegion(uint32_t RegionNumber)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "RegionNumber"
+                  }
+            ]
+      ],
       "begin": 474,
       "end": 483,
       "returns": [],
@@ -184,7 +337,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_MPU_ConfigRegion(MPU_Region_InitTypeDef *MPU_Init)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "MPU_Region_InitTypeDef*",
+                        "param_name": "MPU_Init"
+                  }
+            ]
+      ],
       "begin": 492,
       "end": 521,
       "returns": [],

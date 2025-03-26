@@ -1,6 +1,13 @@
 {
       "name": "int32_t BSP_GetVersion(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 138,
       "end": 140,
       "returns": [
@@ -16,7 +23,14 @@
       "revember_artifacts": []
 }{
       "name": "const uint8_t* BSP_GetBoardName(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 147,
       "end": 149,
       "returns": [
@@ -32,7 +46,14 @@
       "revember_artifacts": []
 }{
       "name": "const uint8_t* BSP_GetBoardID(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 156,
       "end": 158,
       "returns": [
@@ -48,7 +69,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_Init(Led_TypeDef Led)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Led_TypeDef",
+                        "param_name": "Led"
+                  }
+            ]
+      ],
       "begin": 168,
       "end": 184,
       "returns": [
@@ -64,7 +92,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_DeInit(Led_TypeDef Led)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Led_TypeDef",
+                        "param_name": "Led"
+                  }
+            ]
+      ],
       "begin": 195,
       "end": 203,
       "returns": [
@@ -80,7 +115,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_On(Led_TypeDef Led)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Led_TypeDef",
+                        "param_name": "Led"
+                  }
+            ]
+      ],
       "begin": 213,
       "end": 217,
       "returns": [
@@ -96,7 +138,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_Off(Led_TypeDef Led)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Led_TypeDef",
+                        "param_name": "Led"
+                  }
+            ]
+      ],
       "begin": 227,
       "end": 231,
       "returns": [
@@ -112,7 +161,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_Toggle(Led_TypeDef Led)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Led_TypeDef",
+                        "param_name": "Led"
+                  }
+            ]
+      ],
       "begin": 241,
       "end": 245,
       "returns": [
@@ -128,7 +184,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_LED_GetState(Led_TypeDef Led)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Led_TypeDef",
+                        "param_name": "Led"
+                  }
+            ]
+      ],
       "begin": 255,
       "end": 257,
       "returns": [
@@ -144,7 +207,18 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef ButtonMode)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Button_TypeDef",
+                        "param_name": "Button"
+                  },
+                  {
+                        "param_type": "ButtonMode_TypeDef",
+                        "param_name": "ButtonMode"
+                  }
+            ]
+      ],
       "begin": 273,
       "end": 308,
       "returns": [
@@ -160,7 +234,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_PB_DeInit(Button_TypeDef Button)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Button_TypeDef",
+                        "param_name": "Button"
+                  }
+            ]
+      ],
       "begin": 319,
       "end": 324,
       "returns": [
@@ -176,7 +257,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_PB_GetState(Button_TypeDef Button)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Button_TypeDef",
+                        "param_name": "Button"
+                  }
+            ]
+      ],
       "begin": 334,
       "end": 336,
       "returns": [
@@ -192,7 +280,14 @@
       "revember_artifacts": []
 }{
       "name": "void BSP_PB_IRQHandler(Button_TypeDef Button)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Button_TypeDef",
+                        "param_name": "Button"
+                  }
+            ]
+      ],
       "begin": 344,
       "end": 346,
       "returns": [],
@@ -200,7 +295,14 @@
       "revember_artifacts": []
 }{
       "name": "__weak void BSP_PB_Callback(Button_TypeDef Button)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "Button_TypeDef",
+                        "param_name": "Button"
+                  }
+            ]
+      ],
       "begin": 354,
       "end": 360,
       "returns": [],
@@ -208,7 +310,18 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_Init(COM_TypeDef COM, COM_InitTypeDef *COM_Init)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "COM_TypeDef",
+                        "param_name": "COM"
+                  },
+                  {
+                        "param_type": "COM_InitTypeDef*",
+                        "param_name": "COM_Init"
+                  }
+            ]
+      ],
       "begin": 373,
       "end": 402,
       "returns": [
@@ -238,7 +351,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_DeInit(COM_TypeDef COM)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "COM_TypeDef",
+                        "param_name": "COM"
+                  }
+            ]
+      ],
       "begin": 411,
       "end": 434,
       "returns": [
@@ -261,7 +381,18 @@
       "revember_artifacts": []
 }{
       "name": "__weak HAL_StatusTypeDef MX_LPUART1_Init(UART_HandleTypeDef *huart, MX_UART_InitTypeDef *COM_Init)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "UART_HandleTypeDef*",
+                        "param_name": "huart"
+                  },
+                  {
+                        "param_type": "MX_UART_InitTypeDef*",
+                        "param_name": "COM_Init"
+                  }
+            ]
+      ],
       "begin": 444,
       "end": 456,
       "returns": [
@@ -277,7 +408,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_RegisterDefaultMspCallbacks(COM_TypeDef COM)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "COM_TypeDef",
+                        "param_name": "COM"
+                  }
+            ]
+      ],
       "begin": 466,
       "end": 494,
       "returns": [
@@ -293,7 +431,18 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_RegisterMspCallbacks(COM_TypeDef COM , BSP_COM_Cb_t *Callback)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "COM_TypeDef",
+                        "param_name": "COM"
+                  },
+                  {
+                        "param_type": "BSP_COM_Cb_t*",
+                        "param_name": "Callback"
+                  }
+            ]
+      ],
       "begin": 504,
       "end": 531,
       "returns": [
@@ -309,7 +458,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t BSP_COM_SelectLogPort(COM_TypeDef COM)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "COM_TypeDef",
+                        "param_name": "COM"
+                  }
+            ]
+      ],
       "begin": 542,
       "end": 548,
       "returns": [
@@ -325,7 +481,22 @@
       "revember_artifacts": []
 }{
       "name": "size_t __write(int file, unsigned char const *ptr, size_t len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "int",
+                        "param_name": "file"
+                  },
+                  {
+                        "param_type": "unsigned char const*",
+                        "param_name": "ptr"
+                  },
+                  {
+                        "param_type": "size_t",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 559,
       "end": 569,
       "returns": [
@@ -341,7 +512,14 @@
       "revember_artifacts": []
 }{
       "name": "static void BUTTON_USER_EXTI_Callback(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 596,
       "end": 598,
       "returns": [],
@@ -349,7 +527,14 @@
       "revember_artifacts": []
 }{
       "name": "static void COM1_MspInit(UART_HandleTypeDef *huart)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "UART_HandleTypeDef*",
+                        "param_name": "huart"
+                  }
+            ]
+      ],
       "begin": 608,
       "end": 634,
       "returns": [],
@@ -357,7 +542,14 @@
       "revember_artifacts": []
 }{
       "name": "static void COM1_MspDeInit(UART_HandleTypeDef *huart)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "UART_HandleTypeDef*",
+                        "param_name": "huart"
+                  }
+            ]
+      ],
       "begin": 642,
       "end": 657,
       "returns": [],

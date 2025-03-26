@@ -1,6 +1,13 @@
 {
-      "name": "static int ccp_anycompress(ccp_options *opt) ",
-      "parameters": [],
+      "name": "static int ccp_anycompress(ccp_options *opt)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ccp_options*",
+                        "param_name": "opt"
+                  }
+            ]
+      ],
       "begin": 247,
       "end": 262,
       "returns": [
@@ -15,56 +22,133 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_init(ppp_pcb *pcb) ",
-      "parameters": [],
+      "name": "static void ccp_init(ppp_pcb *pcb)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 367,
       "end": 403,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_open(ppp_pcb *pcb) ",
-      "parameters": [],
+      "name": "static void ccp_open(ppp_pcb *pcb)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 408,
       "end": 424,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_close(ppp_pcb *pcb, const char *reason) ",
-      "parameters": [],
+      "name": "static void ccp_close(ppp_pcb *pcb, const char *reason)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "const char*",
+                        "param_name": "reason"
+                  }
+            ]
+      ],
       "begin": 429,
       "end": 433,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_lowerup(ppp_pcb *pcb) ",
-      "parameters": [],
+      "name": "static void ccp_lowerup(ppp_pcb *pcb)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 438,
       "end": 441,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_lowerdown(ppp_pcb *pcb) ",
-      "parameters": [],
+      "name": "static void ccp_lowerdown(ppp_pcb *pcb)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 446,
       "end": 449,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_input(ppp_pcb *pcb, u_char *p, int len) ",
-      "parameters": [],
+      "name": "static void ccp_input(ppp_pcb *pcb, u_char *p, int len)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 454,
       "end": 481,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_extcode(fsm *f, int code, int id, u_char *p, int len) ",
-      "parameters": [],
+      "name": "static int ccp_extcode(fsm *f, int code, int id, u_char *p, int len)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "code"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "id"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 486,
       "end": 514,
       "returns": [
@@ -86,16 +170,30 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_protrej(ppp_pcb *pcb) ",
-      "parameters": [],
+      "name": "static void ccp_protrej(ppp_pcb *pcb)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 519,
       "end": 535,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_resetci(fsm *f) ",
-      "parameters": [],
+      "name": "static void ccp_resetci(fsm *f)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 540,
       "end": 737,
       "returns": [
@@ -131,8 +229,15 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_cilen(fsm *f) ",
-      "parameters": [],
+      "name": "static int ccp_cilen(fsm *f)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 742,
       "end": 762,
       "returns": [
@@ -147,16 +252,46 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_addci(fsm *f, u_char *p, int *lenp) ",
-      "parameters": [],
+      "name": "static void ccp_addci(fsm *f, u_char *p, int *lenp)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int*",
+                        "param_name": "lenp"
+                  }
+            ]
+      ],
       "begin": 767,
       "end": 828,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_ackci(fsm *f, u_char *p, int len) ",
-      "parameters": [],
+      "name": "static int ccp_ackci(fsm *f, u_char *p, int len)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 834,
       "end": 921,
       "returns": [
@@ -255,8 +390,27 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_nakci(fsm *f, u_char *p, int len, int treat_as_reject) ",
-      "parameters": [],
+      "name": "static int ccp_nakci(fsm *f, u_char *p, int len, int treat_as_reject)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "treat_as_reject"
+                  }
+            ]
+      ],
       "begin": 927,
       "end": 1015,
       "returns": [
@@ -271,13 +425,28 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_rejci(fsm *f, u_char *p, int len) ",
-      "parameters": [],
+      "name": "static int ccp_rejci(fsm *f, u_char *p, int len)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 1020,
       "end": 1097,
       "returns": [
             {
-                  "begin": 1030,
+                  "begin": 1031,
                   "end": 1032,
                   "need_brackets": true,
                   "returned_value": "-1",
@@ -322,8 +491,27 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_reqci(fsm *f, u_char *p, int *lenp, int dont_nak) ",
-      "parameters": [],
+      "name": "static int ccp_reqci(fsm *f, u_char *p, int *lenp, int dont_nak)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int*",
+                        "param_name": "lenp"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "dont_nak"
+                  }
+            ]
+      ],
       "begin": 1104,
       "end": 1382,
       "returns": [
@@ -338,8 +526,19 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static const char *method_name(ccp_options *opt, ccp_options *opt2) ",
-      "parameters": [],
+      "name": "static const char *method_name(ccp_options *opt, ccp_options *opt2)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ccp_options*",
+                        "param_name": "opt"
+                  },
+                  {
+                        "param_type": "ccp_options*",
+                        "param_name": "opt2"
+                  }
+            ]
+      ],
       "begin": 1387,
       "end": 1453,
       "returns": [
@@ -375,24 +574,57 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_up(fsm *f) ",
-      "parameters": [],
+      "name": "static void ccp_up(fsm *f)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 1458,
       "end": 1483,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_down(fsm *f) ",
-      "parameters": [],
+      "name": "static void ccp_down(fsm *f)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 1488,
       "end": 1508,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static int ccp_printpkt(const u_char *p, int plen, void (*printer) (void *, const char *, ...), void *arg) ",
-      "parameters": [],
+      "name": "static int ccp_printpkt(const u_char *p, int plen, void (*printer) (void *, const char *, ...), void *arg)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "const u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "plen"
+                  },
+                  {
+                        "param_type": "function_ptr",
+                        "param_name": "printer"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "arg"
+                  }
+            ]
+      ],
       "begin": 1521,
       "end": 1643,
       "returns": [
@@ -421,16 +653,38 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_datainput(ppp_pcb *pcb, u_char *pkt, int len) ",
-      "parameters": [],
+      "name": "static void ccp_datainput(ppp_pcb *pcb, u_char *pkt, int len)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "pkt"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 1659,
       "end": 1698,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "void ccp_resetrequest(ppp_pcb *pcb) ",
-      "parameters": [],
+      "name": "void ccp_resetrequest(ppp_pcb *pcb)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 1705,
       "end": 1722,
       "returns": [
@@ -445,8 +699,15 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static void ccp_rack_timeout(void *arg) ",
-      "parameters": [],
+      "name": "static void ccp_rack_timeout(void *arg)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "arg"
+                  }
+            ]
+      ],
       "begin": 1727,
       "end": 1737,
       "returns": [],
