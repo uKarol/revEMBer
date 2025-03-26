@@ -1,9 +1,3 @@
-/* 
-THIS FILE HAS ADDED DEBUG INFORMATIONS 
- revEMBer projct in github: https://github.com/uKarol/revEMBer 
-jefvcoe oefpm d actmdhsae
-*/
-#include "revEMBer.h"
 /**
  * @file
  * Ethernet common functions
@@ -86,7 +80,6 @@ const struct eth_addr ethzero = {{0, 0, 0, 0, 0, 0}};
 err_t
 ethernet_input(struct pbuf *p, struct netif *netif)
 {
-REVEMBER_FUNCTION_ENTRY() 
   struct eth_hdr *ethhdr;
   u16_t type;
 #if LWIP_ARP || ETHARP_SUPPORT_VLAN || LWIP_IPV6
@@ -139,7 +132,6 @@ REVEMBER_FUNCTION_ENTRY()
 #endif
       /* silently ignore this packet: not for our VLAN */
       pbuf_free(p);
-REVEMBER_FUNCTION_EXIT() 
       return ERR_OK;
     }
 #endif /* defined(LWIP_HOOK_VLAN_CHECK) || defined(ETHARP_VLAN_CHECK) || defined(ETHARP_VLAN_CHECK_FN) */
@@ -253,12 +245,10 @@ REVEMBER_FUNCTION_EXIT()
 
   /* This means the pbuf is freed or consumed,
      so the caller doesn't have to free it again */
-REVEMBER_FUNCTION_EXIT() 
   return ERR_OK;
 
 free_and_return:
   pbuf_free(p);
-REVEMBER_FUNCTION_EXIT() 
   return ERR_OK;
 }
 
@@ -280,7 +270,6 @@ err_t
 ethernet_output(struct netif * netif, struct pbuf * p,
                 const struct eth_addr * src, const struct eth_addr * dst,
                 u16_t eth_type) {
-REVEMBER_FUNCTION_ENTRY() 
   struct eth_hdr *ethhdr;
   u16_t eth_type_be = lwip_htons(eth_type);
 
@@ -320,14 +309,12 @@ REVEMBER_FUNCTION_ENTRY()
               ("ethernet_output: sending packet %p\n", (void *)p));
 
   /* send the packet */
-REVEMBER_FUNCTION_EXIT() 
   return netif->linkoutput(netif, p);
 
 pbuf_header_failed:
   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_LEVEL_SERIOUS,
               ("ethernet_output: could not allocate room for header.\n"));
   LINK_STATS_INC(link.lenerr);
-REVEMBER_FUNCTION_EXIT() 
   return ERR_BUF;
 }
 
