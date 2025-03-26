@@ -610,8 +610,8 @@ REVEMBER_FUNCTION_EXIT()
              * require strict checking about the PPP phase to prevent endless
              * disconnection loops.
              */
-REVEMBER_FUNCTION_EXIT() 
           }
+REVEMBER_FUNCTION_EXIT() 
           return;
         default:
           break;

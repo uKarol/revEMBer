@@ -163,10 +163,10 @@ udp_send_chksum(struct udp_pcb *pcb, struct pbuf *p,
 REVEMBER_FUNCTION_ENTRY() 
     
     if(pcb == NULL)
-{
-REVEMBER_FUNCTION_EXIT() 
     return udp_sendto_chksum(pcb, p, &pcb->remote_ip, pcb->remote_port,
         have_chksum, chksum);
+{
+REVEMBER_FUNCTION_EXIT() 
  }
 
 REVEMBER_FUNCTION_EXIT() 
@@ -187,7 +187,7 @@ err_t
 netconn_recv_tcp_pbuf_flags(struct netconn *conn, struct pbuf **new_buf, u8_t apiflags)
 {
 REVEMBER_FUNCTION_ENTRY() 
-#waring "improper return statement - add revember macros manually" 
+#warning "improper return statement - add revember macros manually" 
   LWIP_ERROR("netconn_recv_tcp_pbuf: invalid conn", (conn != NULL) &&
              NETCONNTYPE_GROUP(netconn_type(conn)) == NETCONN_TCP, return ERR_ARG;);
 
@@ -200,7 +200,7 @@ netconn_getaddr pattern5(int x, int y)
 {
 REVEMBER_FUNCTION_ENTRY() 
     std::cout<<"pattern5";
-#waring "improper return statement - add revember macros manually" 
+#warning "improper return statement - add revember macros manually" 
     LWIP_ERROR("netconn_getaddr: invalid conn", (conn != NULL), return ERR_ARG;);
 REVEMBER_FUNCTION_EXIT() 
 }

@@ -311,6 +311,7 @@ REVEMBER_FUNCTION_EXIT()
  */
 static void  chap_handle_response(ppp_pcb *pcb, int id,
 		     unsigned char *pkt, int len) {
+REVEMBER_FUNCTION_ENTRY() 
 	int response_len, ok, mlen;
 	const unsigned char *response;
 	unsigned char *outp;
@@ -324,16 +325,25 @@ static void  chap_handle_response(ppp_pcb *pcb, int id,
 	char message[256];
 
 	if ((pcb->chap_server.flags & LOWERUP) == 0)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;
+ }
 	if (id != pcb->chap_server.challenge[PPP_HDRLEN+1] || len < 2)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;
+ }
 	if (pcb->chap_server.flags & CHALLENGE_VALID) {
 		response = pkt;
 		GETCHAR(response_len, pkt);
 		len -= response_len + 1;	/* length of name */
 		name = (char *)pkt + response_len;
 		if (len < 0)
+{
+REVEMBER_FUNCTION_EXIT() 
 			return;
+ }
 
 		if (pcb->chap_server.flags & TIMEOUT_PENDING) {
 			pcb->chap_server.flags &= ~TIMEOUT_PENDING;
@@ -370,16 +380,23 @@ static void  chap_handle_response(ppp_pcb *pcb, int id,
 			ppp_warn("Peer %q failed CHAP authentication", name);
 		}
 	} else if ((pcb->chap_server.flags & AUTH_DONE) == 0)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;
+ }
 
 	/* send the response */
 	mlen = strlen(message);
 	len = CHAP_HDRLEN + mlen;
 	p = pbuf_alloc(PBUF_RAW, (u16_t)(PPP_HDRLEN +len), PPP_CTRL_PBUF_TYPE);
 	if(NULL == p)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;
+ }
 	if(p->tot_len != p->len) {
 		pbuf_free(p);
+REVEMBER_FUNCTION_EXIT() 
 		return;
 	}
 
@@ -431,6 +448,7 @@ static void  chap_handle_response(ppp_pcb *pcb, int id,
 		}
 		pcb->chap_server.flags |= AUTH_DONE;
 	}
+REVEMBER_FUNCTION_EXIT() 
 }
 
 /*
@@ -442,6 +460,7 @@ static int chap_verify_response(ppp_pcb *pcb, const char *name, const char *ourn
 		     const struct chap_digest_type *digest,
 		     const unsigned char *challenge, const unsigned char *response,
 		     char *message, int message_space) {
+REVEMBER_FUNCTION_ENTRY() 
 	int ok;
 	unsigned char secret[MAXSECRETLEN];
 	int secret_len;
@@ -449,12 +468,14 @@ static int chap_verify_response(ppp_pcb *pcb, const char *name, const char *ourn
 	/* Get the secret that the peer is supposed to know */
 	if (!get_secret(pcb, name, ourname, (char *)secret, &secret_len, 1)) {
 		ppp_error("No CHAP secret found for authenticating %q", name);
+REVEMBER_FUNCTION_EXIT() 
 		return 0;
 	}
 	ok = digest->verify_response(pcb, id, name, secret, secret_len, challenge,
 				     response, message, message_space);
 	memset(secret, 0, sizeof(secret));
 
+REVEMBER_FUNCTION_EXIT() 
 	return ok;
 }
 #endif /* PPP_SERVER */
@@ -464,6 +485,7 @@ static int chap_verify_response(ppp_pcb *pcb, const char *name, const char *ourn
  */
 static void chap_respond(ppp_pcb *pcb, int id,
 	     unsigned char *pkt, int len) {
+REVEMBER_FUNCTION_ENTRY() 
 	int clen, nlen;
 	int secret_len;
 	struct pbuf *p;
@@ -473,16 +495,26 @@ static void chap_respond(ppp_pcb *pcb, int id,
 
 	p = pbuf_alloc(PBUF_RAW, (u16_t)(RESP_MAX_PKTLEN), PPP_CTRL_PBUF_TYPE);
 	if(NULL == p)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;
+ }
 	if(p->tot_len != p->len) {
 		pbuf_free(p);
+REVEMBER_FUNCTION_EXIT() 
 		return;
 	}
 
 	if ((pcb->chap_client.flags & (LOWERUP | AUTH_STARTED)) != (LOWERUP | AUTH_STARTED))
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;		/* not ready */
+ }
 	if (len < 2 || len < pkt[0] + 1)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;		/* too short */
+ }
 	clen = pkt[0];
 	nlen = len - (clen + 1);
 
@@ -522,16 +554,21 @@ static void chap_respond(ppp_pcb *pcb, int id,
 
 	pbuf_realloc(p, PPP_HDRLEN + len);
 	ppp_write(pcb, p);
+REVEMBER_FUNCTION_EXIT() 
 }
 
 static void chap_handle_status(ppp_pcb *pcb, int code, int id,
 		   unsigned char *pkt, int len) {
+REVEMBER_FUNCTION_ENTRY() 
 	const char *msg = NULL;
 	LWIP_UNUSED_ARG(id);
 
 	if ((pcb->chap_client.flags & (AUTH_DONE|AUTH_STARTED|LOWERUP))
 	    != (AUTH_STARTED|LOWERUP))
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;
+ }
 	pcb->chap_client.flags |= AUTH_DONE;
 
 	if (code == CHAP_SUCCESS) {
@@ -560,19 +597,27 @@ static void chap_handle_status(ppp_pcb *pcb, int code, int id,
 		ppp_error("CHAP authentication failed");
 		auth_withpeer_fail(pcb, PPP_CHAP);
 	}
+REVEMBER_FUNCTION_EXIT() 
 }
 
 static void chap_input(ppp_pcb *pcb, unsigned char *pkt, int pktlen) {
+REVEMBER_FUNCTION_ENTRY() 
 	unsigned char code, id;
 	int len;
 
 	if (pktlen < CHAP_HDRLEN)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;
+ }
 	GETCHAR(code, pkt);
 	GETCHAR(id, pkt);
 	GETSHORT(len, pkt);
 	if (len < CHAP_HDRLEN || len > pktlen)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return;
+ }
 	len -= CHAP_HDRLEN;
 
 	switch (code) {
@@ -591,9 +636,11 @@ static void chap_input(ppp_pcb *pcb, unsigned char *pkt, int pktlen) {
 	default:
 		break;
 	}
+REVEMBER_FUNCTION_EXIT() 
 }
 
 static void chap_protrej(ppp_pcb *pcb) {
+REVEMBER_FUNCTION_ENTRY() 
 
 #if PPP_SERVER
 	if (pcb->chap_server.flags & TIMEOUT_PENDING) {
@@ -610,6 +657,7 @@ static void chap_protrej(ppp_pcb *pcb) {
 		ppp_error("CHAP authentication failed due to protocol-reject");
 		auth_withpeer_fail(pcb, PPP_CHAP);
 	}
+REVEMBER_FUNCTION_EXIT() 
 }
 
 #if PRINTPKT_SUPPORT
@@ -622,17 +670,24 @@ static const char* const chap_code_names[] = {
 
 static int chap_print_pkt(const unsigned char *p, int plen,
 	       void (*printer) (void *, const char *, ...), void *arg) {
+REVEMBER_FUNCTION_ENTRY() 
 	int code, id, len;
 	int clen, nlen;
 	unsigned char x;
 
 	if (plen < CHAP_HDRLEN)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return 0;
+ }
 	GETCHAR(code, p);
 	GETCHAR(id, p);
 	GETSHORT(len, p);
 	if (len < CHAP_HDRLEN || len > plen)
+{
+REVEMBER_FUNCTION_EXIT() 
 		return 0;
+ }
 
 	if (code >= 1 && code <= (int)LWIP_ARRAYSIZE(chap_code_names))
 		printer(arg, " %s", chap_code_names[code-1]);
@@ -671,6 +726,7 @@ static int chap_print_pkt(const unsigned char *p, int plen,
 		/* no break */
 	}
 
+REVEMBER_FUNCTION_EXIT() 
 	return len + CHAP_HDRLEN;
 }
 #endif /* PRINTPKT_SUPPORT */

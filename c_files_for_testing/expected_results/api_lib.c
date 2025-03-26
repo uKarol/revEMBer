@@ -1122,8 +1122,8 @@ REVEMBER_FUNCTION_ENTRY()
 #endif /* LWIP_SO_SNDTIMEO */
   if (dontblock && !bytes_written) {
     /* This implies netconn_write() cannot be used for non-blocking send, since
-       it has no way to REVEMBER_FUNCTION_EXIT() 
- return the number of bytes written. */
+       it has no way to return the number of bytes written. */
+REVEMBER_FUNCTION_EXIT() 
     return ERR_VAL;
   }
 
