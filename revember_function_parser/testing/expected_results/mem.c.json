@@ -1,6 +1,25 @@
 {
       "name": "void mem_overflow_check_raw(void *p, size_t size, const char *descr1, const char *descr2)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "size_t",
+                        "param_name": "size"
+                  },
+                  {
+                        "param_type": "const char*",
+                        "param_name": "descr1"
+                  },
+                  {
+                        "param_type": "const char*",
+                        "param_name": "descr2"
+                  }
+            ]
+      ],
       "begin": 97,
       "end": 128,
       "returns": [],
@@ -8,7 +27,18 @@
       "revember_artifacts": []
 }{
       "name": "void mem_overflow_init_raw(void *p, size_t size)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "size_t",
+                        "param_name": "size"
+                  }
+            ]
+      ],
       "begin": 135,
       "end": 150,
       "returns": [],
@@ -16,7 +46,14 @@
       "revember_artifacts": []
 }{
       "name": "void mem_init(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 516,
       "end": 544,
       "returns": [],
@@ -24,7 +61,18 @@
       "revember_artifacts": []
 }{
       "name": "void * mem_trim(void *mem, mem_size_t size)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "mem"
+                  },
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "size"
+                  }
+            ]
+      ],
       "begin": 169,
       "end": 172,
       "returns": [
@@ -40,7 +88,14 @@
       "revember_artifacts": []
 }{
       "name": "void * mem_malloc(mem_size_t size)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "size"
+                  }
+            ]
+      ],
       "begin": 251,
       "end": 297,
       "returns": [
@@ -70,7 +125,14 @@
       "revember_artifacts": []
 }{
       "name": "void mem_free(void *rmem)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "rmem"
+                  }
+            ]
+      ],
       "begin": 617,
       "end": 685,
       "returns": [
@@ -114,7 +176,18 @@
       "revember_artifacts": []
 }{
       "name": "static void mem_overflow_init_element(struct mem *mem, mem_size_t user_size)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct mem*",
+                        "param_name": "mem"
+                  },
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "user_size"
+                  }
+            ]
+      ],
       "begin": 432,
       "end": 436,
       "returns": [],
@@ -122,7 +195,14 @@
       "revember_artifacts": []
 }{
       "name": "static void mem_overflow_check_element(struct mem *mem)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct mem*",
+                        "param_name": "mem"
+                  }
+            ]
+      ],
       "begin": 440,
       "end": 443,
       "returns": [],
@@ -130,7 +210,14 @@
       "revember_artifacts": []
 }{
       "name": "static struct mem * ptr_to_mem(mem_size_t ptr)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "ptr"
+                  }
+            ]
+      ],
       "begin": 451,
       "end": 453,
       "returns": [
@@ -146,7 +233,14 @@
       "revember_artifacts": []
 }{
       "name": "static mem_size_t mem_to_ptr(void *mem)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "mem"
+                  }
+            ]
+      ],
       "begin": 457,
       "end": 459,
       "returns": [
@@ -162,7 +256,14 @@
       "revember_artifacts": []
 }{
       "name": "static void plug_holes(struct mem *mem)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct mem*",
+                        "param_name": "mem"
+                  }
+            ]
+      ],
       "begin": 474,
       "end": 509,
       "returns": [],
@@ -170,7 +271,14 @@
       "revember_artifacts": []
 }{
       "name": "static int mem_link_valid(struct mem *mem)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct mem*",
+                        "param_name": "mem"
+                  }
+            ]
+      ],
       "begin": 551,
       "end": 563,
       "returns": [
@@ -193,7 +301,14 @@
       "revember_artifacts": []
 }{
       "name": "static void mem_sanity(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 568,
       "end": 606,
       "returns": [],
@@ -201,7 +316,18 @@
       "revember_artifacts": []
 }{
       "name": "void * mem_trim(void *rmem, mem_size_t new_size)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "rmem"
+                  },
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "new_size"
+                  }
+            ]
+      ],
       "begin": 699,
       "end": 819,
       "returns": [
@@ -245,7 +371,14 @@
       "revember_artifacts": []
 }{
       "name": "void * mem_malloc(mem_size_t size_in)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "size_in"
+                  }
+            ]
+      ],
       "begin": 831,
       "end": 975,
       "returns": [
@@ -282,7 +415,18 @@
       "revember_artifacts": []
 }{
       "name": "void * mem_calloc(mem_size_t count, mem_size_t size)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "count"
+                  },
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "size"
+                  }
+            ]
+      ],
       "begin": 999,
       "end": 1015,
       "returns": [

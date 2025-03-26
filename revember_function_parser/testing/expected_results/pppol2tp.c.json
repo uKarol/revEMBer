@@ -1,6 +1,41 @@
 {
       "name": "ppp_pcb *pppol2tp_create(struct netif *pppif, struct netif *netif, const ip_addr_t *ipaddr, u16_t port, const u8_t *secret, u8_t secret_len, ppp_link_status_cb_fn link_status_cb, void *ctx_cb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "pppif"
+                  },
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  },
+                  {
+                        "param_type": "const ip_addr_t*",
+                        "param_name": "ipaddr"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "port"
+                  },
+                  {
+                        "param_type": "const u8_t*",
+                        "param_name": "secret"
+                  },
+                  {
+                        "param_type": "u8_t",
+                        "param_name": "secret_len"
+                  },
+                  {
+                        "param_type": "ppp_link_status_cb_fn",
+                        "param_name": "link_status_cb"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "ctx_cb"
+                  }
+            ]
+      ],
       "begin": 111,
       "end": 161,
       "returns": [
@@ -23,7 +58,22 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_write(ppp_pcb *ppp, void *ctx, struct pbuf *p)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "ppp"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "ctx"
+                  },
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  }
+            ]
+      ],
       "begin": 164,
       "end": 200,
       "returns": [
@@ -53,7 +103,26 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_netif_output(ppp_pcb *ppp, void *ctx, struct pbuf *p, u_short protocol)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "ppp"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "ctx"
+                  },
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "u_short",
+                        "param_name": "protocol"
+                  }
+            ]
+      ],
       "begin": 203,
       "end": 243,
       "returns": [
@@ -83,7 +152,18 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_destroy(ppp_pcb *ppp, void *ctx)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "ppp"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "ctx"
+                  }
+            ]
+      ],
       "begin": 246,
       "end": 254,
       "returns": [
@@ -99,7 +179,18 @@
       "revember_artifacts": []
 }{
       "name": "static void pppol2tp_connect(ppp_pcb *ppp, void *ctx)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "ppp"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "ctx"
+                  }
+            ]
+      ],
       "begin": 257,
       "end": 328,
       "returns": [],
@@ -107,7 +198,18 @@
       "revember_artifacts": []
 }{
       "name": "static void pppol2tp_disconnect(ppp_pcb *ppp, void *ctx)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "ppp"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "ctx"
+                  }
+            ]
+      ],
       "begin": 331,
       "end": 341,
       "returns": [],
@@ -115,7 +217,30 @@
       "revember_artifacts": []
 }{
       "name": "static void pppol2tp_input(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "arg"
+                  },
+                  {
+                        "param_type": "struct udp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "const ip_addr_t*",
+                        "param_name": "addr"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "port"
+                  }
+            ]
+      ],
       "begin": 344,
       "end": 482,
       "returns": [
@@ -131,7 +256,30 @@
       "revember_artifacts": []
 }{
       "name": "static void pppol2tp_dispatch_control_packet(pppol2tp_pcb *l2tp, u16_t port, struct pbuf *p, u16_t ns, u16_t nr)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "port"
+                  },
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "ns"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "nr"
+                  }
+            ]
+      ],
       "begin": 485,
       "end": 728,
       "returns": [
@@ -231,7 +379,14 @@
       "revember_artifacts": []
 }{
       "name": "static void pppol2tp_timeout(void *arg)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "arg"
+                  }
+            ]
+      ],
       "begin": 731,
       "end": 800,
       "returns": [
@@ -268,7 +423,14 @@
       "revember_artifacts": []
 }{
       "name": "static void pppol2tp_abort_connect(pppol2tp_pcb *l2tp)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  }
+            ]
+      ],
       "begin": 803,
       "end": 807,
       "returns": [],
@@ -276,7 +438,14 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_send_sccrq(pppol2tp_pcb *l2tp)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  }
+            ]
+      ],
       "begin": 810,
       "end": 902,
       "returns": [
@@ -299,7 +468,18 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_send_scccn(pppol2tp_pcb *l2tp, u16_t ns)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "ns"
+                  }
+            ]
+      ],
       "begin": 905,
       "end": 953,
       "returns": [
@@ -322,7 +502,18 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_send_icrq(pppol2tp_pcb *l2tp, u16_t ns)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "ns"
+                  }
+            ]
+      ],
       "begin": 956,
       "end": 1002,
       "returns": [
@@ -345,7 +536,18 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_send_iccn(pppol2tp_pcb *l2tp, u16_t ns)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "ns"
+                  }
+            ]
+      ],
       "begin": 1005,
       "end": 1049,
       "returns": [
@@ -368,7 +570,22 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_send_zlb(pppol2tp_pcb *l2tp, u16_t ns, u16_t nr)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "ns"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "nr"
+                  }
+            ]
+      ],
       "begin": 1052,
       "end": 1078,
       "returns": [
@@ -391,7 +608,18 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_send_stopccn(pppol2tp_pcb *l2tp, u16_t ns)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  },
+                  {
+                        "param_type": "u16_t",
+                        "param_name": "ns"
+                  }
+            ]
+      ],
       "begin": 1081,
       "end": 1125,
       "returns": [
@@ -414,7 +642,18 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_xmit(pppol2tp_pcb *l2tp, struct pbuf *pb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  },
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "pb"
+                  }
+            ]
+      ],
       "begin": 1127,
       "end": 1145,
       "returns": [
@@ -437,7 +676,18 @@
       "revember_artifacts": []
 }{
       "name": "static err_t pppol2tp_udp_send(pppol2tp_pcb *l2tp, struct pbuf *pb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "pppol2tp_pcb*",
+                        "param_name": "l2tp"
+                  },
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "pb"
+                  }
+            ]
+      ],
       "begin": 1147,
       "end": 1156,
       "returns": [

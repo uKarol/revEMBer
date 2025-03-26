@@ -1,6 +1,13 @@
 {
       "name": "static void low_level_init(struct netif *netif)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  }
+            ]
+      ],
       "begin": 158,
       "end": 240,
       "returns": [],
@@ -8,7 +15,18 @@
       "revember_artifacts": []
 }{
       "name": "static err_t low_level_output(struct netif *netif, struct pbuf *p)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  },
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  }
+            ]
+      ],
       "begin": 259,
       "end": 295,
       "returns": [
@@ -31,7 +49,14 @@
       "revember_artifacts": []
 }{
       "name": "static struct pbuf * low_level_input(struct netif *netif)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  }
+            ]
+      ],
       "begin": 306,
       "end": 315,
       "returns": [
@@ -47,7 +72,14 @@
       "revember_artifacts": []
 }{
       "name": "void ethernetif_input(struct netif *netif)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  }
+            ]
+      ],
       "begin": 327,
       "end": 341,
       "returns": [],
@@ -55,7 +87,22 @@
       "revember_artifacts": []
 }{
       "name": "static err_t low_level_output_arp_off(struct netif *netif, struct pbuf *q, const ip4_addr_t *ipaddr)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  },
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "q"
+                  },
+                  {
+                        "param_type": "const ip4_addr_t*",
+                        "param_name": "ipaddr"
+                  }
+            ]
+      ],
       "begin": 351,
       "end": 361,
       "returns": [
@@ -71,7 +118,14 @@
       "revember_artifacts": []
 }{
       "name": "err_t ethernetif_init(struct netif *netif)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  }
+            ]
+      ],
       "begin": 377,
       "end": 420,
       "returns": [
@@ -87,7 +141,14 @@
       "revember_artifacts": []
 }{
       "name": "void pbuf_free_custom(struct pbuf *p)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct pbuf*",
+                        "param_name": "p"
+                  }
+            ]
+      ],
       "begin": 428,
       "end": 439,
       "returns": [],
@@ -95,7 +156,14 @@
       "revember_artifacts": []
 }{
       "name": "u32_t sys_now(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 450,
       "end": 452,
       "returns": [
@@ -111,7 +179,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_ETH_MspInit(ETH_HandleTypeDef* ethHandle)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ETH_HandleTypeDef*",
+                        "param_name": "ethHandle"
+                  }
+            ]
+      ],
       "begin": 463,
       "end": 520,
       "returns": [],
@@ -119,7 +194,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_ETH_MspDeInit(ETH_HandleTypeDef* ethHandle)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ETH_HandleTypeDef*",
+                        "param_name": "ethHandle"
+                  }
+            ]
+      ],
       "begin": 523,
       "end": 555,
       "returns": [],
@@ -127,7 +209,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t ETH_PHY_IO_Init(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 566,
       "end": 575,
       "returns": [
@@ -143,7 +232,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t ETH_PHY_IO_DeInit (void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 583,
       "end": 585,
       "returns": [
@@ -159,7 +255,22 @@
       "revember_artifacts": []
 }{
       "name": "int32_t ETH_PHY_IO_ReadReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t *pRegVal)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "DevAddr"
+                  },
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "RegAddr"
+                  },
+                  {
+                        "param_type": "uint32_t*",
+                        "param_name": "pRegVal"
+                  }
+            ]
+      ],
       "begin": 595,
       "end": 602,
       "returns": [
@@ -182,7 +293,22 @@
       "revember_artifacts": []
 }{
       "name": "int32_t ETH_PHY_IO_WriteReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t RegVal)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "DevAddr"
+                  },
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "RegAddr"
+                  },
+                  {
+                        "param_type": "uint32_t",
+                        "param_name": "RegVal"
+                  }
+            ]
+      ],
       "begin": 612,
       "end": 619,
       "returns": [
@@ -205,7 +331,14 @@
       "revember_artifacts": []
 }{
       "name": "int32_t ETH_PHY_IO_GetTick(void)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
       "begin": 626,
       "end": 628,
       "returns": [
@@ -221,7 +354,14 @@
       "revember_artifacts": []
 }{
       "name": "void ethernet_link_check_state(struct netif *netif)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "struct netif*",
+                        "param_name": "netif"
+                  }
+            ]
+      ],
       "begin": 635,
       "end": 689,
       "returns": [],
@@ -229,7 +369,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_ETH_RxAllocateCallback(uint8_t **buff)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint8_t**",
+                        "param_name": "buff"
+                  }
+            ]
+      ],
       "begin": 692,
       "end": 711,
       "returns": [],
@@ -237,7 +384,26 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t Length)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void**",
+                        "param_name": "pStart"
+                  },
+                  {
+                        "param_type": "void**",
+                        "param_name": "pEnd"
+                  },
+                  {
+                        "param_type": "uint8_t*",
+                        "param_name": "buff"
+                  },
+                  {
+                        "param_type": "uint16_t",
+                        "param_name": "Length"
+                  }
+            ]
+      ],
       "begin": 714,
       "end": 751,
       "returns": [],
@@ -245,7 +411,14 @@
       "revember_artifacts": []
 }{
       "name": "void HAL_ETH_TxFreeCallback(uint32_t * buff)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "uint32_t *",
+                        "param_name": "buff"
+                  }
+            ]
+      ],
       "begin": 754,
       "end": 760,
       "returns": [],
