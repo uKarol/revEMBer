@@ -1,6 +1,13 @@
 {
       "name": "static void lcp_init(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 362,
       "end": 399,
       "returns": [],
@@ -8,7 +15,14 @@
       "revember_artifacts": []
 }{
       "name": "void lcp_open(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 405,
       "end": 415,
       "returns": [],
@@ -16,7 +30,18 @@
       "revember_artifacts": []
 }{
       "name": "void lcp_close(ppp_pcb *pcb, const char *reason)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "const char*",
+                        "param_name": "reason"
+                  }
+            ]
+      ],
       "begin": 421,
       "end": 450,
       "returns": [],
@@ -24,7 +49,14 @@
       "revember_artifacts": []
 }{
       "name": "void lcp_lowerup(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 456,
       "end": 475,
       "returns": [
@@ -40,7 +72,14 @@
       "revember_artifacts": []
 }{
       "name": "void lcp_lowerdown(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 481,
       "end": 489,
       "returns": [],
@@ -48,7 +87,14 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_delayed_up(void *arg)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "arg"
+                  }
+            ]
+      ],
       "begin": 495,
       "end": 502,
       "returns": [],
@@ -56,7 +102,22 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_input(ppp_pcb *pcb, u_char *p, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 508,
       "end": 517,
       "returns": [],
@@ -64,7 +125,30 @@
       "revember_artifacts": []
 }{
       "name": "static int lcp_extcode(fsm *f, int code, int id, u_char *inp, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "code"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "id"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "inp"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 522,
       "end": 553,
       "returns": [
@@ -87,7 +171,22 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_rprotrej(fsm *f, u_char *inp, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "inp"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 561,
       "end": 612,
       "returns": [
@@ -117,7 +216,14 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_protrej(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 619,
       "end": 625,
       "returns": [],
@@ -125,7 +231,22 @@
       "revember_artifacts": []
 }{
       "name": "void lcp_sprotrej(ppp_pcb *pcb, u_char *p, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 631,
       "end": 644,
       "returns": [],
@@ -133,7 +254,14 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_resetci(fsm *f)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 650,
       "end": 763,
       "returns": [],
@@ -141,7 +269,14 @@
       "revember_artifacts": []
 }{
       "name": "static int lcp_cilen(fsm *f)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 769,
       "end": 827,
       "returns": [
@@ -157,7 +292,22 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_addci(fsm *f, u_char *ucp, int *lenp)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "ucp"
+                  },
+                  {
+                        "param_type": "int*",
+                        "param_name": "lenp"
+                  }
+            ]
+      ],
       "begin": 833,
       "end": 935,
       "returns": [],
@@ -165,7 +315,22 @@
       "revember_artifacts": []
 }{
       "name": "static int lcp_ackci(fsm *f, u_char *p, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 946,
       "end": 1114,
       "returns": [
@@ -188,7 +353,26 @@
       "revember_artifacts": []
 }{
       "name": "static int lcp_nakci(fsm *f, u_char *p, int len, int treat_as_reject)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "treat_as_reject"
+                  }
+            ]
+      ],
       "begin": 1126,
       "end": 1576,
       "returns": [
@@ -211,7 +395,22 @@
       "revember_artifacts": []
 }{
       "name": "static int lcp_rejci(fsm *f, u_char *p, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 1588,
       "end": 1806,
       "returns": [
@@ -234,7 +433,26 @@
       "revember_artifacts": []
 }{
       "name": "static int lcp_reqci(fsm *f, u_char *inp, int *lenp, int reject_if_disagree)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "inp"
+                  },
+                  {
+                        "param_type": "int*",
+                        "param_name": "lenp"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "reject_if_disagree"
+                  }
+            ]
+      ],
       "begin": 1819,
       "end": 2283,
       "returns": [
@@ -264,7 +482,14 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_up(fsm *f)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 2289,
       "end": 2330,
       "returns": [],
@@ -272,7 +497,14 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_down(fsm *f)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 2338,
       "end": 2351,
       "returns": [],
@@ -280,7 +512,14 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_starting(fsm *f)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 2357,
       "end": 2360,
       "returns": [],
@@ -288,7 +527,14 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_finished(fsm *f)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 2366,
       "end": 2369,
       "returns": [],
@@ -296,7 +542,26 @@
       "revember_artifacts": []
 }{
       "name": "static int lcp_printpkt(const u_char *p, int plen, void (*printer) (void *, const char *, ...), void *arg)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "const u_char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "plen"
+                  },
+                  {
+                        "param_type": "function_ptr",
+                        "param_name": "printer"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "arg"
+                  }
+            ]
+      ],
       "begin": 2384,
       "end": 2631,
       "returns": [
@@ -326,7 +591,14 @@
       "revember_artifacts": []
 }{
       "name": "static void LcpLinkFailure(fsm *f)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 2638,
       "end": 2646,
       "returns": [],
@@ -334,7 +606,14 @@
       "revember_artifacts": []
 }{
       "name": "static void LcpEchoCheck(fsm *f)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 2652,
       "end": 2666,
       "returns": [
@@ -350,7 +629,14 @@
       "revember_artifacts": []
 }{
       "name": "static void LcpEchoTimeout(void *arg)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "arg"
+                  }
+            ]
+      ],
       "begin": 2672,
       "end": 2679,
       "returns": [],
@@ -358,7 +644,26 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_received_echo_reply(fsm *f, int id, u_char *inp, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "id"
+                  },
+                  {
+                        "param_type": "u_char*",
+                        "param_name": "inp"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 2685,
       "end": 2705,
       "returns": [
@@ -381,7 +686,14 @@
       "revember_artifacts": []
 }{
       "name": "static void LcpSendEchoRequest(fsm *f)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "fsm*",
+                        "param_name": "f"
+                  }
+            ]
+      ],
       "begin": 2711,
       "end": 2757,
       "returns": [
@@ -397,7 +709,14 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_echo_lowerup(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 2763,
       "end": 2774,
       "returns": [],
@@ -405,7 +724,14 @@
       "revember_artifacts": []
 }{
       "name": "static void lcp_echo_lowerdown(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 2780,
       "end": 2787,
       "returns": [],

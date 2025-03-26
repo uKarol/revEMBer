@@ -1,6 +1,13 @@
 {
       "name": "static void chap_init(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 123,
       "end": 132,
       "returns": [],
@@ -8,7 +15,14 @@
       "revember_artifacts": []
 }{
       "name": "static void chap_lowerup(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 137,
       "end": 145,
       "returns": [],
@@ -16,7 +30,14 @@
       "revember_artifacts": []
 }{
       "name": "static void chap_lowerdown(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 147,
       "end": 155,
       "returns": [],
@@ -24,7 +45,22 @@
       "revember_artifacts": []
 }{
       "name": "void chap_auth_peer(ppp_pcb *pcb, const char *our_name, int digest_code)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "const char*",
+                        "param_name": "our_name"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "digest_code"
+                  }
+            ]
+      ],
       "begin": 163,
       "end": 185,
       "returns": [
@@ -40,7 +76,22 @@
       "revember_artifacts": []
 }{
       "name": "void chap_auth_with_peer(ppp_pcb *pcb, const char *our_name, int digest_code)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "const char*",
+                        "param_name": "our_name"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "digest_code"
+                  }
+            ]
+      ],
       "begin": 192,
       "end": 214,
       "returns": [
@@ -63,7 +114,14 @@
       "revember_artifacts": []
 }{
       "name": "static void chap_timeout(void *arg)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "arg"
+                  }
+            ]
+      ],
       "begin": 222,
       "end": 250,
       "returns": [
@@ -93,7 +151,14 @@
       "revember_artifacts": []
 }{
       "name": "static void chap_generate_challenge(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 256,
       "end": 276,
       "returns": [],
@@ -101,7 +166,26 @@
       "revember_artifacts": []
 }{
       "name": "static void  chap_handle_response(ppp_pcb *pcb, int id, unsigned char *pkt, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "id"
+                  },
+                  {
+                        "param_type": "unsigned char*",
+                        "param_name": "pkt"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 282,
       "end": 403,
       "returns": [
@@ -152,7 +236,46 @@
       "revember_artifacts": []
 }{
       "name": "static int chap_verify_response(ppp_pcb *pcb, const char *name, const char *ourname, int id, const struct chap_digest_type *digest, const unsigned char *challenge, const unsigned char *response, char *message, int message_space)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "const char*",
+                        "param_name": "name"
+                  },
+                  {
+                        "param_type": "const char*",
+                        "param_name": "ourname"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "id"
+                  },
+                  {
+                        "param_type": "const struct chap_digest_type*",
+                        "param_name": "digest"
+                  },
+                  {
+                        "param_type": "const unsigned char*",
+                        "param_name": "challenge"
+                  },
+                  {
+                        "param_type": "const unsigned char*",
+                        "param_name": "response"
+                  },
+                  {
+                        "param_type": "char*",
+                        "param_name": "message"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "message_space"
+                  }
+            ]
+      ],
       "begin": 413,
       "end": 428,
       "returns": [
@@ -175,7 +298,26 @@
       "revember_artifacts": []
 }{
       "name": "static void chap_respond(ppp_pcb *pcb, int id, unsigned char *pkt, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "id"
+                  },
+                  {
+                        "param_type": "unsigned char*",
+                        "param_name": "pkt"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 435,
       "end": 494,
       "returns": [
@@ -212,7 +354,30 @@
       "revember_artifacts": []
 }{
       "name": "static void chap_handle_status(ppp_pcb *pcb, int code, int id, unsigned char *pkt, int len)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "code"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "id"
+                  },
+                  {
+                        "param_type": "unsigned char*",
+                        "param_name": "pkt"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 497,
       "end": 532,
       "returns": [
@@ -228,7 +393,22 @@
       "revember_artifacts": []
 }{
       "name": "static void chap_input(ppp_pcb *pcb, unsigned char *pkt, int pktlen)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  },
+                  {
+                        "param_type": "unsigned char*",
+                        "param_name": "pkt"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "pktlen"
+                  }
+            ]
+      ],
       "begin": 534,
       "end": 563,
       "returns": [
@@ -251,7 +431,14 @@
       "revember_artifacts": []
 }{
       "name": "static void chap_protrej(ppp_pcb *pcb)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "ppp_pcb*",
+                        "param_name": "pcb"
+                  }
+            ]
+      ],
       "begin": 565,
       "end": 582,
       "returns": [],
@@ -259,7 +446,26 @@
       "revember_artifacts": []
 }{
       "name": "static int chap_print_pkt(const unsigned char *p, int plen, void (*printer) (void *, const char *, ...), void *arg)",
-      "parameters": [],
+      "parameters": [
+            [
+                  {
+                        "param_type": "const unsigned char*",
+                        "param_name": "p"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "plen"
+                  },
+                  {
+                        "param_type": "function_ptr",
+                        "param_name": "printer"
+                  },
+                  {
+                        "param_type": "void*",
+                        "param_name": "arg"
+                  }
+            ]
+      ],
       "begin": 593,
       "end": 644,
       "returns": [

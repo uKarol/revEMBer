@@ -2,6 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 import re
 from revember_function_parser.revember_function_parser_data_classes import *
+from revember_function_parser.function_signature_analyzer import FunctionAnalyzer
 
 SIGNLE_LINE_BLOCK = 0
 BLOCK_BEGIN = 1
@@ -50,11 +51,12 @@ class BlockExtractor:
         self.last_returns = []
         self.last_warnings = []
         self.found_functions = {}
+        self.last_found_parametrers = []
 
 
     def update_function_dict(self):
         new_fun = {self.last_signature : FUnctionParser_FunctData(self.last_signature,
-                                                                            [],
+                                                                            self.last_found_parametrers,
                                                                             self.function_begin_line,
                                                                             self.function_end_line,
                                                                             self.last_returns,
@@ -67,6 +69,7 @@ class BlockExtractor:
         self.function_end_line = 0
         self.last_returns = []
         self.last_warnings = []
+        self.last_found_parametrers = []
     
     def get_found_functions(self):
         return self.found_functions
@@ -159,19 +162,26 @@ class OutFunction(BlockExtractorState):
         self.last_expression = self.last_expression + line
 
     def block_begin(self, line_num):
-        if( check_function_signature(self.last_expression) == True ) and (self.context.current_level == 0):
+        if( check_function_signature(self.last_expression, self.context.last_found_parametrers) == True ) and (self.context.current_level == 0):
             self.context.entry_level = self.context.current_level
             self.context.last_signature = self.last_expression.strip()
             self.context.function_begin_line = line_num
             self.context.transition_to(InFunction())
+        else:
+            self.context.last_found_parametrers = []
+        self.last_expression = ""
         self.context.current_level = self.context.current_level + 1
+        
+
 
     def block_end(self, line_num):
         self.context.current_level = self.context.current_level - 1
         self.last_expression = ""
+        #self.last_found_parametrers = []
 
     def semicolon_found(self, line_num):
         self.last_expression = ""
+        #self.last_found_parametrers = []
 
 
 def find_keywords(text, expression_begin, expression_end):
@@ -205,8 +215,11 @@ def check_return(start, end, block):
             ret_val = {"begin": start, "end" : end, "need_brackets" : need_extra_brackets, "returned_value" : match[1].strip(), "return_warning" : ret_warnings}
     return ret_val
 
-def check_function_signature(text):
+def check_function_signature(text, params_out):
     if( "(" in text) and (")" in text):
+        analyzer = FunctionAnalyzer()
+        ret = analyzer.process_function(text)
+        params_out.append(ret)
         return True
     else:
         return False
