@@ -108,7 +108,7 @@ class revEMBer_view:
         self.file_selector = FileChooseList(file_frame, self.ctl.process_selected_files)
         function_frame = tk.Frame(self.root)
         self.function_selector = FileFunctionWIndows(function_frame, self.ctl.process_selected_functions)
-        function_frame.pack(side=tk.RIGHT)
+        function_frame.pack(side=tk.RIGHT, expand=True, fill="x")
         file_frame.pack(side=tk.LEFT)
         
         user_function_frame = tk.Frame(self.root)
