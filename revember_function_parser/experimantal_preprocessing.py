@@ -54,6 +54,10 @@ class CondState(ABC):
         self._context.push_to_stack(self)
         self._context.next_state(IfProcessing())
 
+    def on_if_0(self, line, line_num):
+        #print(f"if 0 detected {line} {line_num}")
+        self._context.push_to_stack(self)
+        self._context.next_state(If_0_Processing())
 
     def on_elif(self, line, line_num):
         pass
@@ -65,6 +69,11 @@ class CondState(ABC):
             next_state = UnconditionalProcessing()
         self._context.next_state(next_state)
         
+    def on_else(self, line, line_num):
+        print("NOT IMPLEMENTED!!!!!")
+
+    def no_prep(self, line, line_num):
+        self.context.next_stage_processing(line, line_num)
 
     @property
     def context(self):
@@ -73,12 +82,6 @@ class CondState(ABC):
     @context.setter
     def context(self, context):
         self._context = context
-
-    def no_prep(self, line, line_num):
-        self.context.next_stage_processing(line, line_num)
-
-    def on_else(self, line, line_num):
-        print("NOT IMPLEMENTED!!!!!")
 
     def check_braces(self, line, line_num):
         if(self.b_open > self.b_close):
@@ -105,7 +108,25 @@ class ElseProcessing(CondState):
     def __init__(self):
         pass
 
-    
+class If_0_Processing(CondState):
+
+    def __init__(self):
+        pass
+
+    def on_if(self, line, line_num):
+        pass
+
+    def on_if_0(self, line, line_num):
+        pass
+
+    def on_elif(self, line, line_num):
+        pass
+   
+    def on_else(self, line, line_num):
+        pass
+
+    def no_prep(self, line, line_num):
+        pass
 
 class ElifProcessing(CondState):
 
@@ -178,10 +199,18 @@ class ConditionalCompilationDecoder:
         if(line.startswith("#")):
             try: 
                 directive = line.split()[0]
-                meth = self.directives[directive]
-                meth(line, line_num)
+                if directive == "#if":
+                    if line.split()[1] == "0":
+                        self.current_state.on_if_0(line, line_num)
+                    else:
+                        self.current_state.on_if(line, line_num)
+                else:    
+                    meth = self.directives[directive]
+                    meth(line, line_num)
 
             except KeyError:
+                self.current_state.no_prep(line, line_num)
+            except IndexError:
                 self.current_state.no_prep(line, line_num)
         else:
             self.current_state.no_prep(line, line_num)

@@ -728,38 +728,4 @@
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
-}{
-      "name": "void set_mppe_enc_types(int policy, int types)",
-      "parameters": [
-            [
-                  {
-                        "param_type": "int",
-                        "param_name": "policy"
-                  },
-                  {
-                        "param_type": "int",
-                        "param_name": "types"
-                  }
-            ]
-      ],
-      "begin": 911,
-      "end": 935,
-      "returns": [
-            {
-                  "begin": 913,
-                  "end": 915,
-                  "need_brackets": true,
-                  "returned_value": "",
-                  "return_warning": ""
-            },
-            {
-                  "begin": 918,
-                  "end": 919,
-                  "need_brackets": true,
-                  "returned_value": "",
-                  "return_warning": ""
-            }
-      ],
-      "warnings": [],
-      "revember_artifacts": []
 }
