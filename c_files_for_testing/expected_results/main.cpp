@@ -163,10 +163,10 @@ udp_send_chksum(struct udp_pcb *pcb, struct pbuf *p,
 REVEMBER_FUNCTION_ENTRY() 
     
     if(pcb == NULL)
-    return udp_sendto_chksum(pcb, p, &pcb->remote_ip, pcb->remote_port,
-        have_chksum, chksum);
 {
 REVEMBER_FUNCTION_EXIT() 
+    return udp_sendto_chksum(pcb, p, &pcb->remote_ip, pcb->remote_port,
+        have_chksum, chksum);
  }
 
 REVEMBER_FUNCTION_EXIT() 
