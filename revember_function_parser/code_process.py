@@ -1,14 +1,16 @@
+# Filename: code_process.py
+# Author: Karol Ujda (uKarol)
+# Description: Searching function begin, end and return statements
+
 from __future__ import annotations
 from abc import ABC, abstractmethod
 import re
 from revember_function_parser.revember_function_parser_data_classes import *
-from revember_function_parser.function_signature_analyzer import FunctionAnalyzer
 
 SIGNLE_LINE_BLOCK = 0
 BLOCK_BEGIN = 1
 BLOCK_END = 2
 NOT_DETECTED = 3
-
 
 class BlockExtractorState(ABC):
 
@@ -40,10 +42,12 @@ class BlockExtractor:
 
     _state = None
 
-    def __init__(self):
+    def __init__(self, keyword_analyzer):
         self.transition_to(OutFunction())
         self.current_level = 0
         self.entry_level = 0
+
+        self.keyword_analyzer = keyword_analyzer
 
         self.last_signature = ""
         self.function_begin_line = 0
@@ -145,7 +149,7 @@ class InFunction(BlockExtractorState):
 
     def semicolon_found(self, line_num):
         self.expression_end = line_num
-        ret = find_keywords(self.last_expression, self.expression_begin, self.expression_end)
+        ret = self.context.keyword_analyzer.find_keywords(self.last_expression, self.expression_begin, self.expression_end)
         if(ret != None):
             self.context.last_returns.append(ret)
         self.expression_begin = 0    
@@ -162,7 +166,7 @@ class OutFunction(BlockExtractorState):
         self.last_expression = self.last_expression + line
 
     def block_begin(self, line_num):
-        if( check_function_signature(self.last_expression, self.context.last_found_parametrers) == True ) and (self.context.current_level == 0):
+        if( self.context.keyword_analyzer.check_function_signature(self.last_expression, self.context.last_found_parametrers) == True ) and (self.context.current_level == 0):
             self.context.entry_level = self.context.current_level
             self.context.last_signature = self.last_expression.strip()
             self.context.function_begin_line = line_num
@@ -177,52 +181,12 @@ class OutFunction(BlockExtractorState):
     def block_end(self, line_num):
         self.context.current_level = self.context.current_level - 1
         self.last_expression = ""
-        #self.last_found_parametrers = []
 
     def semicolon_found(self, line_num):
         self.last_expression = ""
-        #self.last_found_parametrers = []
 
 
-def find_keywords(text, expression_begin, expression_end):
-    text = text + " "
-    if(" return " in text or ")return " in text or " return(" in text ):
-        return check_return(expression_begin, expression_end, text)
 
-
-def check_return(start, end, block):  
-    need_extra_brackets = False
-    ret_warnings = ""
-    match = block.split("return")
-    ret_val = None
-    if len(match) > 1:
-            if match[0].strip().endswith(")"):
-                need_extra_brackets = True
-            outer_open_count = match[0].count('(')
-            outer_close_count = match[0].count(')')
-            inner_open_count = match[1].count('(')
-            inner_close_count = match[1].count(')')
-            if outer_open_count == outer_close_count:
-                if(inner_open_count == 0 and inner_open_count == 0 ):
-                    ret_warnings = ""
-                elif(inner_open_count == inner_close_count):
-                    ret_warnings = "compound return value"
-                else:
-                    ret_warnings = "improper return statement"
-            else:
-                ret_warnings = "improper return statement"
-
-            ret_val = {"begin": start, "end" : end, "need_brackets" : need_extra_brackets, "returned_value" : match[1].strip(), "return_warning" : ret_warnings}
-    return ret_val
-
-def check_function_signature(text, params_out):
-    if( "(" in text) and (")" in text):
-        analyzer = FunctionAnalyzer()
-        ret = analyzer.process_function(text)
-        params_out.append(ret)
-        return True
-    else:
-        return False
 
 if __name__ == "__main__":
 

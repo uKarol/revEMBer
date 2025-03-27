@@ -3,11 +3,9 @@ sys.path.append('..')
 import re
 from revember_function_parser.code_process import BlockExtractor
 from revember_function_parser.comment_extractor import CommentExtractor 
-#from revember_function_parser.block_extractor import BlockExtractor, BlockCodeDiscriminator
-from revember_function_parser.function_extractor import *
 from revember_function_parser.experimantal_preprocessing import *
 from revember_function_parser.revember_function_parser_data_classes import *
-
+from revember_function_parser.keyword_analyzer import KeywordAnalyzer
 class CascadedExtractor:
 
     def __init__(self, next_stage_processing):
@@ -40,11 +38,8 @@ class CascadedExtractor:
 class FunctionDetector:
 
     def __init__(self):
-        
-        #self.code_disc = BlockCodeDiscriminator() 
-        self.fun_extractor = FunctionExtractor()
-        self.block_extr = BlockExtractor()
-        #block_extr = BlockExtractor(self.fun_extractor.process_line, self.fun_extractor.block_begin, self._function_extracting, self.code_disc.process_line_in_block)
+        self.keyword_analyzer = KeywordAnalyzer()
+        self.block_extr = BlockExtractor(self.keyword_analyzer)
         self.prep = DefineDecoder(self.block_extr.process_line) 
         self.conditional_extractor = ConditionalCompilationDecoder(self.prep.process_line)
         self.comment_extr = CommentExtractor(self.conditional_extractor.process_line)
@@ -52,26 +47,6 @@ class FunctionDetector:
         self.found_functions = {}
 
         
-    # def _function_extracting(self, line_num):
-    #     splitter_status = self.fun_extractor.block_end(line_num)
-    #     if(splitter_status == SUCCESS):
-            
-    #         signature = self.fun_extractor.get_function_signature()
-    #         function_data = self.fun_extractor.get_function_begin()
-    #         function_details = self.code_disc.get_found_rets()
-    #         self.found_functions.update({signature : FUnctionParser_FunctData(function_data.name,
-    #                                                                         function_data.parameters,
-    #                                                                         function_data.begin,
-    #                                                                         function_data.end,
-    #                                                                         function_details.returns,
-    #                                                                         function_details.warnings,
-    #                                                                         function_details.revember_artifacts
-    #                                                                         )})
-    #         self.code_disc.reset_vals()
-
-    #     else:
-    #         self.code_disc.get_found_rets()
-    #         self.code_disc.reset_vals()
 
     def get_found_functions(self):
         return self.found_functions
