@@ -56,7 +56,7 @@ class BlockExtractor:
         self.last_warnings = []
         self.found_functions = {}
         self.last_found_parametrers = []
-
+        self.last_revember_artifacts = []
 
     def update_function_dict(self):
         new_fun = {self.last_signature : FUnctionParser_FunctData(self.last_signature,
@@ -65,7 +65,7 @@ class BlockExtractor:
                                                                             self.function_end_line,
                                                                             self.last_returns,
                                                                             [],
-                                                                            [],
+                                                                            self.last_revember_artifacts,
                                                                             )}
         self.found_functions.update(new_fun)
         self.last_signature = ""
@@ -74,6 +74,7 @@ class BlockExtractor:
         self.last_returns = []
         self.last_warnings = []
         self.last_found_parametrers = []
+        self.last_revember_artifacts = []
     
     def get_found_functions(self):
         return self.found_functions
@@ -133,6 +134,7 @@ class InFunction(BlockExtractorState):
             if(self.expression_begin == 0):
                 self.expression_begin = line_num
             self.last_expression = self.last_expression + line
+            self.context.keyword_analyzer.find_revember_artifacts(line, line_num, self.context.last_revember_artifacts)
 
     def block_begin(self, line_num):
         self.context.current_level = self.context.current_level + 1

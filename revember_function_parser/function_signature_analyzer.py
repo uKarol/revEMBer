@@ -14,6 +14,9 @@ class ParenthesisProcessing:
             ret_val = self.get_substrings()
         else:
             ret_val = None
+            self.max_depth = 0
+            self.found_substrings = [[]]
+            self.processed_subs = []
         return ret_val 
 
     def process_string(self, text):
@@ -24,22 +27,27 @@ class ParenthesisProcessing:
         self.found_substrings[0].append(text)
         stage_params.append({})
         ret_val = 1
-        try:    
-            for ch in text:
-                if ch == '(':
-                    current_depth = current_depth + 1
-                    if(self.max_depth < current_depth):
-                        self.max_depth = current_depth
-                        self.found_substrings.append([])
-                        stage_params.append({})
-                    stage_params[current_depth].update({"begin": ctr})
-                
-                elif ch == ')':
-                    stage_params[current_depth].update({"end": ctr+1})
-                    self.found_substrings[current_depth].append(text[ stage_params[current_depth]["begin"] : stage_params[current_depth]["end"] ])
-                    current_depth = current_depth - 1
-                ctr = ctr + 1
-        except KeyError:
+        if(text.count("(") == text.count(")") ): 
+            try:    
+                for ch in text:
+                    if ch == '(':
+                        current_depth = current_depth + 1
+                        if(self.max_depth < current_depth):
+                            self.max_depth = current_depth
+                            self.found_substrings.append([])
+                            stage_params.append({})
+                        stage_params[current_depth].update({"begin": ctr})
+                    
+                    elif ch == ')':
+                        stage_params[current_depth].update({"end": ctr+1})
+                        self.found_substrings[current_depth].append(text[ stage_params[current_depth]["begin"] : stage_params[current_depth]["end"] ])
+                        current_depth = current_depth - 1
+                    ctr = ctr + 1
+            except KeyError:
+                self.found_substrings = ["FAILURE"]
+                self.max_depth = 0
+                ret_val = 0
+        else:
             self.found_substrings = ["FAILURE"]
             self.max_depth = 0
             ret_val = 0
