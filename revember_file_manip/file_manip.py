@@ -17,46 +17,57 @@ class CFileManip:
             lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
             
     def add_sequence_in_begin(self, line:str, sequence_to_add: str):
-        
         ret_val = line
-
         if '{' in line:
             if line.strip().endswith('{'):
                 ret_val = line + sequence_to_add
             else:
                 substrs = line.split('{', maxsplit= 1)
                 ret_val = f"{substrs[0]} {{\n {sequence_to_add} {substrs[1]} "
-        
         return ret_val
     
-
     def add_sequence_in_end(self, line: str, sequence_to_add: str):
-        
         ret_val = line
-
         if '}' in line:
             if line.strip().startswith('}'):
                 ret_val = sequence_to_add + line
             else:
                 substrs = line.split('}', maxsplit= 1)
                 ret_val = f"{substrs[0]} \n {sequence_to_add} {substrs[1]} }}"
-        
         return ret_val
 
-    def add_sequence_in_return(self, line: str, sequence_to_add: str, add_brace):
+    def add_sequence_in_keyword(self, line: str, sequence_to_add: str, add_brace, keyword):
         ret_val = line 
         prefix = ""
         if(add_brace == True):
             prefix = "{\n"
-        if 'return' in line:
-            if line.strip().startswith('return'):
+        if keyword in line:
+            if line.strip().startswith(keyword):
                 ret_val =  prefix + sequence_to_add + line
             else:
-                substrs = line.split('return', maxsplit= 1)
-                ret_val = substrs[0] + prefix + sequence_to_add +" return"+ substrs[1]
+                substrs = line.split(keyword, maxsplit= 1)
+                ret_val = substrs[0] + prefix + sequence_to_add + " " +keyword+ substrs[1]
         else:
             ret_val = line + prefix + sequence_to_add 
         return ret_val
+    
+    def add_return_sequence(self, lines, ret):
+        add_ex = True
+        if ret["return_warning"] == "improper return statement":
+            lines[ret["begin"]] = '#warning "improper return statement - add revember macros manually" \n' + lines[ret["begin"]] 
+        else:
+            if ret["returned_value"] != "":
+                add_ex = False
+            need_braces = ret["need_brackets"]
+            if need_braces == False:
+                lines[ret["begin"]] = self.add_sequence_in_keyword(lines[ret["begin"]], self.to_be_added["ret"] + ' \n', need_braces, "return")
+            else:
+                for idx in range (ret["begin"], ret["end"] + 1):
+                    if( "return" in lines[idx] ):
+                        break
+                lines[idx] = self.add_sequence_in_keyword(lines[idx], self.to_be_added["ret"] + ' \n', need_braces, "return")
+                lines[ret["end"]] = lines[ret["end"]] + " }\n"
+        return add_ex
 
     def add_dbg_fun(self, functions_to_change, lines):
             function_begin_ln = functions_to_change.begin
@@ -66,20 +77,8 @@ class CFileManip:
             add_ex = True
 
             for ret in function_rets:
-                if ret["return_warning"] == "improper return statement":
-                    lines[ret["begin"]] = '#warning "improper return statement - add revember macros manually" \n' + lines[ret["begin"]] 
-                else:
-                    if ret["returned_value"] != "":
-                        add_ex = False
-                    need_braces = ret["need_brackets"]
-                    if need_braces == False:
-                        lines[ret["begin"]] = self.add_sequence_in_return(lines[ret["begin"]], self.to_be_added["ret"] + ' \n', need_braces)
-                    else:
-                        for idx in range (ret["begin"], ret["end"] + 1):
-                            if( "return" in lines[idx] ):
-                                break
-                        lines[idx] = self.add_sequence_in_return(lines[idx], self.to_be_added["ret"] + ' \n', need_braces)
-                        lines[ret["end"]] = lines[ret["end"]] + " }\n"
+                add_ex = self.add_return_sequence(lines, ret)
+                
             if add_ex:
                 lines[function_end_ln] = self.add_sequence_in_end(lines[function_end_ln], self.to_be_added["end"] + ' \n')
 
