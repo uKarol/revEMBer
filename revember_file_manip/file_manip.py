@@ -13,7 +13,7 @@ class CFileManip:
         }   
 
     def add_include_info(self, lines):
-        if not (self.comment in lines):
+        if  (self.to_be_added["inc"] not in line for line in lines):
             lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
             
     def add_sequence_in_begin(self, line:str, sequence_to_add: str):

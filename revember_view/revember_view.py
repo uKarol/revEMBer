@@ -14,7 +14,7 @@ class FileChooseList:
         self.lb_frame = tk.Frame(master=root)
         self.btn_frame = tk.Frame(master=root)
         self.file_lb = tk.Listbox(self.lb_frame, height= 40, width=100, selectmode= "extended")
-        self.b = tk.Button(self.btn_frame, text = "get items", command = btn_get_callback)
+        self.b = tk.Button(self.btn_frame, text = "FIND FUNCTIONS IN SELECTED FILES", command = btn_get_callback)
         self.dir_btn = tk.Button(self.btn_frame, text= "add directory", command= self.add_dir)
         self.file_btn = tk.Button(self.btn_frame, text= "add file", command= self.add_files)
         self.b.pack(side=tk.LEFT)
@@ -107,9 +107,14 @@ class revEMBer_view:
         file_frame = tk.Frame(self.root)
         self.file_selector = FileChooseList(file_frame, self.ctl.process_selected_files)
         function_frame = tk.Frame(self.root)
-        self.function_selector = FileFunctionWIndows(function_frame, self.ctl.process_selected_functions)
+        self.function_selector = FileFunctionWIndows(function_frame, self.ctl.process_selected_functions, "APPLY TO SELECTED FUNCTIONS")
         function_frame.pack(side=tk.RIGHT, expand=True, fill="x")
         file_frame.pack(side=tk.LEFT)
+
+
+        function_frame2 = tk.Frame(self.root)
+        self.function_selector2 = FileFunctionWIndows(function_frame2, self.ctl.remove_debug_functions, "REMOVE FROM SELECTED FUNCTIONS")
+        function_frame2.pack(side=tk.RIGHT, expand=True, fill="x")
         
         user_function_frame = tk.Frame(self.root)
         self.user_functions_getter = user_functions(user_function_frame) 
@@ -120,15 +125,28 @@ class revEMBer_view:
 
     def get_selected_files(self):
         return self.file_selector.get_files()
-
+    
     def get_selected_functions(self):
         return self.function_selector.get_functions()
+
+    def get_selected_functions_del(self):
+        return self.function_selector2.get_functions()
     
     def add_file(self, filename):
         self.function_selector.add_file(filename)
 
     def add_function(self, filename, function_name, begin, end, rets = []):
         self.function_selector.add_function(filename, function_name, begin, end, rets)
+
+    def add_file_unclear(self, filename):
+        self.function_selector2.add_file(filename)
+
+    def add_function_unclear(self, filename, function_name, begin, end, rets = []):
+        self.function_selector2.add_function(filename, function_name, begin, end, rets)
+
+    def del_all_functions(self):
+        self.function_selector2.del_all_functions()
+        self.function_selector.del_all_functions()
 
     def start(self):
         self.root.mainloop()
