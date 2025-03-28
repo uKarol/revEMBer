@@ -1,3 +1,7 @@
+# Filename: experimental_preprocessing.py
+# Author: Karol Ujda (uKarol)
+# Description: Checking preprocessor directives
+
 from abc import ABC, abstractmethod
 
 class DefineState:

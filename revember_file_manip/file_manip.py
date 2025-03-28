@@ -13,50 +13,60 @@ class CFileManip:
         }   
 
     def add_include_info(self, lines):
-        if not (self.comment in lines):
-            lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
+        lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
             
     def add_sequence_in_begin(self, line:str, sequence_to_add: str):
-        
         ret_val = line
-
         if '{' in line:
             if line.strip().endswith('{'):
                 ret_val = line + sequence_to_add
             else:
                 substrs = line.split('{', maxsplit= 1)
                 ret_val = f"{substrs[0]} {{\n {sequence_to_add} {substrs[1]} "
-        
         return ret_val
     
-
     def add_sequence_in_end(self, line: str, sequence_to_add: str):
-        
         ret_val = line
-
         if '}' in line:
             if line.strip().startswith('}'):
                 ret_val = sequence_to_add + line
             else:
                 substrs = line.split('}', maxsplit= 1)
                 ret_val = f"{substrs[0]} \n {sequence_to_add} {substrs[1]} }}"
-        
         return ret_val
 
-    def add_sequence_in_return(self, line: str, sequence_to_add: str, add_brace):
+    def add_sequence_in_keyword(self, line: str, sequence_to_add: str, add_brace, keyword):
         ret_val = line 
         prefix = ""
         if(add_brace == True):
             prefix = "{\n"
-        if 'return' in line:
-            if line.strip().startswith('return'):
+        if keyword in line:
+            if line.strip().startswith(keyword):
                 ret_val =  prefix + sequence_to_add + line
             else:
-                substrs = line.split('return', maxsplit= 1)
-                ret_val = substrs[0] + prefix + sequence_to_add +" return"+ substrs[1]
+                substrs = line.split(keyword, maxsplit= 1)
+                ret_val = substrs[0] + prefix + sequence_to_add + " " +keyword+ substrs[1]
         else:
             ret_val = line + prefix + sequence_to_add 
         return ret_val
+    
+    def add_return_sequence(self, lines, ret):
+        add_ex = True
+        if ret["return_warning"] == "improper return statement":
+            lines[ret["begin"]] = '#warning "improper return statement - add revember macros manually" \n' + lines[ret["begin"]] 
+        else:
+            if ret["returned_value"] != "":
+                add_ex = False
+            need_braces = ret["need_brackets"]
+            if need_braces == False:
+                lines[ret["begin"]] = self.add_sequence_in_keyword(lines[ret["begin"]], self.to_be_added["ret"] + ' \n', need_braces, "return")
+            else:
+                for idx in range (ret["begin"], ret["end"] + 1):
+                    if( "return" in lines[idx] ):
+                        break
+                lines[idx] = self.add_sequence_in_keyword(lines[idx], self.to_be_added["ret"] + ' \n', need_braces, "return")
+                lines[ret["end"]] = lines[ret["end"]] + " }\n"
+        return add_ex
 
     def add_dbg_fun(self, functions_to_change, lines):
             function_begin_ln = functions_to_change.begin
@@ -66,20 +76,8 @@ class CFileManip:
             add_ex = True
 
             for ret in function_rets:
-                if ret["return_warning"] == "improper return statement":
-                    lines[ret["begin"]] = '#warning "improper return statement - add revember macros manually" \n' + lines[ret["begin"]] 
-                else:
-                    if ret["returned_value"] != "":
-                        add_ex = False
-                    need_braces = ret["need_brackets"]
-                    if need_braces == False:
-                        lines[ret["begin"]] = self.add_sequence_in_return(lines[ret["begin"]], self.to_be_added["ret"] + ' \n', need_braces)
-                    else:
-                        for idx in range (ret["begin"], ret["end"] + 1):
-                            if( "return" in lines[idx] ):
-                                break
-                        lines[idx] = self.add_sequence_in_return(lines[idx], self.to_be_added["ret"] + ' \n', need_braces)
-                        lines[ret["end"]] = lines[ret["end"]] + " }\n"
+                add_ex = self.add_return_sequence(lines, ret)
+                
             if add_ex:
                 lines[function_end_ln] = self.add_sequence_in_end(lines[function_end_ln], self.to_be_added["end"] + ' \n')
 
@@ -87,13 +85,17 @@ class CFileManip:
     def add_dbg_functions(self, filepath, functions_to_change: list, user_functions: dict):
 
         self.to_be_added = user_functions
-        
+        add_header = True
+        with open(filepath, 'r+') as file:
+            content = file.read()
+            if self.to_be_added["inc"] in content :
+                add_header = False
+
         with open(filepath, 'r+') as file:
             
             lines = file.readlines()
-            
-            self.add_include_info(lines)
-
+            if add_header == True:
+                self.add_include_info(lines)
             for function_obj in functions_to_change:
                 self.add_dbg_fun(functions_to_change[function_obj], lines)
 
@@ -101,3 +103,19 @@ class CFileManip:
             
             file.writelines(lines)
 
+
+    def remove_dbg_functions(self, filepath, functions_to_change: list):
+
+        with open(filepath, 'r+') as file:
+            lines = file.readlines()
+            for function_obj in functions_to_change:
+                self.remove_dbg_fun(functions_to_change[function_obj], lines)
+            file.seek(0)
+            file.truncate()
+            file.writelines(lines)
+
+    def remove_dbg_fun(self, functions_to_change, lines):
+
+            for ln in functions_to_change.revember_artifacts:
+                print(f"{lines[ln]} {ln}")
+                lines[ln] = ""

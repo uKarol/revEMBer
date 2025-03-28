@@ -3,12 +3,12 @@ from revember_view.view_data_classes import *
 
 class FileFunctionWIndows:
 
-    def __init__(self, root, get_selected_callback):
+    def __init__(self, root, get_selected_callback, btn_text):
         self.tree = ttk.Treeview(root, height= 30)
         
         self.tree.pack(expand=True, fill="both")
         self.id_ctr = 0
-        button_del = Button(root, text="APPLY TO SELECTED FUNCTIONS", command=get_selected_callback)
+        button_del = Button(root, text=btn_text, command=get_selected_callback)
         button_del.pack()
         self.tree.bind("<Delete>", self.delete_evt)
 
@@ -43,4 +43,8 @@ class FileFunctionWIndows:
 
     def delete(self):
         for item in self.tree.selection():
+            self.tree.delete(item)
+
+    def del_all_functions(self):
+        for item in self.tree.get_children():
             self.tree.delete(item)

@@ -28,6 +28,10 @@ class revemberModel:
     def get_function_data(self, file, function):
         return self.selected_functions[file][function]
 
+    def delete_all_functions(self):
+        self.selected_files = []
+        self.selected_functions = {} 
+
 
 class revEMBer_controller:
 
@@ -45,26 +49,47 @@ class revEMBer_controller:
         for file in items:
             for function in items[file]:
                 functions_to_be_changed.update({function.name : self.model.get_function_data(file, function.name)})
-            #print("FILE" + file)
-            #print(functions_to_be_changed)
             fman.add_dbg_functions(file, functions_to_be_changed, user_function)
             functions_to_be_changed= {}
+        
+        self.view.del_all_functions()
+        self.process_selected_files()
 
     def process_selected_files(self):
+        self.model.delete_all_functions()
         selected_files = self.view.get_selected_files()
         for file in selected_files:
             self.model.add_file(file)
             self.search_file(file)
 
+    def remove_debug_functions(self):
+        functions_to_be_changed = {}
+        items = self.view.get_selected_functions_del()
+        # user_function = self.view.get_user_functions()
+        fman = CFileManip()
+        for file in items:
+            for function in items[file]:
+                functions_to_be_changed.update({function.name : self.model.get_function_data(file, function.name)})
+            fman.remove_dbg_functions(file, functions_to_be_changed)
+            functions_to_be_changed= {}
+        self.view.del_all_functions()
+        self.process_selected_files()
+
     def search_file(self, path):
+        self.view.del_all_functions()
         self.current_file = path
         self.func_finder = FunctionDetector()
         self.func_finder.search_file(path)
         found_functions = self.func_finder.get_found_functions()
         self.view.add_file(path)
+        self.view.add_file_unclear(path)
         for ffunction in found_functions:
             self.model.add_functions(path, ffunction, found_functions[ffunction])
-            self.view.add_function(path, found_functions[ffunction].name, found_functions[ffunction].begin, found_functions[ffunction].end, found_functions[ffunction].returns)
+            if found_functions[ffunction].revember_artifacts == []:
+                self.view.add_function(path, found_functions[ffunction].name, found_functions[ffunction].begin, found_functions[ffunction].end, found_functions[ffunction].returns)
+            else:
+                self.view.add_function_unclear(path, found_functions[ffunction].name, found_functions[ffunction].begin, found_functions[ffunction].end, found_functions[ffunction].returns)
+
 
     def start_app(self):
         self.view.start()
