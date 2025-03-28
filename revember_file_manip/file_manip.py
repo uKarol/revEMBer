@@ -100,3 +100,18 @@ class CFileManip:
             
             file.writelines(lines)
 
+
+    def remove_dbg_functions(self, filepath, functions_to_change: list):
+
+        with open(filepath, 'r+') as file:
+            lines = file.readlines()
+            for function_obj in functions_to_change:
+                self.remove_dbg_fun(functions_to_change[function_obj], lines)
+            file.seek(0)
+            file.writelines(lines)
+
+    def remove_dbg_fun(self, functions_to_change, lines):
+
+            for ln in functions_to_change.revember_artifacts:
+                print(f"{lines[ln]} {ln}")
+                lines[ln] = ""

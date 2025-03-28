@@ -66,15 +66,17 @@ class revEMBer_controller:
         functions_to_be_changed = {}
         items = self.view.get_selected_functions_del()
         # user_function = self.view.get_user_functions()
-        # fman = CFileManip()
-        print(self.model.get_files())
+        fman = CFileManip()
         for file in items:
-            print(self.model.get_functions(file))
             for function in items[file]:
-                print(function.name)
+                functions_to_be_changed.update({function.name : self.model.get_function_data(file, function.name)})
+            fman.remove_dbg_functions(file, functions_to_be_changed)
             functions_to_be_changed= {}
+        self.view.del_all_functions()
+        self.process_selected_files()
 
     def search_file(self, path):
+        self.view.del_all_functions()
         self.current_file = path
         self.func_finder = FunctionDetector()
         self.func_finder.search_file(path)
@@ -82,8 +84,8 @@ class revEMBer_controller:
         self.view.add_file(path)
         self.view.add_file_unclear(path)
         for ffunction in found_functions:
+            self.model.add_functions(path, ffunction, found_functions[ffunction])
             if found_functions[ffunction].revember_artifacts == []:
-                self.model.add_functions(path, ffunction, found_functions[ffunction])
                 self.view.add_function(path, found_functions[ffunction].name, found_functions[ffunction].begin, found_functions[ffunction].end, found_functions[ffunction].returns)
             else:
                 self.view.add_function_unclear(path, found_functions[ffunction].name, found_functions[ffunction].begin, found_functions[ffunction].end, found_functions[ffunction].returns)
