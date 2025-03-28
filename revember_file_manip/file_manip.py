@@ -13,8 +13,7 @@ class CFileManip:
         }   
 
     def add_include_info(self, lines):
-        if  (self.to_be_added["inc"] not in line for line in lines):
-            lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
+        lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
             
     def add_sequence_in_begin(self, line:str, sequence_to_add: str):
         ret_val = line
@@ -86,13 +85,17 @@ class CFileManip:
     def add_dbg_functions(self, filepath, functions_to_change: list, user_functions: dict):
 
         self.to_be_added = user_functions
-        
+        add_header = True
+        with open(filepath, 'r+') as file:
+            content = file.read()
+            if self.to_be_added["inc"] in content :
+                add_header = False
+
         with open(filepath, 'r+') as file:
             
             lines = file.readlines()
-            
-            self.add_include_info(lines)
-
+            if add_header == True:
+                self.add_include_info(lines)
             for function_obj in functions_to_change:
                 self.add_dbg_fun(functions_to_change[function_obj], lines)
 
@@ -108,6 +111,7 @@ class CFileManip:
             for function_obj in functions_to_change:
                 self.remove_dbg_fun(functions_to_change[function_obj], lines)
             file.seek(0)
+            file.truncate()
             file.writelines(lines)
 
     def remove_dbg_fun(self, functions_to_change, lines):
