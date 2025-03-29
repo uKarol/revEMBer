@@ -5,12 +5,7 @@ class CFileManip:
     def __init__(self):
 
         self.comment = "/* \nTHIS FILE HAS ADDED DEBUG INFORMATIONS \n revEMBer projct in github: https://github.com/uKarol/revEMBer \njefvcoe oefpm d actmdhsae\n*/\n"
-        
-        self.to_be_added = {"inc" :  '#include "revEMBer.h"',
-                            "begin" : ' /* function begin */ ',
-                            "ret" : ' /* function return */ ',
-                            "end" : '/* function end */ ',
-        }   
+        self.to_be_added = {}   
 
     def add_include_info(self, lines):
         lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
@@ -19,7 +14,7 @@ class CFileManip:
         ret_val = line
         if '{' in line:
             if line.strip().endswith('{'):
-                ret_val = line + sequence_to_add
+                ret_val = f"{line.rstrip()}\n{sequence_to_add}"
             else:
                 substrs = line.split('{', maxsplit= 1)
                 ret_val = f"{substrs[0]} {{\n {sequence_to_add} {substrs[1]} "
@@ -68,21 +63,24 @@ class CFileManip:
                 lines[ret["end"]] = lines[ret["end"]] + " }\n"
         return add_ex
 
-    def add_dbg_fun(self, functions_to_change, lines):
+    def add_dbg_fun(self, functions_to_change, lines, mod_selection):
             function_begin_ln = functions_to_change.begin
             function_rets = functions_to_change.returns
             function_end_ln = functions_to_change.end
-            lines[function_begin_ln] = self.add_sequence_in_begin(lines[function_begin_ln], self.to_be_added["begin"] + ' \n')
             add_ex = True
 
-            for ret in function_rets:
-                add_ex = self.add_return_sequence(lines, ret)
+            if(mod_selection["begin"]):
+                lines[function_begin_ln] = self.add_sequence_in_begin(lines[function_begin_ln], self.to_be_added["begin"] + ' \n')
+
+            if(mod_selection["ret"]):
+                for ret in function_rets:
+                    add_ex = self.add_return_sequence(lines, ret)
                 
-            if add_ex:
+            if add_ex and mod_selection["end"]:
                 lines[function_end_ln] = self.add_sequence_in_end(lines[function_end_ln], self.to_be_added["end"] + ' \n')
 
 
-    def add_dbg_functions(self, filepath, functions_to_change: list, user_functions: dict):
+    def add_dbg_functions(self, filepath, functions_to_change: list, user_functions: dict, mod_selection):
 
         self.to_be_added = user_functions
         add_header = True
@@ -97,7 +95,7 @@ class CFileManip:
             if add_header == True:
                 self.add_include_info(lines)
             for function_obj in functions_to_change:
-                self.add_dbg_fun(functions_to_change[function_obj], lines)
+                self.add_dbg_fun(functions_to_change[function_obj], lines, mod_selection)
 
             file.seek(0)
             
@@ -117,5 +115,4 @@ class CFileManip:
     def remove_dbg_fun(self, functions_to_change, lines):
 
             for ln in functions_to_change.revember_artifacts:
-                print(f"{lines[ln]} {ln}")
                 lines[ln] = ""

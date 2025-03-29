@@ -12,6 +12,15 @@ class revemberModel:
     def __init__(self):
         self.selected_files = []
         self.selected_functions = {} 
+        self.to_be_added = {"inc" :  '#include "revEMBer.h"',
+                            "begin" : 'REVEMBER_FUNCTION_ENTRY()',
+                            "ret" : 'REVEMBER_FUNCTION_EXIT()',
+                            "end" : 'REVEMBER_FUNCTION_EXIT()',
+        }   
+        self.warning = '#warning "improper return statement - add revember macros manually" \n'
+        
+    def get_revember_functions(self):
+        return self.to_be_added
 
     def add_file(self, file):
         self.selected_functions.update({file : {}})
@@ -44,18 +53,20 @@ class revEMBer_controller:
     def process_selected_functions(self):
         functions_to_be_changed = {}
         items = self.view.get_selected_functions()
-        user_function = self.view.get_user_functions()
+        selection_mod = self.view.get_user_functions()
+        user_function = self.model.get_revember_functions()
         fman = CFileManip()
         for file in items:
             for function in items[file]:
                 functions_to_be_changed.update({function.name : self.model.get_function_data(file, function.name)})
-            fman.add_dbg_functions(file, functions_to_be_changed, user_function)
+            fman.add_dbg_functions(file, functions_to_be_changed, user_function, selection_mod)
             functions_to_be_changed= {}
         
         self.view.del_all_functions()
         self.process_selected_files()
 
     def process_selected_files(self):
+        self.view.del_all_functions()
         self.model.delete_all_functions()
         selected_files = self.view.get_selected_files()
         for file in selected_files:
@@ -65,7 +76,6 @@ class revEMBer_controller:
     def remove_debug_functions(self):
         functions_to_be_changed = {}
         items = self.view.get_selected_functions_del()
-        # user_function = self.view.get_user_functions()
         fman = CFileManip()
         for file in items:
             for function in items[file]:
@@ -76,7 +86,6 @@ class revEMBer_controller:
         self.process_selected_files()
 
     def search_file(self, path):
-        self.view.del_all_functions()
         self.current_file = path
         self.func_finder = FunctionDetector()
         self.func_finder.search_file(path)
