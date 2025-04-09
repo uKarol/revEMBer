@@ -18,7 +18,13 @@ if __name__ == "__main__":
     test_files = os.listdir(os.getcwd()+basic_files)
 
     for file in test_files:
-        detector = FunctionDetector()
+        to_be_added = {"inc" :  '#include "revEMBer.h"',
+                            "begin" : 'REVEMBER_FUNCTION_ENTRY()',
+                            "ret" : 'REVEMBER_FUNCTION_EXIT()',
+                            "end" : 'REVEMBER_FUNCTION_EXIT()',
+                            "warning" :'#warning "improper return statement - add revember macros manually"'
+        } 
+        detector = FunctionDetector(list(to_be_added.values()))
         detector.search_file(os.getcwd()+basic_files+file)
         f_dict = detector.get_found_functions()
         detector.clear_results()

@@ -29,8 +29,8 @@ def keyword_variants_gen(basic_kw, rw):
 
 class KeywordAnalyzer:
 
-    def __init__(self):
-        self.revember_artifacts = ["REVEMBER_FUNCTION_ENTRY", "REVEMBER_FUNCTION_EXIT"]
+    def __init__(self, revember_artifacts):
+        self.revember_artifacts = revember_artifacts # ["REVEMBER_FUNCTION_ENTRY", "REVEMBER_FUNCTION_EXIT"]
 
     def find_revember_artifacts(self, line, line_num, rev_art):
         if any(word in line for word in self.revember_artifacts):

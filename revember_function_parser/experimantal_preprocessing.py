@@ -14,9 +14,10 @@ class DefineState:
 
 class DefineDecoder:
 
-    def __init__(self, next_stage_processing):
+    def __init__(self, next_stage_processing, revember_warnings):
         self.current_state = NoDefineProcessing(self)
         self.next_stage_processing = next_stage_processing
+        self.revember_warnings = revember_warnings
 
     def next_state(self, state):
         self.current_state = state
@@ -32,6 +33,11 @@ class NoDefineProcessing(DefineState):
         if line.startswith("#define"):
             if line.endswith("\\"):
                 self.context.next_state(DefineMultilineProcessing(self.context))
+        elif line.startswith("#warning"):
+            print(self.context.revember_warnings)
+            if any(word in line for word in self.context.revember_warnings):
+                print("FOUNT WARNING !!!!")
+                self.context.next_stage_processing("REVEMBER_GENERIC_WARNING", line_num)
         elif line.startswith("#"):
             pass
         else:
