@@ -24,7 +24,8 @@ if __name__ == "__main__":
                             "end" : 'REVEMBER_FUNCTION_EXIT()',
                             "warning" :'#warning "improper return statement - add revember macros manually"'
         } 
-        detector = FunctionDetector(list(to_be_added.values()))
+        warnings = ['#warning "improper return statement - add revember macros manually"']
+        detector = FunctionDetector(list(to_be_added.values()), warnings)
         detector.search_file(os.getcwd()+basic_files+file)
         f_dict = detector.get_found_functions()
         detector.clear_results()
