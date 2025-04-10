@@ -16,7 +16,8 @@ class revemberModel:
                             "begin" : 'REVEMBER_FUNCTION_ENTRY()',
                             "ret" : 'REVEMBER_FUNCTION_EXIT()',
                             "end" : 'REVEMBER_FUNCTION_EXIT()',
-                            "warning" :'REVEMBER_GENERIC_WARNING'
+                            "warning" :'REVEMBER_GENERIC_WARNING',
+                            "params" : 'REVEMBER_FUNCTION_PARAMETERS',
         }   
         self.warnings = ['#warning "improper return statement - add revember macros manually"']
     
@@ -54,7 +55,7 @@ class revEMBer_controller:
         self.view.setup(self)
         self.current_file = ""
 
-    def process_selected_functions(self):
+    def add_debug_functions(self):
         functions_to_be_changed = {}
         items = self.view.get_selected_functions()
         selection_mod = self.view.get_user_functions()

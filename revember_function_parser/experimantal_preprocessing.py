@@ -34,9 +34,7 @@ class NoDefineProcessing(DefineState):
             if line.endswith("\\"):
                 self.context.next_state(DefineMultilineProcessing(self.context))
         elif line.startswith("#warning"):
-            print(self.context.revember_warnings)
             if any(word in line for word in self.context.revember_warnings):
-                print("FOUNT WARNING !!!!")
                 self.context.next_stage_processing("REVEMBER_GENERIC_WARNING", line_num)
         elif line.startswith("#") or line.endswith("\\"):
             pass
