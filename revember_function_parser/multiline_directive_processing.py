@@ -17,11 +17,16 @@ class NextStagePreprocessing(Protocol):
 #abstract state class 
 class DirectiveState(ABC):
 
-    def __init__(self, context):
-        self.context = context
+    @property
+    def context(self):
+        return self._context
+    
+    @context.setter
+    def context(self, context):
+        self._context = context
 
     def process_line(self, line: str, line_num: int):
-        self.context.next_stage.process_line(line, line_num)
+        self._context.next_stage.process_line(line, line_num)
 
     def process_directive(self, line: str, line_num: int):
         pass
@@ -30,36 +35,40 @@ class DirectiveState(ABC):
 class DirectiveDecoder:
 
     def __init__(self, next_stage : NextStagePreprocessing):
-        self.current_state = SimpleDirectiveProcessing(self)
+        self.next_state(SimpleDirectiveProcessing())
         self.next_stage = next_stage
         self.last_directive = ""
 
     def next_state(self, state):
         self.current_state = state
+        self.current_state.context = self
 
     def process_line(self, line, line_num):
+        line = line.strip()
         if line.startswith("#"):
             self.current_state.process_directive(line, line_num)
         else:
             self.current_state.process_line(line, line_num)
 
 class SimpleDirectiveProcessing(DirectiveState):
-    def __init__(self, context):
-        super().__init__(context)
+
 
     def process_directive(self, line: str, line_num: int):
         if line.endswith("\\"):
             self.context.last_directive = line
-            self.context.next_state(MultilineDirectiveProcessing(self.context))
+            self.context.next_state(MultilineDirectiveProcessing())
         else:
-            (directive, statement) = line.split(maxsplit=1)
+            splitted_line = line.split(maxsplit=1)
+            directive = splitted_line[0]
+            statement = ""
+            if(len(splitted_line) == 2):
+                statement = splitted_line[1]
             self.context.next_stage.process_directive(directive, statement, line_num)
+
 
 
 class MultilineDirectiveProcessing(DirectiveState):
 
-    def __init__(self, context):
-        super().__init__(context)
 
     def process_line(self, line: str, line_num: int):
         self.context.last_directive = self.context.last_directive + line
@@ -69,7 +78,7 @@ class MultilineDirectiveProcessing(DirectiveState):
             (directive, statement) = self.context.last_directive.split(maxsplit=1)
             self.context.last_directive = ""
             self.context.next_stage.process_directive(directive, statement, line_num)
-            self.context.next_state(SimpleDirectiveProcessing(self.context))
+            self.context.next_state(SimpleDirectiveProcessing())
 
 
 if __name__ == "__main__":
@@ -84,8 +93,9 @@ if __name__ == "__main__":
     
     test_decoder = DirectiveDecoder(test_next_stage())
 
-    test_decoder.process_line("#define DUPA 0", 0)
-    test_decoder.process_line("int DUPA 0", 0)
-    test_decoder.process_line("#define DUPA_MACRO \\", 0)
-    test_decoder.process_line("int DUPA 0\\", 1)
-    test_decoder.process_line("int DUPA++", 1)
+    test_decoder.process_line("#define TEST 0", 0)
+    test_decoder.process_line("int my_var 0", 0)
+    test_decoder.process_line("#define MY_MACRO \\", 0)
+    test_decoder.process_line("int int x = 0\\", 1)
+    test_decoder.process_line("x++", 2)
+    test_decoder.process_line("x++;", 2)

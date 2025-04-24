@@ -4,58 +4,6 @@
 
 from abc import ABC, abstractmethod
 
-class DefineState:
-
-    def __init__(self, context):
-        self.context = context
-
-    def process_line(self, line, line_num):
-        pass 
-
-class DefineDecoder:
-
-    def __init__(self, next_stage_processing, revember_warnings):
-        self.current_state = NoDefineProcessing(self)
-        self.next_stage_processing = next_stage_processing
-        self.revember_warnings = revember_warnings
-
-    def next_state(self, state):
-        self.current_state = state
-
-    def process_line(self, line, line_num):
-        self.current_state.process_line(line, line_num)
-
-class NoDefineProcessing(DefineState):
-    def __init__(self, context):
-        super().__init__(context)
-
-    def process_line(self, line, line_num):
-        if line.startswith("#define"):
-            if line.endswith("\\"):
-                self.context.next_state(DefineMultilineProcessing(self.context))
-        elif line.startswith("#warning"):
-            if any(word in line for word in self.context.revember_warnings):
-                self.context.next_stage_processing("REVEMBER_GENERIC_WARNING", line_num)
-        elif line.startswith("#") or line.endswith("\\"):
-            pass
-        else:
-            self.context.next_stage_processing(line, line_num)
-
-
-class DefineMultilineProcessing(DefineState):
-
-    def __init__(self, context):
-        super().__init__(context)
-
-    def process_line(self, line, line_num):
-        if line.endswith("\\"):
-            pass
-        else:
-            self.context.next_state(NoDefineProcessing(self.context))
-
-
-
-
 class CondState(ABC):
 
     def on_if(self, line, line_num):
@@ -63,7 +11,6 @@ class CondState(ABC):
         self._context.next_state(IfProcessing())
 
     def on_if_0(self, line, line_num):
-        #print(f"if 0 detected {line} {line_num}")
         self._context.push_to_stack(self)
         self._context.next_state(If_0_Processing())
 
@@ -150,8 +97,6 @@ class ElifProcessing(CondState):
         self.check_braces(line, line_num)
         self.context.next_state(ElifProcessing())
 
-    def on_endif(self, line, line_num):
-        super().on_endif(line, line_num)
 
     def on_else(self, line, line_num):
         self.check_braces(line, line_num)
@@ -170,9 +115,6 @@ class IfProcessing(CondState):
     def on_elif(self, line, line_num):
         self.check_braces(line, line_num)
         self.context.next_state(ElifProcessing())
-
-    def on_endif(self, line, line_num):
-        super().on_endif(line, line_num)
 
     def on_else(self, line, line_num):
         self.check_braces(line, line_num)
@@ -203,23 +145,19 @@ class ConditionalCompilationDecoder:
                            "#ifndef": self.current_state.on_if}        
 
     def process_line(self, line, line_num):
-        directive : str
-        if(line.startswith("#")):
+        self.current_state.no_prep(line, line_num)
+        
+    def process_directive(self, directive: str, statement: str, line_num: int):
+
             try: 
-                directive = line.split()[0]
                 if directive == "#if":
-                    if line.split()[1] == "0":
-                        self.current_state.on_if_0(line, line_num)
+                    if statement == "0":
+                        self.current_state.on_if_0(statement, line_num)
                     else:
-                        self.current_state.on_if(line, line_num)
+                        self.current_state.on_if(statement, line_num)
                 else:    
                     meth = self.directives[directive]
-                    meth(line, line_num)
+                    meth(statement, line_num)
 
             except KeyError:
-                self.current_state.no_prep(line, line_num)
-            except IndexError:
-                self.current_state.no_prep(line, line_num)
-        else:
-            self.current_state.no_prep(line, line_num)
-        
+                pass #unhandled directive

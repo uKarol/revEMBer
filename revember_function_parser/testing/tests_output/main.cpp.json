@@ -60,7 +60,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "static volatile int intializer (    int x )",
+      "name": "static volatile int intializer ( int x )",
       "parameters": [
             [
                   {
