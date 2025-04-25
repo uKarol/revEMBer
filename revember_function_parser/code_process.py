@@ -108,7 +108,6 @@ class BlockExtractor:
     def process_line(self, line, line_num):
         if( "}" in line or "{" in line or ";" in line ):
             s_line = self.block_splitter(line)
-
             for s in s_line:
                 if( s == "BLOCK START DETECTED" ):
                     self._state.block_begin(line_num)
@@ -133,8 +132,9 @@ class InFunction(BlockExtractorState):
         if line.strip() != "":
             if(self.expression_begin == 0):
                 self.expression_begin = line_num
-            self.last_expression = self.last_expression + line
-            self.context.keyword_analyzer.find_revember_artifacts(line, line_num, self.context.last_revember_artifacts)
+            
+            if(self.context.keyword_analyzer.find_revember_artifacts(line, line_num, self.context.last_revember_artifacts)== False):
+                self.last_expression = self.last_expression + line
 
     def block_begin(self, line_num):
         self.context.current_level = self.context.current_level + 1

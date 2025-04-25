@@ -16,7 +16,7 @@ class revemberModel:
                             "begin" : 'REVEMBER_FUNCTION_ENTRY()',
                             "ret" : 'REVEMBER_FUNCTION_EXIT()',
                             "end" : 'REVEMBER_FUNCTION_EXIT()',
-                            "warning" :'REVEMBER_GENERIC_WARNING',
+                            "warning" :"improper return statement - add revember macros manually",
                             "params" : 'REVEMBER_FUNCTION_PARAMETERS',
         }   
         self.warnings = ['#warning "improper return statement - add revember macros manually"']

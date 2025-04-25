@@ -33,8 +33,11 @@ class KeywordAnalyzer:
         self.revember_artifacts = revember_artifacts # ["REVEMBER_FUNCTION_ENTRY", "REVEMBER_FUNCTION_EXIT"]
 
     def find_revember_artifacts(self, line, line_num, rev_art):
+        ret_val = False
         if any(word in line for word in self.revember_artifacts):
             rev_art.append(line_num)
+            ret_val = True
+        return ret_val
 
     def find_keywords(self, text, expression_begin, expression_end):
         text = text + " "

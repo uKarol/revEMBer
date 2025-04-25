@@ -155,6 +155,8 @@ class ConditionalCompilationDecoder:
                         self.current_state.on_if_0(statement, line_num)
                     else:
                         self.current_state.on_if(statement, line_num)
+                if directive == "#warning":
+                    self.current_state.no_prep(statement, line_num)
                 else:    
                     meth = self.directives[directive]
                     meth(statement, line_num)
