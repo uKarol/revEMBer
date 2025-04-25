@@ -103,7 +103,7 @@ class user_functions:
         user_begin = self.check_var_beg.get()
         user_return = self.check_var_ret.get()
         user_end = self.check_var_end.get()
-        user_param = self.check_var_end.get()
+        user_param = self.check_var_param.get()
         return {"begin" : user_begin, "ret" : user_return, "end" : user_end, "param" : user_param}
 
 class revEMBer_view:
