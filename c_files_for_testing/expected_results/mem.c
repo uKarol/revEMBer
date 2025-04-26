@@ -169,6 +169,8 @@ REVEMBER_FUNCTION_EXIT()
 void
 mem_init(void)
 {
+REVEMBER_FUNCTION_ENTRY() 
+REVEMBER_FUNCTION_EXIT() 
 }
 
 /** mem_trim is not used when using pools instead of a heap or using
@@ -218,10 +220,12 @@ REVEMBER_FUNCTION_EXIT()
 void *
 mem_malloc(mem_size_t size)
 {
+REVEMBER_FUNCTION_ENTRY() 
   void *ret = mem_clib_malloc(size + MEM_LIBC_STATSHELPER_SIZE);
   if (ret == NULL) {
     MEM_STATS_INC_LOCKED(err);
   } else {
+#warning "improper return statement - add revember macros manually" 
     LWIP_ASSERT("malloc() must return aligned memory", LWIP_MEM_ALIGN(ret) == ret);
 #if LWIP_STATS && MEM_STATS
     *(mem_size_t *)ret = size;
@@ -229,6 +233,7 @@ mem_malloc(mem_size_t size)
     MEM_STATS_INC_USED_LOCKED(used, size);
 #endif
   }
+REVEMBER_FUNCTION_EXIT() 
   return ret;
 }
 
@@ -239,6 +244,7 @@ mem_malloc(mem_size_t size)
 void
 mem_free(void *rmem)
 {
+REVEMBER_FUNCTION_ENTRY() 
   LWIP_ASSERT("rmem != NULL", (rmem != NULL));
   LWIP_ASSERT("rmem == MEM_ALIGN(rmem)", (rmem == LWIP_MEM_ALIGN(rmem)));
 #if LWIP_STATS && MEM_STATS
@@ -246,6 +252,7 @@ mem_free(void *rmem)
   MEM_STATS_DEC_USED_LOCKED(used, *(mem_size_t *)rmem);
 #endif
   mem_clib_free(rmem);
+REVEMBER_FUNCTION_EXIT() 
 }
 
 #elif MEM_USE_POOLS
@@ -323,6 +330,7 @@ REVEMBER_FUNCTION_EXIT()
 void
 mem_free(void *rmem)
 {
+REVEMBER_FUNCTION_ENTRY() 
   struct memp_malloc_helper *hmem;
 
   LWIP_ASSERT("rmem != NULL", (rmem != NULL));
@@ -352,6 +360,7 @@ mem_free(void *rmem)
 
   /* and put it in the pool we saved earlier */
   memp_free(hmem->poolnr, hmem);
+REVEMBER_FUNCTION_EXIT() 
 }
 
 #else /* MEM_USE_POOLS */
@@ -1032,6 +1041,8 @@ REVEMBER_FUNCTION_EXIT()
 void *
 mem_calloc(mem_size_t count, mem_size_t size)
 {
+REVEMBER_FUNCTION_ENTRY() 
+REVEMBER_FUNCTION_EXIT() 
   return mem_clib_calloc(count, size);
 }
 

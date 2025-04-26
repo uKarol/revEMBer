@@ -46,7 +46,7 @@ class BlockExtractor:
         self.transition_to(OutFunction())
         self.current_level = 0
         self.entry_level = 0
-
+        self.repetition_ctr = 0
         self.keyword_analyzer = keyword_analyzer
 
         self.last_signature = ""
@@ -59,14 +59,18 @@ class BlockExtractor:
         self.last_revember_artifacts = []
 
     def update_function_dict(self):
-        new_fun = {self.last_signature : FUnctionParser_FunctData(self.last_signature,
-                                                                            self.last_found_parametrers,
-                                                                            self.function_begin_line,
-                                                                            self.function_end_line,
-                                                                            self.last_returns,
-                                                                            [],
-                                                                            self.last_revember_artifacts,
-                                                                            )}
+        fn_key = self.last_signature
+        if(fn_key in self.found_functions):
+            fn_key = fn_key+str(self.repetition_ctr)
+            self.repetition_ctr = self.repetition_ctr + 1
+        new_fun = {fn_key : FUnctionParser_FunctData(fn_key,
+                                                     self.last_found_parametrers,
+                                                     self.function_begin_line,
+                                                     self.function_end_line,
+                                                     self.last_returns,
+                                                     [],
+                                                     self.last_revember_artifacts,
+                                                    )}
         self.found_functions.update(new_fun)
         self.last_signature = ""
         self.function_begin_line = 0
