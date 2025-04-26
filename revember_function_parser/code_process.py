@@ -168,7 +168,7 @@ class OutFunction(BlockExtractorState):
         self.last_expression = self.last_expression + line
 
     def block_begin(self, line_num):
-        if( self.context.keyword_analyzer.check_function_signature(self.last_expression, self.context.last_found_parametrers) == True ) and (self.context.current_level == 0):
+        if( self.context.keyword_analyzer.check_function_signature(self.last_expression, self.context.last_found_parametrers) == True ):
             self.context.entry_level = self.context.current_level
             self.context.last_signature = self.last_expression.strip()
             self.context.function_begin_line = line_num

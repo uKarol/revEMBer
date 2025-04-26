@@ -80,13 +80,18 @@ class ParenthesisProcessing:
 class FunctionAnalyzer:
     
     def process_function(self, function_signature):
-        ret_val = None
+        status = False
+        ret_val = (status, None)
         pts_parser = ParenthesisProcessing()
         result = pts_parser.process_expression(function_signature)
         if(result != None):
+
             (max_depth, self.found_substrings, processed_subs) = result
-            params = processed_subs[1][-1]
-            ret_val = self.split_params(params)
+            check_signature = processed_subs[0][0].split() 
+            if len(check_signature) > 2:
+                status = True
+                params = processed_subs[1][-1]
+                ret_val = (status, self.split_params(params))
         return ret_val
 
     def preprocess_param(self, param):
@@ -107,14 +112,18 @@ class FunctionAnalyzer:
             param = self.preprocess_param(param)
 
             splitted_params = param.split()
+            #functions takes no params
             if len(splitted_params) == 0:
                 pass
+            #unnamed param or void keyword
             elif len(splitted_params) == 1:
                 param_type = splitted_params[0]
+            #normal named param
             elif len(splitted_params) == 2:
                 param_type = splitted_params[0]
                 param_name = splitted_params[1]
-                
+            
+            #complex params eg pointers to functions
             else:
                 function_name = splitted_params[1] 
                 if ("#substituted_" in function_name):
@@ -131,7 +140,7 @@ class FunctionAnalyzer:
                         param_type = param_type+" " + splitted_params[i]
                     param_name = splitted_params[-1]
 
-            
+            #remove * from params name 
             if("*" in param_name):
                 match = re.search(r'[*]+', param_name)
                 param_type = param_type + match.group(0)
@@ -154,11 +163,12 @@ if __name__ == "__main__":
         print(found_substrings[max_depth])
 
 
-    #pts_parser = ParenthesisProcessing()
+    pts_parser = ParenthesisProcessing()
 
     fun = "int* (*(*fpData)(const char *))(int (*paIndex)[3] , int (* fpMsg) (const char *), int (* fpCalculation[3]) (const char *, int x), int x);"
     fun2 = "void calc(int a, int b, int (*op)(int, int), char     cc)"
     fun3 = "int32_t BSP_COM_RegisterMspCallbacks(COM_TypeDef COM , BSP_COM_Cb_t *Callback)"
+    fun4 = "int dziadostwo()"
 
 
     # pretty_print(pts_parser.process_expression("int search(void)"))
@@ -171,12 +181,17 @@ if __name__ == "__main__":
     # pretty_print(pts_parser.process_expression(fun2))
     # print()
 
-    # pretty_print(pts_parser.process_expression(fun3))
-    # print()
+    #pretty_print(pts_parser.process_expression(fun4))
+
+    print(pts_parser.process_expression(fun)[2][0][0])
+    print(pts_parser.process_expression(fun2)[2][0][0])
+    print(pts_parser.process_expression(fun3)[2][0][0])
+    print(pts_parser.process_expression(fun4)[2][0][0])
 
     parser = FunctionAnalyzer()
 
-    print(parser.process_function("int search(void)"))
-    print(parser.process_function(fun))
-    print(parser.process_function(fun2))
-    print(parser.process_function(fun3))
+    # print(parser.process_function("int search(void)"))
+    # print(parser.process_function(fun))
+    # print(parser.process_function(fun2))
+    # print(parser.process_function(fun3))
+    # print(parser.process_function(fun4))

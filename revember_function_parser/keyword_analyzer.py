@@ -53,9 +53,7 @@ class KeywordAnalyzer:
         match = block.split(keyword)
         ret_val = None
         pts = ParenthesisProcessing()
-        to_be_checked = block
         if len(match) > 1:
-            to_be_checked = match[1]
             if match[0].strip().endswith(")"):
                 need_extra_brackets = True
             pts_ret = pts.process_expression(match[1])
@@ -69,8 +67,9 @@ class KeywordAnalyzer:
     def check_function_signature(self, text, params_out):
         if( "(" in text) and (")" in text):
             analyzer = FunctionAnalyzer()
-            ret = analyzer.process_function(text)
-            params_out.append(ret)
-            return True
+            (status, ret) = analyzer.process_function(text)
+            if status == True:
+                params_out.append(ret)
+            return status
         else:
             return False
