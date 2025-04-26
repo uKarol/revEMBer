@@ -12,6 +12,60 @@
                   }
             ]
       ],
+      "begin": 80,
+      "end": 113,
+      "returns": [
+            {
+                  "begin": 112,
+                  "end": 112,
+                  "need_brackets": false,
+                  "returned_value": "lwip_htons((u16_t)acc)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_t lwip_standard_chksum(const void *dataptr, int len)0",
+      "parameters": [
+            [
+                  {
+                        "param_type": "const void*",
+                        "param_name": "dataptr"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
+      "begin": 133,
+      "end": 172,
+      "returns": [
+            {
+                  "begin": 171,
+                  "end": 171,
+                  "need_brackets": false,
+                  "returned_value": "(u16_t)sum",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "u16_t lwip_standard_chksum(const void *dataptr, int len)1",
+      "parameters": [
+            [
+                  {
+                        "param_type": "const void*",
+                        "param_name": "dataptr"
+                  },
+                  {
+                        "param_type": "int",
+                        "param_name": "len"
+                  }
+            ]
+      ],
       "begin": 189,
       "end": 254,
       "returns": [

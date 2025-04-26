@@ -85,6 +85,7 @@ u16_t lwip_standard_chksum(const void *dataptr, int len);
 u16_t
 lwip_standard_chksum(const void *dataptr, int len)
 {
+REVEMBER_FUNCTION_ENTRY() 
   u32_t acc;
   u16_t src;
   const u8_t *octetptr;
@@ -116,6 +117,7 @@ lwip_standard_chksum(const void *dataptr, int len)
   /* This maybe a little confusing: reorder sum using lwip_htons()
      instead of lwip_ntohs() since it has a little less call overhead.
      The caller must invert bits for Internet sum ! */
+REVEMBER_FUNCTION_EXIT() 
   return lwip_htons((u16_t)acc);
 }
 #endif
@@ -138,6 +140,7 @@ lwip_standard_chksum(const void *dataptr, int len)
 u16_t
 lwip_standard_chksum(const void *dataptr, int len)
 {
+REVEMBER_FUNCTION_ENTRY() 
   const u8_t *pb = (const u8_t *)dataptr;
   const u16_t *ps;
   u16_t t = 0;
@@ -175,6 +178,7 @@ lwip_standard_chksum(const void *dataptr, int len)
     sum = SWAP_BYTES_IN_WORD(sum);
   }
 
+REVEMBER_FUNCTION_EXIT() 
   return (u16_t)sum;
 }
 #endif

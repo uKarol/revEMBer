@@ -54,8 +54,8 @@
                   }
             ]
       ],
-      "begin": 516,
-      "end": 544,
+      "begin": 160,
+      "end": 161,
       "returns": [],
       "warnings": [],
       "revember_artifacts": []
@@ -96,6 +96,51 @@
                   }
             ]
       ],
+      "begin": 207,
+      "end": 220,
+      "returns": [
+            {
+                  "begin": 212,
+                  "end": 212,
+                  "need_brackets": false,
+                  "returned_value": "aligned memory\", LWIP_MEM_ALIGN(ret) == ret)",
+                  "return_warning": "improper return statement"
+            },
+            {
+                  "begin": 219,
+                  "end": 219,
+                  "need_brackets": false,
+                  "returned_value": "ret",
+                  "return_warning": ""
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void mem_free(void *rmem)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "rmem"
+                  }
+            ]
+      ],
+      "begin": 228,
+      "end": 236,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void * mem_malloc(mem_size_t size)0",
+      "parameters": [
+            [
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "size"
+                  }
+            ]
+      ],
       "begin": 251,
       "end": 297,
       "returns": [
@@ -124,7 +169,7 @@
       "warnings": [],
       "revember_artifacts": []
 }{
-      "name": "void mem_free(void *rmem)",
+      "name": "void mem_free(void *rmem)1",
       "parameters": [
             [
                   {
@@ -133,45 +178,9 @@
                   }
             ]
       ],
-      "begin": 617,
-      "end": 685,
-      "returns": [
-            {
-                  "begin": 623,
-                  "end": 623,
-                  "need_brackets": false,
-                  "returned_value": "",
-                  "return_warning": ""
-            },
-            {
-                  "begin": 630,
-                  "end": 630,
-                  "need_brackets": false,
-                  "returned_value": "",
-                  "return_warning": ""
-            },
-            {
-                  "begin": 642,
-                  "end": 642,
-                  "need_brackets": false,
-                  "returned_value": "",
-                  "return_warning": ""
-            },
-            {
-                  "begin": 656,
-                  "end": 656,
-                  "need_brackets": false,
-                  "returned_value": "",
-                  "return_warning": ""
-            },
-            {
-                  "begin": 665,
-                  "end": 665,
-                  "need_brackets": false,
-                  "returned_value": "",
-                  "return_warning": ""
-            }
-      ],
+      "begin": 308,
+      "end": 338,
+      "returns": [],
       "warnings": [],
       "revember_artifacts": []
 }{
@@ -270,6 +279,21 @@
       "warnings": [],
       "revember_artifacts": []
 }{
+      "name": "void mem_init(void)2",
+      "parameters": [
+            [
+                  {
+                        "param_type": "void",
+                        "param_name": ""
+                  }
+            ]
+      ],
+      "begin": 516,
+      "end": 544,
+      "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
       "name": "static int mem_link_valid(struct mem *mem)",
       "parameters": [
             [
@@ -312,6 +336,57 @@
       "begin": 568,
       "end": 606,
       "returns": [],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void mem_free(void *rmem)3",
+      "parameters": [
+            [
+                  {
+                        "param_type": "void*",
+                        "param_name": "rmem"
+                  }
+            ]
+      ],
+      "begin": 617,
+      "end": 685,
+      "returns": [
+            {
+                  "begin": 623,
+                  "end": 623,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 630,
+                  "end": 630,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 642,
+                  "end": 642,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 656,
+                  "end": 656,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            },
+            {
+                  "begin": 665,
+                  "end": 665,
+                  "need_brackets": false,
+                  "returned_value": "",
+                  "return_warning": ""
+            }
+      ],
       "warnings": [],
       "revember_artifacts": []
 }{
@@ -415,6 +490,33 @@
       "revember_artifacts": []
 }{
       "name": "void * mem_calloc(mem_size_t count, mem_size_t size)",
+      "parameters": [
+            [
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "count"
+                  },
+                  {
+                        "param_type": "mem_size_t",
+                        "param_name": "size"
+                  }
+            ]
+      ],
+      "begin": 982,
+      "end": 984,
+      "returns": [
+            {
+                  "begin": 983,
+                  "end": 983,
+                  "need_brackets": false,
+                  "returned_value": "mem_clib_calloc(count, size)",
+                  "return_warning": "compound return value"
+            }
+      ],
+      "warnings": [],
+      "revember_artifacts": []
+}{
+      "name": "void * mem_calloc(mem_size_t count, mem_size_t size)4",
       "parameters": [
             [
                   {

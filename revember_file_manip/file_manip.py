@@ -9,7 +9,29 @@ class CFileManip:
 
     def add_include_info(self, lines):
         lines[0] = self.comment + self.to_be_added["inc"] + '\n' + lines[0]
-            
+    
+
+    def add_params(self, param_list):
+        param_num = len(param_list[0])
+        str_to_add = ""
+        if(param_num == 1) and (param_list[0][0]["param_name"] ==""):
+            pass
+        elif(param_num > 0):
+            str_to_add = f"REVEMBER_FUNCTION_PARAMETERS({param_num}"
+            for param in param_list[0]:
+                if param["param_type"] == "" or param["param_name"] =="":
+                    continue
+                if param["param_type"] == "function_ptr":
+                    param_t = "FUNCTION_POINTER"
+                elif '*' in param["param_type"]: 
+                    param_t = "VARIABLE_POINTER"
+                else:
+                    param_t = "RAW_VALUE"
+                to_be_added = f', {param_t}, {param["param_name"]}'
+                str_to_add = str_to_add + to_be_added
+            str_to_add = str_to_add + ')\n'
+        return str_to_add
+
     def add_sequence_in_begin(self, line:str, sequence_to_add: str):
         ret_val = line
         if '{' in line:
@@ -68,9 +90,13 @@ class CFileManip:
             function_rets = functions_to_change.returns
             function_end_ln = functions_to_change.end
             add_ex = True
+            params = ""
+
+            if(mod_selection["param"]):
+                params = self.add_params(functions_to_change.parameters)    
 
             if(mod_selection["begin"]):
-                lines[function_begin_ln] = self.add_sequence_in_begin(lines[function_begin_ln], self.to_be_added["begin"] + ' \n')
+                lines[function_begin_ln] = self.add_sequence_in_begin(lines[function_begin_ln], self.to_be_added["begin"] + ' \n') + params
 
             if(mod_selection["ret"]):
                 for ret in function_rets:

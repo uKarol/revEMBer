@@ -61,45 +61,50 @@ class rev_controller(Protocol):
     def process_selected_files(self):
         ...
 
-    def process_selected_functions(self):
+    def add_debug_functions(self):
         ...
 
-
+    def remove_debug_functions(self):
+        ...
 class user_functions:
 
     def __init__(self, root):
         self.check_var_beg = tk.BooleanVar()
         self.check_var_ret = tk.BooleanVar()
         self.check_var_end = tk.BooleanVar()
+        self.check_var_param = tk.BooleanVar()
         frame_beg = tk.Frame(master=root)
         frame_ret = tk.Frame(master=root)
         frame_ext = tk.Frame(master=root)
-        user_desc = tk.Label(master=frame_beg, text="TO BE ADDED")
+        frame_param = tk.Frame(master=root)
+        user_desc = tk.Label(master=frame_beg, text="TO BE LOGGED")
         user_desc.pack()
-        user_begin_label = tk.Label(master=frame_beg, text="user function on begin")
-        user_return_label = tk.Label(master=frame_ret, text="user function on return")
-        user_end_label = tk.Label(master=frame_ext, text="user function on end")
-        self.user_function_begin_Checkbox = tk.Checkbutton(master=frame_beg, variable= self.check_var_beg)
+
+        self.user_function_begin_Checkbox = tk.Checkbutton(master=frame_beg, variable= self.check_var_beg, text="function begin")
         self.user_function_begin_Checkbox.select()
-        self.user_function_return_Checkbox = tk.Checkbutton(master=frame_ret, variable= self.check_var_ret)
+        self.user_function_return_Checkbox = tk.Checkbutton(master=frame_ret, variable= self.check_var_ret, text = "function return")
         self.user_function_return_Checkbox.select()
-        self.user_function_end_Checkbox = tk.Checkbutton(master=frame_ext, variable= self.check_var_end)
+        self.user_function_end_Checkbox = tk.Checkbutton(master=frame_ext, variable= self.check_var_end, text="function end")
         self.user_function_end_Checkbox.select()
-        user_begin_label.pack(side=tk.RIGHT)
+        self.user_function_param_Checkbox = tk.Checkbutton(master=frame_param, variable= self.check_var_param, text="function params")
+
+
         self.user_function_begin_Checkbox.pack(side=tk.LEFT)
-        user_return_label.pack(side=tk.RIGHT)
         self.user_function_return_Checkbox.pack(side=tk.LEFT)
-        user_end_label.pack(side=tk.RIGHT)
         self.user_function_end_Checkbox.pack(side=tk.LEFT)
+        self.user_function_param_Checkbox.pack(side=tk.LEFT)
+
         frame_beg.pack()
         frame_ret.pack()
         frame_ext.pack()
+        frame_param.pack()
 
     def get_user_functions(self):
         user_begin = self.check_var_beg.get()
         user_return = self.check_var_ret.get()
         user_end = self.check_var_end.get()
-        return {"begin" : user_begin, "ret" : user_return, "end" : user_end}
+        user_param = self.check_var_param.get()
+        return {"begin" : user_begin, "ret" : user_return, "end" : user_end, "param" : user_param}
 
 class revEMBer_view:
     
@@ -110,7 +115,7 @@ class revEMBer_view:
         file_frame = tk.Frame(self.root)
         self.file_selector = FileChooseList(file_frame, self.ctl.process_selected_files)
         function_frame = tk.Frame(self.root)
-        self.function_selector = FileFunctionWIndows(function_frame, self.ctl.process_selected_functions, "APPLY TO SELECTED FUNCTIONS")
+        self.function_selector = FileFunctionWIndows(function_frame, self.ctl.add_debug_functions, "APPLY TO SELECTED FUNCTIONS")
         function_frame.pack(side=tk.RIGHT, expand=True, fill="x")
         file_frame.pack(side=tk.LEFT)
 

@@ -46,7 +46,7 @@ class BlockExtractor:
         self.transition_to(OutFunction())
         self.current_level = 0
         self.entry_level = 0
-
+        self.repetition_ctr = 0
         self.keyword_analyzer = keyword_analyzer
 
         self.last_signature = ""
@@ -59,14 +59,18 @@ class BlockExtractor:
         self.last_revember_artifacts = []
 
     def update_function_dict(self):
-        new_fun = {self.last_signature : FUnctionParser_FunctData(self.last_signature,
-                                                                            self.last_found_parametrers,
-                                                                            self.function_begin_line,
-                                                                            self.function_end_line,
-                                                                            self.last_returns,
-                                                                            [],
-                                                                            self.last_revember_artifacts,
-                                                                            )}
+        fn_key = self.last_signature
+        if(fn_key in self.found_functions):
+            fn_key = fn_key+str(self.repetition_ctr)
+            self.repetition_ctr = self.repetition_ctr + 1
+        new_fun = {fn_key : FUnctionParser_FunctData(fn_key,
+                                                     self.last_found_parametrers,
+                                                     self.function_begin_line,
+                                                     self.function_end_line,
+                                                     self.last_returns,
+                                                     [],
+                                                     self.last_revember_artifacts,
+                                                    )}
         self.found_functions.update(new_fun)
         self.last_signature = ""
         self.function_begin_line = 0
@@ -108,7 +112,6 @@ class BlockExtractor:
     def process_line(self, line, line_num):
         if( "}" in line or "{" in line or ";" in line ):
             s_line = self.block_splitter(line)
-
             for s in s_line:
                 if( s == "BLOCK START DETECTED" ):
                     self._state.block_begin(line_num)
@@ -133,8 +136,9 @@ class InFunction(BlockExtractorState):
         if line.strip() != "":
             if(self.expression_begin == 0):
                 self.expression_begin = line_num
-            self.last_expression = self.last_expression + line
-            self.context.keyword_analyzer.find_revember_artifacts(line, line_num, self.context.last_revember_artifacts)
+            
+            if(self.context.keyword_analyzer.find_revember_artifacts(line, line_num, self.context.last_revember_artifacts)== False):
+                self.last_expression = self.last_expression + line
 
     def block_begin(self, line_num):
         self.context.current_level = self.context.current_level + 1
@@ -168,7 +172,7 @@ class OutFunction(BlockExtractorState):
         self.last_expression = self.last_expression + line
 
     def block_begin(self, line_num):
-        if( self.context.keyword_analyzer.check_function_signature(self.last_expression, self.context.last_found_parametrers) == True ) and (self.context.current_level == 0):
+        if( self.context.keyword_analyzer.check_function_signature(self.last_expression, self.context.last_found_parametrers) == True ):
             self.context.entry_level = self.context.current_level
             self.context.last_signature = self.last_expression.strip()
             self.context.function_begin_line = line_num

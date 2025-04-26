@@ -29,12 +29,15 @@ def keyword_variants_gen(basic_kw, rw):
 
 class KeywordAnalyzer:
 
-    def __init__(self):
-        self.revember_artifacts = ["REVEMBER_FUNCTION_ENTRY", "REVEMBER_FUNCTION_EXIT"]
+    def __init__(self, revember_artifacts):
+        self.revember_artifacts = revember_artifacts # ["REVEMBER_FUNCTION_ENTRY", "REVEMBER_FUNCTION_EXIT"]
 
     def find_revember_artifacts(self, line, line_num, rev_art):
+        ret_val = False
         if any(word in line for word in self.revember_artifacts):
             rev_art.append(line_num)
+            ret_val = True
+        return ret_val
 
     def find_keywords(self, text, expression_begin, expression_end):
         text = text + " "
@@ -50,9 +53,7 @@ class KeywordAnalyzer:
         match = block.split(keyword)
         ret_val = None
         pts = ParenthesisProcessing()
-        to_be_checked = block
         if len(match) > 1:
-            to_be_checked = match[1]
             if match[0].strip().endswith(")"):
                 need_extra_brackets = True
             pts_ret = pts.process_expression(match[1])
@@ -66,8 +67,9 @@ class KeywordAnalyzer:
     def check_function_signature(self, text, params_out):
         if( "(" in text) and (")" in text):
             analyzer = FunctionAnalyzer()
-            ret = analyzer.process_function(text)
-            params_out.append(ret)
-            return True
+            (status, ret) = analyzer.process_function(text)
+            if status == True:
+                params_out.append(ret)
+            return status
         else:
             return False

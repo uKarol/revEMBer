@@ -6,6 +6,7 @@ from revember_function_parser.comment_extractor import CommentExtractor
 from revember_function_parser.experimantal_preprocessing import *
 from revember_function_parser.revember_function_parser_data_classes import *
 from revember_function_parser.keyword_analyzer import KeywordAnalyzer
+from revember_function_parser.multiline_directive_processing import DirectiveDecoder
 class CascadedExtractor:
 
     def __init__(self, next_stage_processing):
@@ -37,12 +38,12 @@ class CascadedExtractor:
 
 class FunctionDetector:
 
-    def __init__(self):
-        self.keyword_analyzer = KeywordAnalyzer()
+    def __init__(self, keywords_to_be_found, warnings):
+        self.keyword_analyzer = KeywordAnalyzer(keywords_to_be_found)
         self.block_extr = BlockExtractor(self.keyword_analyzer)
-        self.prep = DefineDecoder(self.block_extr.process_line) 
-        self.conditional_extractor = ConditionalCompilationDecoder(self.prep.process_line)
-        self.comment_extr = CommentExtractor(self.conditional_extractor.process_line)
+        self.conditional_extractor = ConditionalCompilationDecoder(self.block_extr.process_line)
+        self.prep = DirectiveDecoder(self.conditional_extractor) 
+        self.comment_extr = CommentExtractor(self.prep.process_line)
         self.extractor = CascadedExtractor(self.comment_extr.process_line) 
         self.found_functions = {}
 
